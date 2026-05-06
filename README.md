@@ -4,15 +4,17 @@ Holo-Type is a modern web application that leverages Google Gemini AI to generat
 
 ## Features
 
-- **AI-Powered Archetypes:** Uses `gemini-2.5-flash` to transform athlete bios into iconic titles and narratives.
-- **Holographic UI:** A stunning, interactive card aesthetic built with Tailwind CSS 4, featuring iridescent borders and shimmer effects.
-- **Modern Tech Stack:** Built with the latest versions of Next.js and React for optimal performance and developer experience.
+- **AI-Powered Archetypes:** Uses `gemini-2.5-flash` to transform athlete bios into iconic titles and dual narratives (Olympic and Paralympic parity).
+- **Holographic UI:** A stunning, interactive 3D card aesthetic built with Tailwind CSS 4 and Framer Motion, featuring real-time glare and iridescent effects.
+- **Modern Tech Stack:** Built with the latest versions of Next.js, React, and Tailwind CSS 4 for optimal performance.
 
 ## Tech Stack
 
 - **Framework:** Next.js 16.2.4 (App Router)
 - **Library:** React 19.2.4
 - **AI Integration:** Google Gemini AI (`@google/genai`)
+- **Animation:** `motion/react` (Framer Motion 12)
+- **Icons:** `lucide-react`
 - **Styling:** Tailwind CSS 4
 - **Language:** TypeScript
 

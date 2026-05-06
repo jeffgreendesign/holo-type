@@ -15,12 +15,22 @@ This is a modern web application built with Next.js 16 and React 19, focused on 
 
 ### 1. Archetype Generation (`app/api/generate/route.ts`)
 - The backend uses the `GoogleGenAI` SDK to interact with `gemini-2.5-flash`.
-- **Prompt Strategy:** Uses a structured prompt to generate a JSON response containing a "title" and a "narrative".
-- **Strict JSON:** The model is instructed to return *only* a JSON object.
+- **Prompt Strategy:** Uses a structured prompt to generate a JSON response containing a detailed athlete archetype.
+- **Data Structure:** The AI returns a JSON object with:
+  - `title`: A high-impact archetype name.
+  - `narrative`: Dual lenses (`olympic` and `paralympic`) for parity.
+  - `rarity`: Common, Uncommon, Rare, or Holo Rare.
+  - `stats`: 3-4 performance traits with values.
+  - `era`: Historical alignment timeframe.
+  - `discipline`: Olympic, Paralympic, or Unified.
+- **Strict JSON:** The model is instructed to return *only* a JSON object using `responseMimeType: "application/json"`.
 
 ### 2. Holographic UI Aesthetic (`app/page.tsx`)
-- The "Holographic" effect is achieved using Tailwind CSS 4 features:
-  - **Iridescent Border:** `bg-gradient-to-r` with indigo, purple, pink, red, yellow, green, and teal, combined with `animate-gradient-x` and `blur-sm`.
+- **Animation:** Powered by `motion/react` (Framer Motion 12) for 3D card tilt and smooth transitions.
+- **Icons:** Uses `lucide-react` for symbolic representation.
+- **Holographic Effect:** Achieved using Tailwind CSS 4 features:
+  - **Dynamic Glare:** Real-time mouse-tracking radial gradient overlay.
+  - **Iridescent Border:** `bg-gradient-to-r` with iridescent colors and `animate-gradient-x`.
   - **Shimmer Overlay:** `animate-shimmer` with a white linear gradient.
   - **Glassmorphism:** `bg-zinc-950/90`, `backdrop-blur-xl`, and `border-white/10`.
 
