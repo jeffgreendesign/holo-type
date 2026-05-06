@@ -2,6 +2,153 @@
 
 import { useState } from "react";
 
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { Star, Info, ShieldCheck } from "lucide-react";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+interface Archetype {
+  title: string;
+  narrative: string;
+  classification: "Olympic" | "Paralympic" | "Unified";
+}
+
+function HoloCard({ archetype, athleteName, sport }: { archetype: Archetype; athleteName: string; sport: string }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const glareX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"]);
+  const glareY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="perspective-1000 w-full flex justify-center py-12"
+    >
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+        }}
+        className="relative w-[380px] h-[520px] rounded-[2rem] bg-zinc-950 border-[3px] border-[#D4AF37]/30 shadow-[0_0_50px_-12px_rgba(212,175,55,0.3)] group cursor-pointer overflow-hidden"
+      >
+        {/* Gold Frame Inner Glow */}
+        <div className="absolute inset-0 rounded-[2rem] border-[1px] border-[#D4AF37]/50 pointer-events-none" />
+        
+        {/* Holographic "Patriotic Foil" Overlay */}
+        <motion.div 
+          style={{
+            background: `radial-gradient(circle at ${glareX.get()} ${glareY.get()}, rgba(255,255,255,0.15) 0%, transparent 60%), 
+                         linear-gradient(135deg, rgba(212,175,55,0.1) 0%, transparent 50%, rgba(0,40,104,0.1) 100%)`,
+          }}
+          className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+        />
+
+        {/* Shimmer Sweep Animation */}
+        <div className="absolute inset-0 z-20 pointer-events-none bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.1)_45%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.1)_55%,transparent_60%)] bg-[length:200%_100%] animate-[shimmer_6s_infinite] opacity-30" />
+
+        {/* Patriotic Iridescence (Red/White/Blue) */}
+        <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700 bg-[radial-gradient(circle_at_50%_50%,_oklch(70%_0.15_20)_0%,_oklch(95%_0.02_200)_50%,_oklch(60%_0.15_250)_100%)] mix-blend-soft-light" />
+
+        {/* Content Container */}
+        <div className="relative z-30 h-full p-8 flex flex-col justify-between items-center text-center">
+          {/* Header: Team USA Logo / Shield Placeholder */}
+          <div className="flex flex-col items-center space-y-2">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-b from-[#BA0C2F] to-[#002868] p-0.5 shadow-lg">
+              <div className="w-full h-full rounded-full bg-zinc-950 flex items-center justify-center">
+                <Star className="w-6 h-6 text-[#D4AF37] fill-[#D4AF37]" />
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="h-px w-8 bg-[#BA0C2F]" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">Team USA Analyst</span>
+              <span className="h-px w-8 bg-[#002868]" />
+            </div>
+          </div>
+
+          {/* Body: Archetype Title & Narrative */}
+          <div className="space-y-6 py-4">
+            <div className="space-y-1">
+              <motion.h2 
+                style={{ transform: "translateZ(50px)" }}
+                className="text-4xl font-black italic tracking-tighter uppercase text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]"
+              >
+                {archetype.title}
+              </motion.h2>
+              <div className="flex items-center justify-center gap-2">
+                <div className={cn(
+                  "px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase border",
+                  archetype.classification === "Olympic" ? "bg-blue-500/10 border-blue-500/50 text-blue-400" :
+                  archetype.classification === "Paralympic" ? "bg-red-500/10 border-red-500/50 text-red-400" :
+                  "bg-gold-500/10 border-[#D4AF37]/50 text-[#D4AF37]"
+                )}>
+                  {archetype.classification} Discipline
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -left-4 -top-2 opacity-20"><ShieldCheck className="w-8 h-8 text-zinc-500" /></div>
+              <p className="text-zinc-200 text-lg leading-tight font-medium italic relative z-10">
+                &quot;{archetype.narrative}&quot;
+              </p>
+            </div>
+          </div>
+
+          {/* Footer: Athlete Info & Disclaimer */}
+          <div className="w-full space-y-4">
+            <div className="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent w-full" />
+            <div className="flex flex-col items-center space-y-1">
+              <p className="text-white font-bold tracking-wide text-xl uppercase">{athleteName}</p>
+              <p className="text-zinc-500 text-xs font-semibold tracking-[0.2em] uppercase">{sport}</p>
+            </div>
+            
+            <div className="flex items-center justify-center gap-1.5 text-[8px] text-zinc-600 font-bold uppercase tracking-wider bg-zinc-900/50 py-2 rounded-lg border border-white/5">
+              <Info className="w-2.5 h-2.5" />
+              <span>120 Years of Historical Insights via Gemini AI</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Card Micro-Texture Overlay */}
+        <div className="absolute inset-0 z-40 pointer-events-none opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,10 +156,7 @@ export default function Home() {
     bio: "",
   });
   const [loading, setLoading] = useState(false);
-  const [archetype, setArchetype] = useState<{
-    title: string;
-    narrative: string;
-  } | null>(null);
+  const [archetype, setArchetype] = useState<Archetype | null>(null);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,8 +181,9 @@ export default function Home() {
 
       const data = await response.json();
       setArchetype(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "An error occurred";
+      setError(message);
     } finally {
       setLoading(false);
     }
@@ -164,41 +309,7 @@ export default function Home() {
         )}
 
         {archetype && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="relative group">
-              {/* Animated Iridescent Border */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-teal-500 to-indigo-500 rounded-2xl opacity-40 group-hover:opacity-100 transition duration-1000 animate-gradient-x bg-[length:200%_200%] blur-sm"></div>
-
-              <div className="relative bg-zinc-950/90 backdrop-blur-xl border border-white/10 p-8 rounded-2xl space-y-4 overflow-hidden">
-                {/* Holographic Shimmer Overlay */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.4)_45%,rgba(255,255,255,0.4)_55%,transparent_75%)] bg-[length:200%_100%] animate-shimmer"></div>
-
-                <div className="flex justify-between items-start">
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">
-                      Athlete Archetype
-                    </p>
-                    <h2 className="text-3xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">
-                      {archetype.title}
-                    </h2>
-                  </div>
-                  <div className="px-2 py-1 bg-white/5 rounded text-[10px] font-bold text-zinc-400 border border-white/10 backdrop-blur-md">
-                    TYPE: {formData.sport.toUpperCase()}
-                  </div>
-                </div>
-                <div className="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent w-full"></div>
-                <div className="space-y-3">
-                  <p className="text-zinc-300 leading-relaxed italic font-medium">
-                    "{archetype.narrative}"
-                  </p>
-                  <p className="text-zinc-500 text-sm font-semibold tracking-wide flex items-center gap-2">
-                    <span className="w-4 h-px bg-zinc-800"></span>
-                    {formData.name}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <HoloCard archetype={archetype} athleteName={formData.name} sport={formData.sport} />
         )}
       </div>
     </div>

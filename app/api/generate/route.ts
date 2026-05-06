@@ -24,20 +24,29 @@ export async function POST(req: NextRequest) {
     const modelId = "gemini-2.5-flash";
 
     const prompt = `
-      You are an expert sports analyst and storyteller. 
-      Generate a compelling "Athlete Archetype" for the following athlete:
+      You are a Senior Team USA Analyst powered by Gemini. 
+      Your task is to analyze an athlete's profile and identify their "Historical Alignment" with Team USA's 120-year legacy of Olympic and Paralympic excellence.
+
+      Athlete Profile:
       Name: ${name}
       Sport: ${sport}
       Bio: ${bio}
 
+      Requirements:
+      1. CRITICAL: Use CONDITIONAL PHRASING (e.g., "This data suggests," "You could align with," "Potential path toward"). Never guarantee performance results.
+      2. PARITY: Treat Olympic and Paralympic disciplines with equal depth and prominence.
+      3. INSIGHT: Focus on the "Digital Mirror"—helping the fan/athlete see how their traits reflect the collective power of Team USA.
+
       An Archetype consists of:
-      1. A short, iconic Title (e.g., "The Unstoppable Force", "The Silent Guardian").
-      2. A 2-3 sentence Narrative describing their essence, playstyle, and impact.
+      1. A short, iconic Title (e.g., "The Aerobic Powerhouse", "The Precision Tactician").
+      2. A 2-3 sentence Narrative describing their essence and potential alignment with Team USA history.
+      3. A Classification: Specify if this archetype is common in "Olympic", "Paralympic", or "Unified" (both) disciplines.
 
       Return ONLY a JSON object in the following format:
       {
         "title": "ARCHETYPE_TITLE",
-        "narrative": "ARCHETYPE_NARRATIVE"
+        "narrative": "ARCHETYPE_NARRATIVE",
+        "classification": "Olympic | Paralympic | Unified"
       }
     `;
 
@@ -57,10 +66,11 @@ export async function POST(req: NextRequest) {
     const result = JSON.parse(resultText);
 
     return NextResponse.json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
     console.error("Error generating archetype:", error);
     return NextResponse.json(
-      { error: "Failed to generate archetype", details: error.message },
+      { error: "Failed to generate archetype", details: message },
       { status: 500 }
     );
   }
