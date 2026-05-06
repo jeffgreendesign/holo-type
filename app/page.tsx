@@ -166,27 +166,33 @@ export default function Home() {
         {archetype && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-500 to-zinc-200 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-zinc-950 border border-zinc-800 p-8 rounded-2xl space-y-4">
+              {/* Animated Iridescent Border */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-teal-500 to-indigo-500 rounded-2xl opacity-40 group-hover:opacity-100 transition duration-1000 animate-gradient-x bg-[length:200%_200%] blur-sm"></div>
+
+              <div className="relative bg-zinc-950/90 backdrop-blur-xl border border-white/10 p-8 rounded-2xl space-y-4 overflow-hidden">
+                {/* Holographic Shimmer Overlay */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.4)_45%,rgba(255,255,255,0.4)_55%,transparent_75%)] bg-[length:200%_100%] animate-shimmer"></div>
+
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">
                       Athlete Archetype
                     </p>
-                    <h2 className="text-3xl font-bold tracking-tight text-white">
+                    <h2 className="text-3xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">
                       {archetype.title}
                     </h2>
                   </div>
-                  <div className="px-2 py-1 bg-zinc-800 rounded text-[10px] font-bold text-zinc-400 border border-zinc-700">
+                  <div className="px-2 py-1 bg-white/5 rounded text-[10px] font-bold text-zinc-400 border border-white/10 backdrop-blur-md">
                     TYPE: {formData.sport.toUpperCase()}
                   </div>
                 </div>
-                <div className="h-px bg-zinc-800 w-full"></div>
-                <div className="space-y-2">
-                  <p className="text-zinc-300 leading-relaxed italic">
+                <div className="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent w-full"></div>
+                <div className="space-y-3">
+                  <p className="text-zinc-300 leading-relaxed italic font-medium">
                     "{archetype.narrative}"
                   </p>
-                  <p className="text-zinc-500 text-sm font-medium">
+                  <p className="text-zinc-500 text-sm font-semibold tracking-wide flex items-center gap-2">
+                    <span className="w-4 h-px bg-zinc-800"></span>
                     {formData.name}
                   </p>
                 </div>
