@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { ThemeToggle } from "./components/ThemeToggle";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Holo-Type | AI Athlete Archetypes",
