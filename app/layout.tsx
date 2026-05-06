@@ -37,6 +37,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-bg-main text-text-main font-body">
+        <div className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-accent-red via-accent-navy to-accent-red z-[100]" />
+        <div className="noise-overlay" />
+        <div className="geometric-pattern" />
         <ThemeToggle />
         {children}
       </body>
