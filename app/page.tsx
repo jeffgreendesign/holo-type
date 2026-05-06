@@ -3,13 +3,56 @@
 import { useState } from "react";
 
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
-import { Star, ShieldCheck, RotateCcw } from "lucide-react";
+import { 
+  Star, 
+  ShieldCheck, 
+  RotateCcw, 
+  Zap, 
+  Timer, 
+  Users, 
+  Wrench, 
+  Mountain, 
+  Shuffle 
+} from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+const PRESETS = [
+  {
+    icon: Zap,
+    label: "The Morning Sprinter",
+    text: "I hit the ground running. Fast decisions, fast pace, first one done.",
+  },
+  {
+    icon: Timer,
+    label: "The Steady Pacer",
+    text: "I build momentum slowly. Consistency over bursts. I finish what I start.",
+  },
+  {
+    icon: Users,
+    label: "The Team Captain",
+    text: "I organize people. I read the room. I make the group better than the sum.",
+  },
+  {
+    icon: Wrench,
+    label: "The Precision Craftsman",
+    text: "I work with my hands. Details matter. I measure twice.",
+  },
+  {
+    icon: Mountain,
+    label: "The Endurance Runner",
+    text: "Long days don't scare me. I outlast problems. Patience is my edge.",
+  },
+  {
+    icon: Shuffle,
+    label: "The Adaptive Strategist",
+    text: "I read the situation and adjust. No fixed playbook. I improvise.",
+  },
+];
 
 interface Archetype {
   title: string;
@@ -319,7 +362,7 @@ export default function Home() {
         {!archetype ? (
           <form
             onSubmit={handleSubmit}
-            className="space-y-8"
+            className="space-y-10"
           >
             {loading ? (
               <div className="flex flex-col items-center space-y-8">
@@ -342,22 +385,51 @@ export default function Home() {
               </div>
             ) : (
               <>
-                <div className="space-y-4">
-                  <label
-                    htmlFor="userInput"
-                    className="block text-xs font-body font-bold uppercase tracking-[0.3em] text-text-tertiary text-center"
-                  >
-                    Personal Identity Input
-                  </label>
-                  <textarea
-                    id="userInput"
-                    required
-                    rows={5}
-                    className="w-full bg-bg-card-elevated/50 border border-border-subtle rounded-2xl px-6 py-5 focus:outline-none focus:ring-2 focus:ring-accent-red/50 transition-all text-text-main resize-none text-lg leading-relaxed placeholder:text-text-tertiary shadow-inner"
-                    placeholder="Describe your day. Do you sprint or pace yourself? Do you work with your hands or your mind? Are you a solo performer or a team player?"
-                    value={userInput}
-                    onChange={(e) => setUserInput(e.target.value)}
-                  />
+                <div className="space-y-6">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {PRESETS.map((preset, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setUserInput(preset.text)}
+                        className="flex flex-col items-start p-4 bg-bg-card-elevated border border-border-subtle rounded-xl text-left transition-all hover:border-accent-red hover:scale-[1.02] active:scale-[0.98] group"
+                      >
+                        <preset.icon className="w-5 h-5 text-accent-red mb-3 group-hover:scale-110 transition-transform" />
+                        <span className="text-xs font-display font-bold uppercase tracking-tight text-text-main mb-1">
+                          {preset.label}
+                        </span>
+                        <span className="text-[10px] leading-snug text-text-secondary line-clamp-2">
+                          {preset.text}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="relative flex items-center py-2">
+                    <div className="flex-grow border-t border-border-subtle"></div>
+                    <span className="flex-shrink mx-4 text-[10px] font-bold uppercase tracking-[0.2em] text-text-tertiary">
+                      Or describe yourself
+                    </span>
+                    <div className="flex-grow border-t border-border-subtle"></div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <label
+                      htmlFor="userInput"
+                      className="block text-xs font-body font-bold uppercase tracking-[0.3em] text-text-tertiary text-center sr-only"
+                    >
+                      Personal Identity Input
+                    </label>
+                    <textarea
+                      id="userInput"
+                      required
+                      rows={4}
+                      className="w-full bg-bg-card-elevated/50 border border-border-subtle rounded-2xl px-6 py-5 focus:outline-none focus:ring-2 focus:ring-accent-red/50 transition-all text-text-main resize-none text-lg leading-relaxed placeholder:text-text-tertiary shadow-inner"
+                      placeholder="Describe your day..."
+                      value={userInput}
+                      onChange={(e) => setUserInput(e.target.value)}
+                    />
+                  </div>
                 </div>
 
                 <button
