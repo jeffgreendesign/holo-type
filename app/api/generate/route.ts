@@ -3,11 +3,11 @@ import { GoogleGenAI } from "@google/genai";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, sport, bio } = await req.json();
+    const { userInput } = await req.json();
 
-    if (!name || !sport || !bio) {
+    if (!userInput) {
       return NextResponse.json(
-        { error: "Name, sport, and bio are required" },
+        { error: "User input is required" },
         { status: 400 }
       );
     }
@@ -25,28 +25,34 @@ export async function POST(req: NextRequest) {
 
     const prompt = `
       You are a Senior Team USA Analyst powered by Gemini. 
-      Your task is to analyze an athlete's profile and identify their "Historical Alignment" with Team USA's 120-year legacy of Olympic and Paralympic excellence.
+      Your task is to analyze a user's description of how they move and work through their day, and identify their "Historical Alignment" with Team USA's 120-year legacy of Olympic and Paralympic excellence.
 
-      Athlete Profile:
-      Name: ${name}
-      Sport: ${sport}
-      Bio: ${bio}
+      User Context:
+      "${userInput}"
 
       Requirements:
       1. CRITICAL: Use CONDITIONAL PHRASING (e.g., "This data suggests," "You could align with," "Potential path toward"). Never guarantee performance results.
       2. PARITY: Treat Olympic and Paralympic disciplines with equal depth and prominence.
-      3. INSIGHT: Focus on the "Digital Mirror"—helping the fan/athlete see how their traits reflect the collective power of Team USA.
-
-      An Archetype consists of:
-      1. A short, iconic Title (e.g., "The Aerobic Powerhouse", "The Precision Tactician").
-      2. A 2-3 sentence Narrative describing their essence and potential alignment with Team USA history.
-      3. A Classification: Specify if this archetype is common in "Olympic", "Paralympic", or "Unified" (both) disciplines.
+      3. INSIGHT: Focus on the "Digital Mirror"—helping the fan see how their daily traits reflect the collective power of Team USA.
+      4. RARITY: Assign a rarity based on the uniqueness or intensity of the alignment: Common, Uncommon, Rare, or Holo Rare.
+      5. STATS: Generate 3-4 specific performance traits (e.g., Agility, Resilience, Precision, Power) with values from 50-99.
+      6. DUAL NARRATIVE: Provide two distinct "lenses" for the same archetype—one for the Paralympic legacy and one for the Olympic legacy.
 
       Return ONLY a JSON object in the following format:
       {
-        "title": "ARCHETYPE_TITLE",
-        "narrative": "ARCHETYPE_NARRATIVE",
-        "classification": "Olympic | Paralympic | Unified"
+        "title": "ARCHETYPE_TITLE (e.g., THE ENDURING ICON)",
+        "narrative": {
+          "olympic": "2-3 sentences max on the Olympic alignment.",
+          "paralympic": "2-3 sentences max on the Paralympic alignment."
+        },
+        "rarity": "Common | Uncommon | Rare | Holo Rare",
+        "stats": [
+          { "label": "TRAIT_NAME", "value": NUMBER },
+          { "label": "TRAIT_NAME", "value": NUMBER },
+          { "label": "TRAIT_NAME", "value": NUMBER }
+        ],
+        "era": "e.g., 1984 - Present",
+        "discipline": "Olympic | Paralympic | Unified"
       }
     `;
 
