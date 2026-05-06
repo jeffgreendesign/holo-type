@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
-import { Star, Info, ShieldCheck } from "lucide-react";
+import { Star, Info, ShieldCheck, RotateCcw, Shuffle } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -159,6 +159,35 @@ export default function Home() {
   const [archetype, setArchetype] = useState<Archetype | null>(null);
   const [error, setError] = useState("");
 
+  const handleReset = () => {
+    setArchetype(null);
+    setError("");
+  };
+
+  const handleRandomize = () => {
+    const names = ["Elena Rodriguez", "Marcus Chen", "Sarah Jenkins", "Liam O'Connor", "Yuki Tanaka", "Amara Okafor", "Jordan Vance"];
+    const sports = ["Volleyball", "Basketball", "Swimming", "Track & Field", "Fencing", "Gymnastics", "Rowing"];
+    const bios = [
+      "A dedicated athlete with a passion for team sports and a competitive spirit. Known for leading their team to victory in the national championships.",
+      "Multiple-time gold medalist known for their incredible speed and agility on the track. They have broken several world records in the last year.",
+      "A versatile player who excels in both defensive and offensive maneuvers. Their strategic thinking makes them a formidable opponent in any match.",
+      "A rising star in the international circuit, making waves with their unique technique and unwavering focus during high-pressure situations.",
+      "Veteran athlete with over a decade of experience in top-tier competitions. They are a mentor to younger athletes and a symbol of perseverance.",
+      "A powerhouse in the pool, specialized in butterfly and freestyle. Their explosive starts and powerful turns are a masterclass in technique.",
+      "Technically gifted fencer with a reputation for lightning-fast parries and precise lunges. A consistent top-three finisher in global tournaments."
+    ];
+
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomSport = sports[Math.floor(Math.random() * sports.length)];
+    const randomBio = bios[Math.floor(Math.random() * bios.length)];
+
+    setFormData({
+      name: randomName,
+      sport: randomSport,
+      bio: randomBio,
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -194,122 +223,151 @@ export default function Home() {
       <div className="w-full max-w-xl space-y-8">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
-            Holo-Type
+            {archetype ? "Your Archetype" : "Holo-Type"}
           </h1>
           <p className="text-zinc-400 text-lg">
-            Generate your athlete archetype card.
+            {archetype ? "Your historical athlete profile is ready." : "Generate your athlete archetype card."}
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl shadow-2xl space-y-6 backdrop-blur-sm"
-        >
-          <div className="space-y-4">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-zinc-400 mb-1"
-              >
-                Athlete Name
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-zinc-700 transition-all text-zinc-100"
-                placeholder="e.g. Elena Rodriguez"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="sport"
-                className="block text-sm font-medium text-zinc-400 mb-1"
-              >
-                Sport
-              </label>
-              <input
-                id="sport"
-                type="text"
-                required
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-zinc-700 transition-all text-zinc-100"
-                placeholder="e.g. Volleyball"
-                value={formData.sport}
-                onChange={(e) =>
-                  setFormData({ ...formData, sport: e.target.value })
-                }
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="bio"
-                className="block text-sm font-medium text-zinc-400 mb-1"
-              >
-                Athlete Bio
-              </label>
-              <textarea
-                id="bio"
-                required
-                rows={4}
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-zinc-700 transition-all text-zinc-100 resize-none"
-                placeholder="Describe their background, strengths, and achievements..."
-                value={formData.bio}
-                onChange={(e) =>
-                  setFormData({ ...formData, bio: e.target.value })
-                }
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full h-12 bg-zinc-50 text-zinc-950 font-semibold rounded-lg hover:bg-zinc-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        {!archetype ? (
+          <form
+            onSubmit={handleSubmit}
+            className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl shadow-2xl space-y-6 backdrop-blur-sm"
           >
-            {loading ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg
-                  className="animate-spin h-5 w-5 text-zinc-950"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Athlete Details</h2>
+              <button
+                type="button"
+                onClick={handleRandomize}
+                className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors group px-3 py-1.5 rounded-md bg-zinc-800/50 border border-zinc-700/50 hover:bg-zinc-800"
+              >
+                <Shuffle className="w-3 h-3 group-hover:rotate-180 transition-transform duration-500" />
+                Randomize
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-zinc-400 mb-1"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Generating...
-              </span>
-            ) : (
-              "Generate Archetype"
-            )}
-          </button>
-        </form>
+                  Athlete Name
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-zinc-700 transition-all text-zinc-100"
+                  placeholder="e.g. Elena Rodriguez"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="sport"
+                  className="block text-sm font-medium text-zinc-400 mb-1"
+                >
+                  Sport
+                </label>
+                <input
+                  id="sport"
+                  type="text"
+                  required
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-zinc-700 transition-all text-zinc-100"
+                  placeholder="e.g. Volleyball"
+                  value={formData.sport}
+                  onChange={(e) =>
+                    setFormData({ ...formData, sport: e.target.value })
+                  }
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="bio"
+                  className="block text-sm font-medium text-zinc-400 mb-1"
+                >
+                  Athlete Bio
+                </label>
+                <textarea
+                  id="bio"
+                  required
+                  rows={4}
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-zinc-700 transition-all text-zinc-100 resize-none"
+                  placeholder="Describe their background, strengths, and achievements..."
+                  value={formData.bio}
+                  onChange={(e) =>
+                    setFormData({ ...formData, bio: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full h-12 bg-zinc-50 text-zinc-950 font-semibold rounded-lg hover:bg-zinc-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg
+                    className="animate-spin h-5 w-5 text-zinc-950"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Generating...
+                </span>
+              ) : (
+                "Generate Archetype"
+              )}
+            </button>
+          </form>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="space-y-6"
+          >
+            <HoloCard
+              archetype={archetype}
+              athleteName={formData.name}
+              sport={formData.sport}
+            />
+            <button
+              onClick={handleReset}
+              className="w-full h-12 bg-zinc-900 border border-zinc-800 text-zinc-400 font-semibold rounded-lg hover:bg-zinc-800 hover:text-zinc-100 transition-all flex items-center justify-center gap-2 group"
+            >
+              <RotateCcw className="w-4 h-4 group-hover:rotate-[-45deg] transition-transform" />
+              Generate Another
+            </button>
+          </motion.div>
+        )}
 
         {error && (
           <div className="p-4 bg-red-900/20 border border-red-900/50 rounded-lg text-red-400 text-center">
             {error}
           </div>
-        )}
-
-        {archetype && (
-          <HoloCard archetype={archetype} athleteName={formData.name} sport={formData.sport} />
         )}
       </div>
     </div>
