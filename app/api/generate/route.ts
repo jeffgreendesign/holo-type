@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
 
     const ai = new GoogleGenAI({ apiKey });
-    const modelId = "gemini-3.1-flash-latest";
+    const modelId = "gemini-2.5-flash";
 
     const prompt = `
       You are an expert sports analyst and storyteller. 
