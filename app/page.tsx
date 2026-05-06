@@ -159,8 +159,9 @@ function HoloCard({ archetype, lens, setLens }: { archetype: Archetype, lens: "o
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
+  // Adjust tilt logic: when flipped, Y rotation needs to be inverted to feel natural
   const rotateX = useTransform(mouseYSpring, [-1, 1], ["15deg", "-15deg"]);
-  const rotateY = useTransform(mouseXSpring, [-1, 1], ["-15deg", "15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-1, 1], lens === "olympic" ? ["15deg", "-15deg"] : ["-15deg", "15deg"]);
 
   useEffect(() => {
     const timer = setTimeout(() => setEntranceComplete(true), 500);
@@ -250,8 +251,8 @@ function HoloCard({ archetype, lens, setLens }: { archetype: Archetype, lens: "o
         }}
         style={{
           transformStyle: "preserve-3d",
-          rotateX: lens === "paralympic" ? rotateX : 0,
-          rotateY: lens === "olympic" ? 180 : rotateY,
+          rotateX: rotateX,
+          rotateY: rotateY,
         }}
         className="relative w-[280px] sm:w-[320px] aspect-[5/7] cursor-pointer group"
       >
@@ -261,7 +262,7 @@ function HoloCard({ archetype, lens, setLens }: { archetype: Archetype, lens: "o
           <div 
             className="absolute inset-0 backface-hidden rounded-xl bg-bg-card shadow-2xl overflow-hidden flex flex-col p-[20px] transition-colors duration-500 border-[2px]"
             style={{ 
-              transform: "translateZ(1px)",
+              transform: "rotateY(0deg) translateZ(1px)",
               borderImageSource: borderGradients[archetype.rarity],
               borderImageSlice: 1
             }}
@@ -340,7 +341,7 @@ function HoloCard({ archetype, lens, setLens }: { archetype: Archetype, lens: "o
           <div 
             className="absolute inset-0 backface-hidden rounded-xl bg-bg-card shadow-2xl overflow-hidden flex flex-col p-[20px] transition-colors duration-500 border-[2px]"
             style={{ 
-              transform: "rotateY(180deg)",
+              transform: "rotateY(180deg) translateZ(1px)",
               borderImageSource: borderGradients[archetype.rarity],
               borderImageSlice: 1
             }}
