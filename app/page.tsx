@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
-import { Star, Info, ShieldCheck, RotateCcw, Shuffle } from "lucide-react";
+import { Star, ShieldCheck, RotateCcw } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -52,10 +52,10 @@ function HoloCard({ archetype }: { archetype: Archetype }) {
 
   // Rarity styling
   const rarityColors = {
-    "Common": "border-zinc-500/30 text-zinc-400",
-    "Uncommon": "border-blue-500/40 text-blue-400",
-    "Rare": "border-amber-500/50 text-amber-400",
-    "Holo Rare": "border-purple-500/60 text-purple-400",
+    "Common": "border-border-subtle text-text-secondary",
+    "Uncommon": "border-accent-navy/40 text-accent-navy",
+    "Rare": "border-accent-gold/50 text-accent-gold",
+    "Holo Rare": "border-accent-red/60 text-accent-red",
   };
 
   const holographicIntensity = {
@@ -66,14 +66,14 @@ function HoloCard({ archetype }: { archetype: Archetype }) {
   };
 
   return (
-    <div className="perspective-2000 w-full flex flex-col items-center gap-12">
+    <div className="perspective-2000 w-full flex flex-col items-center gap-12 font-body">
       {/* Lens Toggle */}
-      <div className="flex bg-zinc-900/80 p-1 rounded-full border border-zinc-800 backdrop-blur-md shadow-2xl">
+      <div className="flex bg-bg-card-elevated/80 p-1 rounded-full border border-border-subtle backdrop-blur-md shadow-2xl">
         <button
           onClick={() => setLens("paralympic")}
           className={cn(
-            "px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all",
-            lens === "paralympic" ? "bg-red-600 text-white shadow-lg" : "text-zinc-500 hover:text-zinc-300"
+            "px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
+            lens === "paralympic" ? "bg-accent-red text-white shadow-lg" : "text-text-tertiary hover:text-text-secondary"
           )}
         >
           Paralympic Lens
@@ -81,8 +81,8 @@ function HoloCard({ archetype }: { archetype: Archetype }) {
         <button
           onClick={() => setLens("olympic")}
           className={cn(
-            "px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all",
-            lens === "olympic" ? "bg-blue-600 text-white shadow-lg" : "text-zinc-500 hover:text-zinc-300"
+            "px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
+            lens === "olympic" ? "bg-accent-navy text-white shadow-lg" : "text-text-tertiary hover:text-text-secondary"
           )}
         >
           Olympic Lens
@@ -105,7 +105,7 @@ function HoloCard({ archetype }: { archetype: Archetype }) {
         {/* Front Face (Paralympic Default) */}
         <div 
           className={cn(
-            "absolute inset-0 backface-hidden rounded-[2.5rem] bg-zinc-950 border-[3px] shadow-2xl overflow-hidden flex flex-col p-8 transition-colors duration-500",
+            "absolute inset-0 backface-hidden rounded-[2.5rem] bg-bg-card border-[3px] shadow-2xl overflow-hidden flex flex-col p-8 transition-colors duration-500",
             rarityColors[archetype.rarity]
           )}
           style={{ transform: "translateZ(1px)" }}
@@ -118,73 +118,63 @@ function HoloCard({ archetype }: { archetype: Archetype }) {
             className="absolute inset-0 pointer-events-none z-50 mix-blend-overlay"
           />
 
-          {/* Holographic Iridescence */}
-          <div 
-            className="absolute inset-0 pointer-events-none z-40 opacity-30 mix-blend-color-dodge transition-opacity duration-700 group-hover:opacity-50"
-            style={{
-              background: `conic-gradient(from 0deg at 50% 50%, #ff0000 0%, #0000ff 25%, #ff0000 50%, #0000ff 75%, #ff0000 100%)`,
-              filter: "blur(40px)",
-              opacity: archetype.rarity === "Holo Rare" ? 0.4 : holographicIntensity[archetype.rarity],
-            }}
-          />
-
           {/* Header Badge */}
           <div className="flex justify-between items-start mb-6">
             <div className="flex flex-col">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-60 mb-1">Archetype</span>
-              <span className="text-xs font-bold uppercase tracking-widest">{archetype.discipline}</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-tertiary mb-1">Archetype</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-text-main">{archetype.discipline}</span>
             </div>
-            <div className="px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[9px] font-black uppercase tracking-tighter">
+            <div className="px-3 py-1 bg-bg-card-elevated border border-border-subtle rounded-full text-[9px] font-bold uppercase tracking-tighter text-text-secondary">
               {archetype.rarity}
             </div>
           </div>
 
           {/* Center Visual (Abstract) */}
           <div className="flex-1 flex items-center justify-center relative mb-6">
-            <div className="absolute inset-0 bg-gradient-to-b from-red-600/10 to-transparent rounded-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-b from-accent-red/10 to-transparent rounded-3xl" />
             <motion.div 
               animate={{ 
                 scale: [1, 1.05, 1],
                 rotate: [0, 5, -5, 0]
               }}
               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="w-32 h-32 rounded-full border-2 border-red-500/20 flex items-center justify-center relative z-10"
+              className="w-32 h-32 rounded-full border-2 border-accent-red/20 flex items-center justify-center relative z-10"
             >
-               <ShieldCheck className="w-16 h-16 text-red-500/40" />
-               <div className="absolute inset-0 animate-pulse bg-red-600/5 blur-3xl rounded-full" />
+               <ShieldCheck className="w-16 h-16 text-accent-red/40" />
+               <div className="absolute inset-0 animate-pulse bg-accent-red/5 blur-3xl rounded-full" />
             </motion.div>
           </div>
 
           {/* Title Area */}
           <div className="space-y-2 mb-6">
-            <h2 className="text-3xl font-black italic tracking-tighter uppercase leading-none drop-shadow-lg text-white">
+            <h2 className="text-3xl font-display italic tracking-tight uppercase leading-none drop-shadow-sm text-text-main">
               {archetype.title}
             </h2>
-            <div className="h-0.5 w-12 bg-red-600" />
+            <div className="h-0.5 w-12 bg-accent-red" />
           </div>
 
           {/* Description Area */}
-          <p className="text-zinc-300 text-xs leading-relaxed font-medium mb-6 line-clamp-3">
+          <p className="text-text-secondary text-xs leading-relaxed font-medium mb-6 line-clamp-3">
             {archetype.narrative.paralympic}
           </p>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-3 gap-2 mt-auto">
             {archetype.stats.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center p-2 bg-zinc-900/50 rounded-xl border border-zinc-800">
-                <span className="text-[8px] font-black uppercase tracking-tighter text-zinc-500 mb-0.5">{stat.label}</span>
-                <span className="text-sm font-black tabular-nums text-white">{stat.value}</span>
+              <div key={i} className="flex flex-col items-center p-2 bg-bg-card-elevated/50 rounded-xl border border-border-subtle">
+                <span className="text-[8px] font-bold uppercase tracking-tighter text-text-tertiary mb-0.5">{stat.label}</span>
+                <span className="text-sm font-mono font-bold tabular-nums text-text-main">{stat.value}</span>
               </div>
             ))}
           </div>
 
           {/* Card Footer */}
-          <div className="flex justify-between items-center mt-6 pt-4 border-t border-zinc-800/50">
-            <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600">{archetype.era}</span>
+          <div className="flex justify-between items-center mt-6 pt-4 border-t border-border-subtle/50">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-text-tertiary">{archetype.era}</span>
             <div className="flex gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-red-600" />
-              <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-              <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+              <div className="w-1.5 h-1.5 rounded-full bg-accent-red" />
+              <div className="w-1.5 h-1.5 rounded-full bg-border-subtle" />
+              <div className="w-1.5 h-1.5 rounded-full bg-border-subtle" />
             </div>
           </div>
         </div>
@@ -192,7 +182,7 @@ function HoloCard({ archetype }: { archetype: Archetype }) {
         {/* Back Face (Olympic) */}
         <div 
           className={cn(
-            "absolute inset-0 backface-hidden rounded-[2.5rem] bg-zinc-950 border-[3px] shadow-2xl overflow-hidden flex flex-col p-8 transition-colors duration-500",
+            "absolute inset-0 backface-hidden rounded-[2.5rem] bg-bg-card border-[3px] shadow-2xl overflow-hidden flex flex-col p-8 transition-colors duration-500",
             rarityColors[archetype.rarity]
           )}
           style={{ transform: "rotateY(180deg)" }}
@@ -208,60 +198,60 @@ function HoloCard({ archetype }: { archetype: Archetype }) {
           {/* Header Badge */}
           <div className="flex justify-between items-start mb-6">
             <div className="flex flex-col">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-60 mb-1">Archetype</span>
-              <span className="text-xs font-bold uppercase tracking-widest">{archetype.discipline}</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-tertiary mb-1">Archetype</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-text-main">{archetype.discipline}</span>
             </div>
-            <div className="px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[9px] font-black uppercase tracking-tighter">
+            <div className="px-3 py-1 bg-bg-card-elevated border border-border-subtle rounded-full text-[9px] font-bold uppercase tracking-tighter text-text-secondary">
               {archetype.rarity}
             </div>
           </div>
 
           {/* Center Visual (Abstract) */}
           <div className="flex-1 flex items-center justify-center relative mb-6">
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 to-transparent rounded-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-b from-accent-navy/10 to-transparent rounded-3xl" />
             <motion.div 
               animate={{ 
                 scale: [1, 1.05, 1],
                 rotate: [0, -5, 5, 0]
               }}
               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="w-32 h-32 rounded-full border-2 border-blue-500/20 flex items-center justify-center relative z-10"
+              className="w-32 h-32 rounded-full border-2 border-accent-navy/20 flex items-center justify-center relative z-10"
             >
-               <Star className="w-16 h-16 text-blue-500/40" />
-               <div className="absolute inset-0 animate-pulse bg-blue-600/5 blur-3xl rounded-full" />
+               <Star className="w-16 h-16 text-accent-navy/40" />
+               <div className="absolute inset-0 animate-pulse bg-accent-navy/5 blur-3xl rounded-full" />
             </motion.div>
           </div>
 
           {/* Title Area */}
           <div className="space-y-2 mb-6">
-            <h2 className="text-3xl font-black italic tracking-tighter uppercase leading-none drop-shadow-lg text-white">
+            <h2 className="text-3xl font-display italic tracking-tight uppercase leading-none drop-shadow-sm text-text-main">
               {archetype.title}
             </h2>
-            <div className="h-0.5 w-12 bg-blue-600" />
+            <div className="h-0.5 w-12 bg-accent-navy" />
           </div>
 
           {/* Description Area */}
-          <p className="text-zinc-300 text-xs leading-relaxed font-medium mb-6 line-clamp-3">
+          <p className="text-text-secondary text-xs leading-relaxed font-medium mb-6 line-clamp-3">
             {archetype.narrative.olympic}
           </p>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-3 gap-2 mt-auto">
             {archetype.stats.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center p-2 bg-zinc-900/50 rounded-xl border border-zinc-800">
-                <span className="text-[8px] font-black uppercase tracking-tighter text-zinc-500 mb-0.5">{stat.label}</span>
-                <span className="text-sm font-black tabular-nums text-white">{stat.value}</span>
+              <div key={i} className="flex flex-col items-center p-2 bg-bg-card-elevated/50 rounded-xl border border-border-subtle">
+                <span className="text-[8px] font-bold uppercase tracking-tighter text-text-tertiary mb-0.5">{stat.label}</span>
+                <span className="text-sm font-mono font-bold tabular-nums text-text-main">{stat.value}</span>
               </div>
             ))}
           </div>
 
           {/* Card Footer */}
-          <div className="flex justify-between items-center mt-6 pt-4 border-t border-zinc-800/50">
-            <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600">{archetype.era}</span>
+          <div className="flex justify-between items-center mt-6 pt-4 border-t border-border-subtle/50">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-text-tertiary">{archetype.era}</span>
             <div className="flex gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-              <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-              <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+              <div className="w-1.5 h-1.5 rounded-full bg-accent-navy" />
+              <div className="w-1.5 h-1.5 rounded-full bg-border-subtle" />
+              <div className="w-1.5 h-1.5 rounded-full bg-border-subtle" />
             </div>
           </div>
         </div>
@@ -313,13 +303,13 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-50 flex flex-col items-center justify-center p-6 font-sans">
+    <div className="min-h-screen bg-bg-main text-text-main flex flex-col items-center justify-center p-6 font-body">
       <div className="w-full max-w-xl space-y-12">
         <div className="text-center space-y-4">
-          <h1 className="text-5xl font-black tracking-tighter sm:text-6xl uppercase italic">
+          <h1 className="text-5xl font-display tracking-tight sm:text-6xl uppercase italic text-text-main">
             {archetype ? "Your Identity" : "Holo-Type"}
           </h1>
-          <p className="text-zinc-400 text-lg max-w-md mx-auto leading-relaxed">
+          <p className="text-text-secondary text-lg max-w-md mx-auto leading-relaxed">
             {archetype 
               ? "Your historical Team USA alignment has been identified." 
               : "Describe how you move through your day to discover your Team USA athlete archetype."}
@@ -333,20 +323,20 @@ export default function Home() {
           >
             {loading ? (
               <div className="flex flex-col items-center space-y-8">
-                <div className="w-[350px] h-[490px] rounded-[2.5rem] bg-zinc-900/50 border border-zinc-800 animate-pulse-slow flex flex-col items-center justify-center p-12 text-center space-y-6">
-                  <div className="w-16 h-16 rounded-full bg-zinc-800" />
+                <div className="w-[350px] h-[490px] rounded-[2.5rem] bg-bg-card-elevated/50 border border-border-subtle animate-pulse-slow flex flex-col items-center justify-center p-12 text-center space-y-6">
+                  <div className="w-16 h-16 rounded-full bg-bg-card-elevated" />
                   <div className="space-y-3 w-full">
-                    <div className="h-4 bg-zinc-800 rounded w-3/4 mx-auto" />
-                    <div className="h-4 bg-zinc-800 rounded w-1/2 mx-auto" />
+                    <div className="h-4 bg-bg-card-elevated rounded w-3/4 mx-auto" />
+                    <div className="h-4 bg-bg-card-elevated rounded w-1/2 mx-auto" />
                   </div>
                   <div className="flex-1" />
                   <div className="grid grid-cols-3 gap-2 w-full">
-                    <div className="h-10 bg-zinc-800 rounded-xl" />
-                    <div className="h-10 bg-zinc-800 rounded-xl" />
-                    <div className="h-10 bg-zinc-800 rounded-xl" />
+                    <div className="h-10 bg-bg-card-elevated rounded-xl" />
+                    <div className="h-10 bg-bg-card-elevated rounded-xl" />
+                    <div className="h-10 bg-bg-card-elevated rounded-xl" />
                   </div>
                 </div>
-                <p className="text-zinc-500 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">
+                <p className="text-text-tertiary font-body font-bold uppercase tracking-[0.3em] text-[10px] animate-pulse">
                   Analyzing Historical Alignment...
                 </p>
               </div>
@@ -355,7 +345,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <label
                     htmlFor="userInput"
-                    className="block text-xs font-black uppercase tracking-[0.3em] text-zinc-500 text-center"
+                    className="block text-xs font-body font-bold uppercase tracking-[0.3em] text-text-tertiary text-center"
                   >
                     Personal Identity Input
                   </label>
@@ -363,7 +353,7 @@ export default function Home() {
                     id="userInput"
                     required
                     rows={5}
-                    className="w-full bg-zinc-900/50 border border-zinc-800 rounded-2xl px-6 py-5 focus:outline-none focus:ring-2 focus:ring-red-600/50 transition-all text-zinc-100 resize-none text-lg leading-relaxed placeholder:text-zinc-600 shadow-inner"
+                    className="w-full bg-bg-card-elevated/50 border border-border-subtle rounded-2xl px-6 py-5 focus:outline-none focus:ring-2 focus:ring-accent-red/50 transition-all text-text-main resize-none text-lg leading-relaxed placeholder:text-text-tertiary shadow-inner"
                     placeholder="Describe your day. Do you sprint or pace yourself? Do you work with your hands or your mind? Are you a solo performer or a team player?"
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
@@ -373,7 +363,7 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={loading || !userInput.trim()}
-                  className="w-full h-16 bg-red-600 text-white font-black uppercase tracking-widest rounded-2xl hover:bg-red-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_30px_-5px_rgba(220,38,38,0.5)] active:scale-[0.98]"
+                  className="w-full h-16 bg-accent-red text-white font-body font-bold uppercase tracking-widest rounded-2xl hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_30px_-5px_rgba(179,25,66,0.3)] active:scale-[0.98]"
                 >
                   Discover Your Archetype
                 </button>
@@ -391,13 +381,13 @@ export default function Home() {
             
             <div className="flex flex-col items-center gap-6 w-full max-w-[350px]">
               <button
-                className="w-full h-14 bg-zinc-100 text-zinc-950 font-black uppercase tracking-widest rounded-2xl hover:bg-white transition-all shadow-xl active:scale-95"
+                className="w-full h-14 bg-text-main text-bg-main font-body font-bold uppercase tracking-widest rounded-2xl hover:opacity-90 transition-all shadow-xl active:scale-95"
               >
                 Save Collectible Card
               </button>
               <button
                 onClick={handleReset}
-                className="text-zinc-500 font-bold uppercase tracking-widest text-[10px] hover:text-zinc-300 transition-colors flex items-center gap-2 group border-b border-transparent hover:border-zinc-700 pb-1"
+                className="text-text-tertiary font-bold uppercase tracking-widest text-[10px] hover:text-text-secondary transition-colors flex items-center gap-2 group border-b border-transparent hover:border-border-subtle pb-1"
               >
                 <RotateCcw className="w-3 h-3 group-hover:rotate-[-45deg] transition-transform" />
                 Find New Alignment
@@ -407,7 +397,7 @@ export default function Home() {
         )}
 
         {error && (
-          <div className="p-4 bg-red-900/20 border border-red-900/50 rounded-xl text-red-400 text-center font-bold text-sm">
+          <div className="p-4 bg-accent-red/10 border border-accent-red/20 rounded-xl text-accent-red text-center font-bold text-sm">
             {error}
           </div>
         )}

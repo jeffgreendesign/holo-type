@@ -1,15 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1A1816;
-  --foreground: #F5F5F5;
+  --bg-primary: #FAFAF8;
+  --bg-card: #FFFFFF;
+  --bg-card-elevated: #F5F4F2;
+  --text-primary: #0A1628;
+  --text-secondary: #5A6577;
+  --text-tertiary: #8B95A5;
+  --accent-red: #B31942;
+  --accent-navy: #002B5C;
+  --accent-gold: #C5972C;
+  --accent-gold-light: #E8D5A3;
+  --border-subtle: #E5E3DF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: "Inter", var(--font-geist-sans);
-  
+.dark {
+  --bg-primary: #1A1816;
+  --bg-card: #242220;
+  --bg-card-elevated: #2E2C29;
+  --text-primary: #F0EDE8;
+  --text-secondary: #9A9590;
+  --text-tertiary: #6B6560;
+  --accent-red: #C41E3A;
+  --accent-navy: #3A6FA0;
+  --accent-gold: #D4A843;
+  --accent-gold-light: #E8D5A3;
+  --border-subtle: #3A3835;
+}
+
+@theme {
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-bg-main: var(--bg-primary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-elevated: var(--bg-card-elevated);
+  --color-text-main: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent-red: var(--accent-red);
+  --color-accent-navy: var(--accent-navy);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-light: var(--accent-gold-light);
+  --color-border-subtle: var(--border-subtle);
+
   --animate-shimmer: shimmer 3s infinite linear;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
@@ -34,13 +69,14 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background: #BA0C2F;
+  background: var(--accent-red);
   color: white;
 }
