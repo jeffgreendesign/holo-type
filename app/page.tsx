@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 
+export const unstable_instant = true;
+
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { 
   RotateCcw, 
