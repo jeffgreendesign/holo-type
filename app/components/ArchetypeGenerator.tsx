@@ -142,13 +142,13 @@ function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY }: { arch
   return (
     <div className="relative h-full flex flex-col">
       <motion.div 
-        className="absolute inset-0 z-50 pointer-events-none"
+        className="absolute -inset-5 z-50 pointer-events-none"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ pathLength: 1, opacity: [0, 1, 1, 0] }}
         transition={{ duration: 1.2, times: [0, 0.1, 0.8, 1], ease: "easeInOut" }}
       >
-        <svg width="100%" height="100%" viewBox="0 0 320 298" className="overflow-visible">
-          <motion.path d="M0 16L16 0H304L320 16V282L304 298H16L0 282V16Z" fill="none" stroke="#7df9ff" strokeWidth="2" />
+        <svg width="100%" height="100%" viewBox="0 0 320 448" preserveAspectRatio="none" className="overflow-visible">
+          <motion.path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" fill="none" stroke="#7df9ff" strokeWidth="2" />
         </svg>
       </motion.div>
 
