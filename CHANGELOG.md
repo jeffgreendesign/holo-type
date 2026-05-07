@@ -4,6 +4,24 @@ All notable changes to this project go here.
 
 I'm following [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-05-07
+
+### Added
+- **Metallic Foil Iridescence:** Implemented high-fidelity metallic shimmer using `mix-blend-color-dodge` and `overlay` layers, matching premium trading card aesthetics.
+- **Enhanced Physics:** Tuned `motion/react` spring constants (`mass: 1.2`, `damping: 40`) for liquid-smooth, "heavy" card movement.
+
+### Fixed
+- **3D Glitching:** Resolved flickering and transparency issues during card flips by isolating face containers and adding a `0.5px` Z-offset.
+- **Text Warping:** Fixed "double-layer" text distortion by transitioning to a flat-stack internal architecture.
+- **Hover Tilt:** Restored and boosted hover tilt sensitivity (30°) with explicit CSS transform strings for better browser compatibility.
+
+### Changed
+- Refined the 3D perspective to 1500px for more stable viewing angles.
+- Simplified internal component hierarchy to prevent 3D context flattening.
+
+### Docs
+- Updated `DESIGN.md` and `GEMINI.md` to reflect the new 3D architecture and visual strategy.
+
 ## [0.1.0] - 2026-05-06
 
 ### Added
