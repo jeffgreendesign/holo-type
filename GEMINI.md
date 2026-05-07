@@ -1,72 +1,72 @@
 # Holo-Type Project Instructions
 
-This is a modern web application built with Next.js 16 and React 19, focused on generating AI-powered athlete archetypes with a holographic aesthetic.
+Holo-Type is a Next.js 16 and React 19 app that generates AI-powered athlete archetypes with a holographic aesthetic.
 
 ## Project Overview
 
 - **Framework:** Next.js 16.2.4 (App Router)
 - **Library:** React 19.2.4
-- **AI Integration:** Google Gemini AI (`gemini-2.5-flash`) via `@google/genai`.
+- **AI:** Google Gemini AI (`gemini-2.5-flash`)
 - **Styling:** Tailwind CSS 4
 - **Language:** TypeScript
-- **Architecture:** Standard Next.js App Router structure with integrated AI route handlers.
+- **Architecture:** Next.js App Router with AI route handlers.
 
-## Core Features & Logic
+## Core Features
 
 ### 1. Archetype Generation (`app/api/generate/route.ts`)
 
-- The backend uses the `GoogleGenAI` SDK to interact with `gemini-2.5-flash`.
-- **Prompt Strategy:** Uses a structured prompt to generate a JSON response containing a detailed athlete archetype.
-- **Data Structure:** The AI returns a JSON object with:
-  - `title`: A high-impact archetype name.
-  - `narrative`: Dual lenses (`olympic` and `paralympic`) for parity.
+- The backend uses `GoogleGenAI` to talk to `gemini-2.5-flash`.
+- **Prompt:** Uses a structured prompt to get a JSON response for an athlete archetype.
+- **Data Shape:** The AI returns a JSON object with:
+  - `title`: Archetype name.
+  - `narrative`: Olympic and Paralympic lenses.
   - `rarity`: Common, Uncommon, Rare, or Holo Rare.
-  - `stats`: 3-4 performance traits with values.
-  - `era`: Historical alignment timeframe.
+  - `stats`: 3-4 performance traits.
+  - `era`: Historical timeframe.
   - `discipline`: Olympic, Paralympic, or Unified.
-- **Strict JSON:** The model is instructed to return _only_ a JSON object using `responseMimeType: "application/json"`.
+- **Strict JSON:** The model returns *only* JSON using `responseMimeType: "application/json"`.
 
-### 2. Holographic UI Aesthetic (`app/page.tsx`)
+### 2. Holographic UI (`app/page.tsx`)
 
-- **Animation:** Powered by `motion/react` (Framer Motion 12) for 3D card tilt, staggered entrance animations, and a seamless 3D flip.
+- **Animation:** Powered by `motion/react` for 3D card tilt, entrance animations, and a 3D flip.
 - **Visuals:** 
-  - **Radar Chart:** Dynamic `RadarVisual` component generating unique shapes based on AI-generated stats.
-  - **Input Presets:** Visual selection cards for quick identity entry.
-- **Icons:** Uses `lucide-react` for symbolic representation.
-- **Holographic Effect:** Achieved using Tailwind CSS 4 features:
-  - **Dynamic Glare:** Real-time mouse-tracking radial gradient overlay.
-  - **Iridescent Border:** `bg-gradient-to-r` with iridescent colors, dynamic rarity-based gradients, and `animate-gradient-x`.
-  - **Shimmer Overlay:** `animate-shimmer` with a white linear gradient.
-  - **Glassmorphism:** `bg-zinc-950/90`, `backdrop-blur-xl`, and `border-white/10`.
+  - **Radar Chart:** `RadarVisual` component generates shapes from AI stats.
+  - **Input Presets:** Preset cards for quick entry.
+- **Icons:** `lucide-react`.
+- **Effect:** Achieved with Tailwind CSS 4 features:
+  - **Glare:** Mouse-tracking radial gradient.
+  - **Border:** Iridescent gradients with `animate-gradient-x`.
+  - **Shimmer:** `animate-shimmer` overlay.
+  - **Glassmorphism:** `bg-zinc-950/90` and `backdrop-blur-xl`.
 
-## Key Mandates & Conventions
+## Rules & Conventions
 
-### ⚠️ Critical: Version-Specific Rules
+### ⚠️ CRITICAL: Next.js 16
 
-This project uses a version of Next.js (16.2.4) that contains breaking changes compared to earlier versions.
+This version has breaking changes.
 
-- **Reference Documentation:** ALWAYS consult the internal documentation at `node_modules/next/dist/docs/` before implementing new features or making significant changes.
-- **Deprecation Notices:** Pay close attention to and strictly follow all deprecation notices.
-- **Instant Navigation:** If you encounter slow client-side navigations, `Suspense` alone may be insufficient. You must also export `unstable_instant` from the route. Refer to `node_modules/next/dist/docs/01-app/02-guides/instant-navigation.mdx` for details.
+- **Docs:** Read the internal docs at `node_modules/next/dist/docs/` before you build anything.
+- **Deprecations:** Follow all deprecation notices.
+- **Instant Navigation:** If client-side navigation is slow, export `unstable_instant` from the route. Check `node_modules/next/dist/docs/01-app/02-guides/instant-navigation.mdx`.
 
 ### Styling
 
-- Use Tailwind CSS 4 for all styling.
-- Follow the holographic aesthetic for card-like components.
-- Dark mode is the primary theme (using `zinc-950`).
+- Use Tailwind CSS 4.
+- Follow the holographic aesthetic for cards.
+- Dark mode is the primary theme (`zinc-950`).
 
 ### Components
 
-- Prefer Server Components for data fetching where possible.
-- Use Client Components for interactive forms and AI generation state (as seen in `app/page.tsx`).
+- Use Server Components for data fetching.
+- Use Client Components for forms and AI state.
 
 ## Design Direction
 
-Read DESIGN.md before making any visual or styling changes. Follow the priority order. Do not skip ahead.
+Read `DESIGN.md` before making visual changes. Follow the priority order.
 
 ## Directory Structure
 
-- `app/`: Routes, layouts, and global styles.
-- `app/api/generate/`: AI generation endpoint.
+- `app/`: Routes and styles.
+- `app/api/generate/`: AI endpoint.
 - `public/`: Static assets.
-- `node_modules/next/dist/docs/`: Internal framework documentation (CRITICAL for reference).
+- `node_modules/next/dist/docs/`: Internal framework docs.

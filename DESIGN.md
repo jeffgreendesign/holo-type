@@ -1,23 +1,23 @@
-# DESIGN.md — Holo-Type Visual Upgrade [STATUS: COMPLETED ✅]
+# Design Direction [STATUS: COMPLETED ✅]
 
-## What This File Is
+## What's this?
 
-This is the design direction spec for upgrading Holo-Type's visual quality. Presentation Quality is 30% of hackathon judging. The app works. Now it needs to look like a polished consumer sports product, not a developer prototype.
+This is the design spec for upgrading Holo-Type's visuals. Presentation is 30% of hackathon judging. The app works, but it needs to look like a polished sports product, not a prototype.
 
 ---
 
-## Stack (verified)
+## Stack
 
-- **Next.js 16.2.4** (App Router). 
+- **Next.js 16.2.4**
 - **React 19.2.4**
-- **Tailwind CSS 4**. CSS-first config via `@theme`.
-- **Animation:** `motion/react` (Framer Motion 12).
-- **Icons:** `lucide-react`.
-- **Fonts:** Barlow Condensed, Barlow, JetBrains Mono (Google Fonts).
+- **Tailwind CSS 4**
+- **Animation:** `motion/react` (Framer Motion 12)
+- **Icons:** `lucide-react`
+- **Fonts:** Barlow family, JetBrains Mono
 
-## Existing Data Structure (from Gemini response)
+## Data Structure
 
-The API returns this JSON shape. Fully integrated into the UI.
+The API returns this JSON. I've integrated it into the UI.
 
 ```json
 {
@@ -40,76 +40,75 @@ The API returns this JSON shape. Fully integrated into the UI.
 
 ---
 
-## Current State (Post-Upgrade, May 6 2026)
+## Current State (May 6, 2026)
 
 ### Input screen
-- **Holographic Light Mode:** Default warm off-white background with Team USA accents.
-- **Input Presets:** 6 interactive cards to reduce decision paralysis.
-- **Atmospheric Depth:** Grain texture noise and geometric dot grid pattern.
-- **Brand Identity:** Team USA red/navy top ribbon.
+- **Light Mode:** Warm off-white background with Team USA accents.
+- **Presets:** 6 cards to help users pick an identity quickly.
+- **Depth:** Grain noise and geometric dot grid.
+- **Identity:** Team USA red/navy top ribbon.
 
 ### Results screen
-- **3D Card Reveal:** Polish entrance animation with scale and staggered stat counters.
-- **Holographic Shimmer:** Pointer-tracked iridescence and shimmer lines.
-- **Data-Driven Visual:** Radar chart visualization derived from athlete stats.
-- **3D Flip:** Seamless Paralympic/Olympic lens toggle with midpoint scale pulse.
-- **Metallic Borders:** Gradient borders based on archetype rarity.
-- **Full Narrative:** Contextual text, Era badges, and Trust expandables below the card.
-- **Social Sharing:** Copy link and Web Share API integration.
+- **3D Reveal:** Scale-in animation with staggered stat counters.
+- **Shimmer:** Pointer-tracked iridescence.
+- **Visuals:** Radar charts built from athlete stats.
+- **3D Flip:** Switch between Paralympic and Olympic views.
+- **Borders:** Metallic gradients based on rarity.
+- **Content:** Narrative text, Era badges, and Share actions below the card.
 
 ### What's working
 - ✅ Light/Dark mode parity
-- ✅ Display typeface system (Barlow family)
-- ✅ Data-derived Radar visuals (replaces generic icons)
-- ✅ 5:7 Trading card aspect ratio and professional spacing
-- ✅ Real-time pointer-tracked holographic effects
-- ✅ Skeleton loading state (CardSkeleton)
-- ✅ Team USA brand color distribution
-- ✅ Persistent user theme preference
+- ✅ Typeface system (Barlow)
+- ✅ Radar visuals
+- ✅ 5:7 Trading card aspect ratio
+- ✅ Real-time holographic effects
+- ✅ Loading states
+- ✅ Team USA brand colors
+- ✅ Theme preference persistence
 
 ---
 
-## Priority Order (Implementation Log)
+## Implementation Log
 
 ### Priority 1: Light mode + theme toggle [DONE ✅]
-Implemented warm off-white palette, Navy/Red/Gold accents, and persistent Sun/Moon toggle.
+I built a warm off-white palette with Navy/Red/Gold accents and a persistent toggle.
 
 ### Priority 2: Input presets [DONE ✅]
-6 visual preset cards with icons and hover effects that populate the identity input.
+I added 6 preset cards with icons and hover effects.
 
 ### Priority 3: Background texture + pattern [DONE ✅]
-Noise grain overlay and 24px dot grid for physical presence.
+I added a noise grain overlay and a dot grid.
 
-### Priority 4: Holographic shimmer on the card [DONE ✅]
-Multi-layered iridescent CSS with pointer tracking and rarity intensity.
+### Priority 4: Holographic shimmer [DONE ✅]
+I built multi-layered iridescent CSS with pointer tracking.
 
 ### Priority 5: Card center visual [DONE ✅]
-RadarVisual component generating unique shapes from athlete data.
+I built the `RadarVisual` component to generate shapes from data.
 
-### Priority 6: Card spacing fixes [DONE ✅]
-Optimized 5:7 aspect ratio, 20px padding, and metallic rarity borders.
+### Priority 6: Card spacing [DONE ✅]
+I fixed the 5:7 aspect ratio, padding, and metallic borders.
 
-### Priority 7: Generation loading state [DONE ✅]
-Card-shaped shimmer skeleton with pulsing placeholder regions.
+### Priority 7: Loading state [DONE ✅]
+I built a shimmer skeleton with pulsing placeholders.
 
-### Priority 8: Card entrance animation [DONE ✅]
-Scale/Opacity reveal with shimmer ramping and staggered StatCounter.
+### Priority 8: Entrance animation [DONE ✅]
+I added a scale/opacity reveal and staggered counters.
 
-### Priority 9: 3D card flip for lens toggle [DONE ✅]
-Refined 3D rotation with midpoint pulse and mirroring correction.
+### Priority 9: 3D card flip [DONE ✅]
+I refined the 3D rotation with a midpoint pulse.
 
-### Priority 10: Team USA color presence [DONE ✅]
-Top brand ribbon and navy header hierarchy.
+### Priority 10: Team USA branding [DONE ✅]
+I added the top brand ribbon and navy header.
 
-### Priority 11: Results page content below card [DONE ✅]
-Narrative context, Era badges, Trust expandable, and Share actions.
+### Priority 11: Results page content [DONE ✅]
+I added the narrative text, era badges, and share actions.
 
-### Priority 12: 3D depth touches (stretch) [DONE ✅]
-Perspective tilt on presets and floating translateZ stat boxes.
+### Priority 12: 3D depth [DONE ✅]
+I added perspective tilt to presets and translateZ stat boxes.
 
 ---
 
-## Screenshot Critique Rubric (Final Scores)
+## Final Scores
 
 1. **Team USA identity:** 5/5
 2. **Visual engagement:** 5/5
@@ -119,5 +118,5 @@ Perspective tilt on presets and floating translateZ stat boxes.
 6. **Texture and depth:** 5/5
 7. **Motion quality:** 5/5
 8. **Light/dark quality:** 5/5
-9. **Mobile experience:** 4/5 (Native-like feel, can still add haptics)
+9. **Mobile experience:** 4/5
 10. **Datedness test:** 5/5

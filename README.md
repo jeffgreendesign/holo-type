@@ -1,22 +1,22 @@
-# Holo-Type: Holographic Athlete Archetype Generator
+# Holo-Type
 
-Holo-Type is a modern web application that leverages Google Gemini AI to generate compelling, high-impact "Athlete Archetypes" displayed on a premium holographic card UI.
+Holo-Type uses Google Gemini AI to turn athlete bios into archetypes shown on holographic cards.
 
 ## Features
 
-- **AI-Powered Archetypes:** Uses `gemini-2.5-flash` to transform athlete bios into iconic titles and dual narratives (Olympic and Paralympic parity).
-- **Holographic UI:** A stunning, interactive 3D card aesthetic built with Tailwind CSS 4 and Framer Motion, featuring real-time glare and iridescent effects.
-- **Data-Driven Visuals:** Dynamic radar chart visualization generated directly from the athlete's AI-generated stats.
-- **3D Card Reveal & Flip:** High-fidelity 3D animations including a scale-in reveal, staggered stat counters, and a seamless 3D flip to toggle between Olympic and Paralympic lenses.
-- **Visual Input Presets:** 6 interactive preset cards that allow users to quickly select archetypal identities without decision paralysis.
-- **Rarity System:** Metallic gradient borders and shimmer intensity that adjust dynamically based on the archetype's rarity (Common to Holo Rare).
-- **Modern Tech Stack:** Built with the latest versions of Next.js 16, React 19, and Tailwind CSS 4.
+- **AI Archetypes:** Uses `gemini-2.5-flash` to turn bios into titles with Olympic and Paralympic narratives.
+- **Holographic UI:** 3D card aesthetic built with Tailwind CSS 4 and Framer Motion. It has real-time glare and iridescent effects.
+- **Radar Visuals:** Dynamic charts generated from the AI-generated stats.
+- **3D Interactions:** Scale-in reveal, staggered counters, and a 3D flip to switch between Olympic and Paralympic views.
+- **Input Presets:** 6 cards to quickly pick an identity.
+- **Rarity System:** Metallic borders and shimmer that change based on rarity.
+- **Modern Stack:** Built with Next.js 16, React 19, and Tailwind CSS 4.
 
 ## Tech Stack
 
 - **Framework:** Next.js 16.2.4 (App Router)
 - **Library:** React 19.2.4
-- **AI Integration:** Google Gemini AI (`@google/genai`)
+- **AI:** Google Gemini AI (`@google/genai`)
 - **Animation:** `motion/react` (Framer Motion 12)
 - **Icons:** `lucide-react`
 - **Styling:** Tailwind CSS 4
@@ -27,31 +27,31 @@ Holo-Type is a modern web application that leverages Google Gemini AI to generat
 ### Prerequisites
 
 - Node.js (v20 or higher)
-- A Google Gemini API Key
+- Google Gemini API Key
 
 ### Installation
 
-1. Clone the repository.
+1. Clone the repo.
 2. Install dependencies:
    ```bash
    npm install
    ```
 3. Set up environment variables:
-   Create a `.env.local` file in the root directory and add your Gemini API key:
+   Create a `.env.local` file in the root directory and add your key:
    ```env
    GEMINI_API_KEY=your_api_key_here
    ```
 
 ### Development
 
-Run the development server:
+Run the dev server:
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see it.
 
 ## Development Mandates
 
-This project uses **Next.js 16.2.4**, which contains breaking changes. **Always** refer to the internal documentation at `node_modules/next/dist/docs/` before implementing features. See `GEMINI.md` for full architectural guidelines.
+This version of Next.js (16.2.4) has breaking changes. Read the internal docs at `node_modules/next/dist/docs/` before you build anything. Check `GEMINI.md` for the full architecture.
