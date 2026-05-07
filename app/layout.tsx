@@ -1,7 +1,33 @@
 import type { Metadata } from "next";
+import { Barlow, Barlow_Condensed, JetBrains_Mono, Source_Sans_3 } from "next/font/google";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { AmbientBackground } from "./components/AmbientBackground";
 import "./globals.css";
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-barlow",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["700"],
+  style: ["italic"],
+  variable: "--font-barlow-condensed",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-jetbrains-mono",
+});
+
+const sourceSans3 = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-source-sans-3",
+});
 
 export const metadata: Metadata = {
   title: "Holo-Type | AI Athlete Archetypes",
@@ -14,14 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable} ${jetbrainsMono.variable} ${sourceSans3.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@700&display=swap"
-          rel="stylesheet"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

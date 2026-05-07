@@ -29,9 +29,10 @@
 }
 
 @theme {
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body: 'Barlow', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: var(--font-barlow-condensed), sans-serif;
+  --font-body: var(--font-barlow), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-narrative: var(--font-source-sans-3), sans-serif;
 
   --color-bg-main: var(--bg-primary);
   --color-bg-card: var(--bg-card);
