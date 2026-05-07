@@ -34,9 +34,10 @@ Holo-Type is a Next.js 16 and React 19 app that generates AI-powered athlete arc
   - **Input Presets:** Preset cards for quick entry.
 - **Icons:** `lucide-react`.
 - **Effect:** Achieved with Tailwind CSS 4 features:
-  - **Glare:** Mouse-tracking radial gradient.
-  - **Border:** Iridescent gradients with `animate-gradient-x`.
-  - **Shimmer:** `animate-shimmer` overlay.
+  - **Glare & Foil:** Mouse-tracking `conic-gradient` and `radial-gradient` using `mix-blend-color-dodge` and `overlay` for a metallic foil finish.
+  - **3D Physics:** Refined spring constants (`mass: 1.2`, `damping: 40`, `stiffness: 120`) for liquid-smooth movement.
+  - **Flat Stack:** Internal UI elements are flat on the card surface to avoid "Z-fighting" and warping, relying on high-range rotation (30°) for depth.
+  - **Borders:** Iridescent gradients with `animate-gradient-x`.
   - **Glassmorphism:** `bg-zinc-950/90` and `backdrop-blur-xl`.
 
 ## Rules & Conventions

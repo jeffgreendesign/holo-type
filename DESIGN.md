@@ -103,8 +103,25 @@ I added the top brand ribbon and navy header.
 ### Priority 11: Results page content [DONE ✅]
 I added the narrative text, era badges, and share actions.
 
-### Priority 12: 3D depth [DONE ✅]
-I added perspective tilt to presets and translateZ stat boxes.
+### Priority 12: 3D depth [REFINED ✅]
+I implemented a high-performance 3D stack. To avoid text warping and glitching, the internal card content is now rendered as a flat stack (removing translateZ from text/stats). The 3D effect is preserved through a stable 1500px perspective and heavy spring physics (mass: 1.2, damping: 40), while the metallic shimmer is achieved using internal `color-dodge` and `overlay` layers that react to pointer movement.
+
+---
+
+## Design Log: v4 Physicality Pass (May 7, 2026)
+
+### 1. Liquid Physics Restoration
+The card's movement was refined for a "premium" feel. I increased the spring mass to 1.2 and damping to 40. This removes high-frequency jitter and creates a heavy, liquid-like momentum. The card no longer feels like paper; it feels like a heavy, composite material artifact.
+
+### 2. Flat 3D Architecture
+To resolve "Z-fighting" and text warping at steep angles, I moved from a "floating layer" model to a "flat stack" model. All UI elements (labels, stats, icons) sit on the card's surface. The sense of depth is now provided by the high-range rotation (30 degrees) and the way light interacts with the metallic foil layers, rather than physical Z-offsets which were prone to browser rendering glitches.
+
+### 3. Metallic Foil Shimmer (Simey-Style)
+I completely rebuilt the holographic iridescence to match the fidelity of the `simeydotme/pokemon-cards-css` reference. 
+- **Base Layer:** A silver-holo grain layer with `mix-blend-overlay`.
+- **Foil Layer:** A `conic-gradient` color foil using `mix-blend-color-dodge` that rotates with the mouse.
+- **Glare Layer:** A high-intensity `soft-light` glare that follows the light source.
+These layers are contained within the card face's clipped container, ensuring they react to tilt without breaking the 3D flip.
 
 ---
 
