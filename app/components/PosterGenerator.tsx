@@ -103,7 +103,13 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
               <p className="text-[18px] font-mono font-bold text-[#0c1932]/40 tracking-[0.4em] uppercase mt-2">ARCHIVAL ALIGNMENT VECTOR // VER 2.5.0</p>
             </div>
 
-            <div className="w-[640px] h-[896px] relative shadow-2xl">
+            <div className="w-[640px] h-[896px] relative shadow-2xl overflow-hidden" 
+              style={{ clipPath: "polygon(0 32px, 32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px))" }}
+            >
+              <div className="absolute inset-0 bg-silver-holo" />
+              <div className="absolute inset-0 border-[4px] border-slate-300 opacity-40 pointer-events-none" 
+                style={{ clipPath: "polygon(0 32px, 32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px))" }}
+              />
               <CardContent 
                 archetype={archetype} 
                 side={lens} 
@@ -142,7 +148,13 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
               style={{ backgroundImage: 'radial-gradient(#0c1932 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
             />
             
-            <div className="relative z-10 w-[640px] h-[896px] shadow-2xl origin-left">
+            <div className="relative z-10 w-[640px] h-[896px] shadow-2xl overflow-hidden scale-[0.8] origin-left"
+              style={{ clipPath: "polygon(0 32px, 32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px))" }}
+            >
+              <div className="absolute inset-0 bg-silver-holo" />
+              <div className="absolute inset-0 border-[4px] border-slate-300 opacity-40 pointer-events-none" 
+                style={{ clipPath: "polygon(0 32px, 32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px))" }}
+              />
               <CardContent 
                 archetype={archetype} 
                 side={lens} 
