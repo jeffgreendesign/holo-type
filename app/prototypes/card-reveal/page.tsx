@@ -182,7 +182,7 @@ export default function CardReveal() {
 
 function StatItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-white p-3 flex flex-col">
+    <div className="bg-white/10 backdrop-blur-[1px] p-3 flex flex-col">
       <span className="text-[8px] font-mono font-bold tracking-widest text-[#0c1932]/40 mb-1">{label}</span>
       <span className="text-sm font-mono font-bold text-[#0c1932]">{value}</span>
     </div>

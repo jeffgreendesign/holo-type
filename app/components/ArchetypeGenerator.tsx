@@ -186,9 +186,9 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
       </div>
 
       {/* Stats Grid */}
-      <div className="relative grid grid-cols-3 gap-px bg-border-subtle border border-border-subtle overflow-hidden rounded-sm">
+      <div className="relative grid grid-cols-3 gap-px bg-border-subtle/20 border border-border-subtle/30 overflow-hidden rounded-sm">
         {archetype.stats.map((stat, i) => (
-          <div key={i} className={cn("bg-bg-card/60 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
+          <div key={i} className={cn("bg-bg-card/10 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
             <span className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary leading-tight uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>{stat.label}</span>
             <div className="mt-auto">
               <StatCounter value={stat.value} delay={0.8 + (i * 0.1)} className={cn("text-text-main", isPoster ? "text-7xl" : "text-5xl")} />
