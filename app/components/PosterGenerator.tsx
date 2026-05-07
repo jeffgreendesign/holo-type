@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { toPng } from "html-to-image";
 import { Archetype, CardContent } from "./ArchetypeGenerator";
@@ -19,6 +19,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
   const [generating, setGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
   const [posterDataUrl, setPosterDataUrl] = useState<string | null>(null);
+  const [vectorId, setVectorId] = useState("");
   
   const storyRef = useRef<HTMLDivElement>(null);
   const squareRef = useRef<HTMLDivElement>(null);
@@ -26,17 +27,10 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
 
   useEffect(() => {
     setMounted(true);
+    setVectorId(Math.random().toString(16).substring(2, 10).toUpperCase());
   }, []);
 
-  useEffect(() => {
-    if (isOpen) {
-      generatePoster();
-    } else {
-      setPosterDataUrl(null);
-    }
-  }, [isOpen, format]);
-
-  const generatePoster = async () => {
+  const generatePoster = useCallback(async () => {
     const ref = format === "story" ? storyRef : squareRef;
     if (!ref.current) return;
 
@@ -45,7 +39,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
       // Small delay to ensure styles and fonts are ready
       await new Promise((resolve) => setTimeout(resolve, 500));
       const dataUrl = await toPng(ref.current, {
-        width: format === "story" ? 1080 : 1080,
+        width: 1080,
         height: format === "story" ? 1920 : 1080,
         pixelRatio: 1,
       });
@@ -55,7 +49,15 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
     } finally {
       setGenerating(false);
     }
-  };
+  }, [format]);
+
+  useEffect(() => {
+    if (isOpen) {
+      generatePoster();
+    } else {
+      setPosterDataUrl(null);
+    }
+  }, [isOpen, format, generatePoster]);
 
   const handleDownload = () => {
     if (!posterDataUrl) return;
@@ -133,7 +135,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
 
             <div className="w-full mt-[100px] flex justify-between items-end border-t border-[#0c1932]/10 pt-8">
               <div className="text-[18px] font-mono font-bold text-[#0c1932]/40 tracking-widest uppercase">
-                {Math.random().toString(16).substring(2, 10).toUpperCase()} // ARCHETYPE VECTOR
+                {vectorId} {"// ARCHETYPE VECTOR"}
               </div>
               <div className="text-[18px] font-mono font-bold text-[#0c1932]/40 uppercase">HOLO-TYPE.APP</div>
             </div>
@@ -182,7 +184,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
 
               <div className="mt-24 pt-12 border-t border-[#0c1932]/10 w-full flex flex-col items-end">
                 <div className="text-[14px] font-mono font-bold text-[#0c1932]/40 tracking-widest uppercase">
-                  {Math.random().toString(16).substring(2, 10).toUpperCase()} // VECTOR
+                  {vectorId} {"// VECTOR"}
                 </div>
                 <div className="text-[14px] font-mono font-bold text-[#0c1932]/40 uppercase mt-1">HOLO-TYPE.APP</div>
               </div>

@@ -226,6 +226,18 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
   );
 }
 
+function CardBackground({ rarity, rarityColor }: { rarity: string, rarityColor: string }) {
+  return (
+    <div className="absolute inset-0 z-0">
+      <svg width="100%" height="100%" viewBox="0 0 320 448" preserveAspectRatio="none" fill="none" className="overflow-visible">
+        <defs><clipPath id="cardClip"><path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" /></clipPath></defs>
+        <path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" fill="var(--bg-card-elevated)" className="shadow-2xl" />
+        <path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" stroke={rarityColor} strokeOpacity={rarity === "Common" ? "0.4" : "0.8"} strokeWidth={rarity === "Common" ? "1" : "2"} />
+      </svg>
+    </div>
+  );
+}
+
 export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { archetype: Archetype, lens: "olympic" | "paralympic", setLens: (l: "olympic" | "paralympic") => void, variant?: "standard" | "poster" }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -243,7 +255,7 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
     if (shouldReduceMotion || isPoster) return;
     
     let frameId: number;
-    let startTime = Date.now();
+    const startTime = Date.now();
     
     const animate = () => {
       const elapsed = Date.now() - startTime;
@@ -265,8 +277,12 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
   }, [shouldReduceMotion, x, y, mouseXSpring, mouseYSpring, isPoster]);
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [10, -10]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], lens === "paralympic" ? [-10, 10] : [10, -10]);
-  const glareX = useSpring(useTransform(mouseXSpring, [-0.5, 0.5], [20, 80]), springConfig);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-10, 10]);
+  
+  // Glare mapping: on the back side (olympic), the local X axis is inverted relative to the viewer.
+  const glareXBase = useTransform(mouseXSpring, [-0.5, 0.5], [20, 80]);
+  const glareXInverted = useTransform(mouseXSpring, [-0.5, 0.5], [80, 20]);
+  const glareX = useSpring(useTransform(() => lens === "paralympic" ? glareXBase.get() : glareXInverted.get()), springConfig);
   const glareY = useSpring(useTransform(mouseYSpring, [-0.5, 0.5], [20, 80]), springConfig);
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -285,35 +301,52 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
 
   return (
     <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className={cn("perspective-[2000px] w-full flex flex-col items-center gap-6 font-body relative z-20", isPoster ? "scale-[1.6]" : "")}
+      className={cn("perspective-[2000px] preserve-3d w-full flex flex-col items-center gap-10 font-body relative z-20", isPoster ? "scale-[1.6]" : "")}
     >
       {!isPoster && (
-        <div className="flex bg-bg-card-elevated/80 p-1 rounded-full border border-border-subtle backdrop-blur-md shadow-xl scale-90 sm:scale-100">
+        <div 
+          className="flex bg-bg-card-elevated/80 p-1 rounded-full border border-border-subtle backdrop-blur-md shadow-xl scale-90 sm:scale-100 relative z-50"
+          style={{ transformStyle: "preserve-3d", transform: "translateZ(100px)" }}
+        >
           <button onClick={() => setLens("paralympic")} className={cn("px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all", lens === "paralympic" ? "bg-accent-red text-white shadow-lg" : "text-text-tertiary hover:text-text-main")}>Paralympic Lens</button>
           <button onClick={() => setLens("olympic")} className={cn("px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all", lens === "olympic" ? "bg-accent-navy text-white shadow-lg" : "text-text-tertiary hover:text-text-main")}>Olympic Lens</button>
         </div>
       )}
 
-      <motion.div ref={cardRef} onPointerMove={handlePointerMove} onPointerLeave={handlePointerLeave}
-        animate={{ rotateY: lens === "olympic" ? 180 : 0 }} transition={{ rotateY: { type: "spring", stiffness: 40, damping: 15, mass: 2 } }}
-        style={{ transformStyle: "preserve-3d", rotateX: shouldReduceMotion ? 0 : rotateX, rotateY: shouldReduceMotion ? (lens === "olympic" ? 180 : 0) : rotateY }}
+      {/* TILT CONTAINER: Always stable relative to viewer */}
+      <motion.div 
+        ref={cardRef} 
+        onPointerMove={handlePointerMove} 
+        onPointerLeave={handlePointerLeave}
+        style={{ 
+          transformStyle: "preserve-3d", 
+          rotateX: shouldReduceMotion ? 0 : rotateX, 
+          rotateY: shouldReduceMotion ? 0 : rotateY,
+        }}
         className="relative w-[300px] sm:w-[320px] h-[420px] sm:h-[448px] cursor-pointer group"
       >
-        <div className="absolute inset-0 z-0">
-          <svg width="100%" height="100%" viewBox="0 0 320 448" preserveAspectRatio="none" fill="none" className="overflow-visible">
-            <defs><clipPath id="cardClip"><path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" /></clipPath></defs>
-            <path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" fill="var(--bg-card-elevated)" className="shadow-2xl" />
-            <path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" stroke={rarityColor} strokeOpacity={archetype.rarity === "Common" ? "0.4" : "0.8"} strokeWidth={archetype.rarity === "Common" ? "1" : "2"} />
-          </svg>
-        </div>
-        <div className="absolute inset-0 preserve-3d">
-          <div className="absolute inset-0 backface-hidden flex flex-col bg-silver-holo" style={{ transform: "rotateY(0deg) translateZ(1px)", clipPath: "url(#cardClip)" }}>
-            <CardContent archetype={archetype} side="paralympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
+        {/* FLIP CONTAINER: Rotates inside the tilted space */}
+        <motion.div 
+          animate={{ rotateY: lens === "olympic" ? 180 : 0 }} 
+          transition={{ rotateY: { type: "spring", stiffness: 45, damping: 14, mass: 1.5 } }}
+          style={{ transformStyle: "preserve-3d", width: "100%", height: "100%" }}
+        >
+          {/* PARALYMPIC FACE */}
+          <div className="absolute inset-0 backface-hidden flex flex-col preserve-3d" style={{ transform: "rotateY(0deg)" }}>
+            <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
+            <div className="absolute inset-0 bg-silver-holo" style={{ transform: "translateZ(1px)", clipPath: "url(#cardClip)" }}>
+              <CardContent archetype={archetype} side="paralympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
+            </div>
           </div>
-          <div className="absolute inset-0 backface-hidden flex flex-col bg-silver-holo" style={{ transform: "rotateY(180deg) translateZ(1px)", clipPath: "url(#cardClip)" }}>
-            <CardContent archetype={archetype} side="olympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
+
+          {/* OLYMPIC FACE */}
+          <div className="absolute inset-0 backface-hidden flex flex-col preserve-3d" style={{ transform: "rotateY(180deg)" }}>
+            <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
+            <div className="absolute inset-0 bg-silver-holo" style={{ transform: "translateZ(1px)", clipPath: "url(#cardClip)" }}>
+              <CardContent archetype={archetype} side="olympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
+            </div>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
