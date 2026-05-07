@@ -158,35 +158,38 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
 
       <div className={cn("flex justify-between items-start", isPoster ? "mb-6" : "mb-2")}>
         <div className="space-y-1">
-          <span className={cn("font-mono font-bold tracking-[0.3em] text-slate-500", isPoster ? "text-sm" : "text-[10px]")}>ARCHETYPE</span>
-          <div className={cn("font-mono font-bold text-slate-700 border border-slate-300 bg-white/50 uppercase", isPoster ? "text-sm px-4 py-1" : "text-[10px] px-2 py-0.5")}>{side}</div>
+          <span className={cn("font-mono font-bold tracking-[0.3em] text-text-tertiary", isPoster ? "text-sm" : "text-[10px]")}>ARCHETYPE</span>
+          <div className={cn("font-mono font-bold text-text-main border border-border-subtle bg-bg-card/50 uppercase", isPoster ? "text-sm px-4 py-1" : "text-[10px] px-2 py-0.5")}>{side}</div>
         </div>
         <div className={cn("text-white font-mono font-bold tracking-widest shadow-sm", isPoster ? "text-sm px-6 py-2" : "text-[10px] px-3 py-1")} style={{ backgroundColor: archetype.rarity === "Holo Rare" ? "#B31942" : "#C5972C" }}>
           {archetype.rarity.toUpperCase()}
         </div>
       </div>
-{/* Art Area */}
-<div className={cn("relative w-full bg-slate-50/50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner group-hover:bg-white/40 transition-colors duration-500 backdrop-blur-[2px]", isPoster ? "flex-none h-[320px] mb-10" : "flex-1 min-h-[120px] mb-4")}>
+
+      {/* Art Area */}
+      <div className={cn("relative w-full bg-bg-card-elevated/50 border border-border-subtle flex items-center justify-center overflow-hidden shadow-inner group-hover:bg-bg-card/40 transition-colors duration-500 backdrop-blur-[2px]", isPoster ? "flex-none h-[320px] mb-10" : "flex-1 min-h-[120px] mb-4")}>
         <div className={isPoster ? "scale-150" : ""}>
           <RadarVisual stats={archetype.stats} color={accentColor} />
         </div>
-        <div className={cn("absolute top-2 left-2 font-mono text-slate-400", isPoster ? "text-[12px]" : "text-[8px]")}>Vector Analysis</div>
+        <div className={cn("absolute top-2 left-2 font-mono text-text-tertiary", isPoster ? "text-[12px]" : "text-[8px]")}>Vector Analysis</div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-          <div className="w-full h-[1px] bg-white absolute top-0 left-0 animate-[cardSweep_4s_linear_infinite]" />
+          <div className="w-full h-[1px] bg-bg-main absolute top-0 left-0 animate-[cardSweep_4s_linear_infinite]" />
         </div>
       </div>
-{/* Title */}
-<div className={cn("flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
-  <h2 className={cn("font-display font-bold leading-none tracking-tight text-slate-900 uppercase italic", isPoster ? "text-6xl" : "text-3xl")}>{archetype.title}</h2>
-  <div className={cn("mt-4 shadow-sm", isPoster ? "w-20 h-[6px]" : "w-10 h-[3px]")} style={{ backgroundColor: accentColor }} />
-</div>
-{/* Stats Grid */}
-<div className="grid grid-cols-3 gap-px bg-slate-200 border border-slate-200 overflow-hidden rounded-sm">
-  {archetype.stats.map((stat, i) => (
-    <div key={i} className={cn("bg-white/60 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
-            <span className={cn("font-mono font-bold tracking-[0.12em] text-slate-500 leading-tight uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>{stat.label}</span>
+
+      {/* Title */}
+      <div className={cn("flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
+        <h2 className={cn("font-display font-bold leading-none tracking-tight text-text-main uppercase italic", isPoster ? "text-6xl" : "text-3xl")}>{archetype.title}</h2>
+        <div className={cn("mt-4 shadow-sm", isPoster ? "w-20 h-[6px]" : "w-10 h-[3px]")} style={{ backgroundColor: accentColor }} />
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-3 gap-px bg-border-subtle border border-border-subtle overflow-hidden rounded-sm">
+        {archetype.stats.map((stat, i) => (
+          <div key={i} className={cn("bg-bg-card/60 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
+            <span className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary leading-tight uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>{stat.label}</span>
             <div className="mt-auto">
-              <StatCounter value={stat.value} delay={0.8 + (i * 0.1)} className={cn("text-slate-900", isPoster ? "text-7xl" : "text-5xl")} />
+              <StatCounter value={stat.value} delay={0.8 + (i * 0.1)} className={cn("text-text-main", isPoster ? "text-7xl" : "text-5xl")} />
             </div>
           </div>
         ))}
@@ -194,10 +197,10 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
 
       <div className={cn("flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
         <div className="space-y-1">
-          <span className={cn("font-mono font-bold tracking-[0.2em] text-slate-500 uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>ERA ALIGNMENT</span>
-          <div className={cn("font-mono font-bold text-slate-800", isPoster ? "text-sm" : "text-[10px]")}>{archetype.era}</div>
+          <span className={cn("font-mono font-bold tracking-[0.2em] text-text-tertiary uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>ERA ALIGNMENT</span>
+          <div className={cn("font-mono font-bold text-text-secondary", isPoster ? "text-sm" : "text-[10px]")}>{archetype.era}</div>
         </div>
-        <div className={cn("font-mono text-slate-500 font-bold tracking-widest", isPoster ? "text-[12px]" : "text-[9px]")}>HT-X // VECTOR</div>
+        <div className={cn("font-mono text-text-tertiary font-bold tracking-widest", isPoster ? "text-[12px]" : "text-[9px]")}>HT-X // VECTOR</div>
       </div>
 
       {(archetype.rarity === "Holo Rare" || archetype.rarity === "Rare") && (
@@ -299,7 +302,7 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
         <div className="absolute inset-0 z-0">
           <svg width="100%" height="100%" viewBox="0 0 320 448" preserveAspectRatio="none" fill="none" className="overflow-visible">
             <defs><clipPath id="cardClip"><path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" /></clipPath></defs>
-            <path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" fill="#e2e8f0" className="shadow-2xl" />
+            <path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" fill="var(--bg-card-elevated)" className="shadow-2xl" />
             <path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" stroke={rarityColor} strokeOpacity={archetype.rarity === "Common" ? "0.4" : "0.8"} strokeWidth={archetype.rarity === "Common" ? "1" : "2"} />
           </svg>
         </div>
@@ -427,7 +430,7 @@ export default function ArchetypeGenerator() {
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {PRESETS.map((preset, i) => (
                   <button key={i} type="button" onClick={() => setUserInput(preset.text)}
-                    className="group relative w-full aspect-[3/2.8] bg-white dark:bg-bg-card border-[1.5px] border-[#0c19322e] dark:border-border-subtle shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_1px_2px_rgba(12,25,50,0.04)] dark:shadow-none transition-all duration-300 hover:shadow-xl hover:border-accent-red/40 hover:-translate-y-1 text-left overflow-hidden"
+                    className="group relative w-full aspect-[3/2.8] bg-bg-card border-[1.5px] border-[#0c19322e] dark:border-border-subtle shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-none transition-all duration-300 hover:shadow-xl hover:border-accent-red/40 hover:-translate-y-1 text-left overflow-hidden"
                     style={{ clipPath: "polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px))" }}
                   >
                     <preset.icon className="absolute bottom-2 right-2 w-24 h-24 md:w-28 md:h-28 opacity-10 dark:opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-14" />
