@@ -138,25 +138,30 @@ export function StatCounter({ value, delay, className }: { value: number, delay:
 export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, variant = "standard" }: { archetype: Archetype, side: "olympic" | "paralympic", glareX: MotionValue<number>, glareY: MotionValue<number>, mouseX: MotionValue<number>, mouseY: MotionValue<number>, variant?: "standard" | "poster" }) {
   const accentColor = side === "paralympic" ? "var(--accent-red)" : "var(--accent-navy)";
   
-  const glareBackground = useTransform([glareX, glareY], (values: number[]) => `radial-gradient(circle at ${values[0]}% ${values[1]}%, rgba(255, 255, 255, 0.8), transparent 60%)`);
-  const dodgeBackground = useTransform([mouseX, mouseY], (values: number[]) => `conic-gradient(from ${values[0] * 90}deg at 50% 50%, rgba(255, 111, 177, 0.3), rgba(125, 249, 255, 0.3), rgba(215, 255, 79, 0.3), rgba(255, 111, 177, 0.3))`);
+  // High-intensity glare and foil mapping
+  const glareBackground = useTransform([glareX, glareY], (values: number[]) => `radial-gradient(circle at ${values[0]}% ${values[1]}%, rgba(255, 255, 255, 0.9), transparent 50%)`);
+  const foilBackground = useTransform([mouseX, mouseY], (values: number[]) => `conic-gradient(from ${values[0] * 360}deg at 50% 50%, rgba(255, 0, 128, 0.4), rgba(0, 255, 255, 0.4), rgba(255, 255, 0, 0.4), rgba(255, 0, 128, 0.4))`);
   
   const isPoster = variant === "poster";
 
   return (
-    <div className={cn("relative h-full flex flex-col z-10", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
+    <div className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
+      {/* 1. FOIL BASE LAYER (The Metallic Look) */}
+      <div className="absolute inset-0 bg-silver-holo mix-blend-overlay opacity-60" />
+      
+      {/* 2. COLOR FOIL (The Rainbow/Shininess) */}
       <motion.div 
-        className="absolute -inset-5 z-50 pointer-events-none"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: [0, 1, 1, 0] }}
-        transition={{ duration: 1.2, times: [0, 0.1, 0.8, 1], ease: "easeInOut" }}
-      >
-        <svg width="100%" height="100%" viewBox="0 0 320 448" preserveAspectRatio="none" className="overflow-visible">
-          <motion.path d="M0 16L16 0H304L320 16V432L304 448H16L0 432V16Z" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth={isPoster ? "4" : "2"} />
-        </svg>
-      </motion.div>
+        className="absolute inset-0 pointer-events-none mix-blend-color-dodge opacity-25 group-hover:opacity-50 transition-opacity" 
+        style={{ background: foilBackground }} 
+      />
 
-      <div className={cn("flex justify-between items-start", isPoster ? "mb-6" : "mb-2")}>
+      {/* 3. LIGHT GLARE (The Reflection) */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none mix-blend-soft-light opacity-40 group-hover:opacity-80 transition-opacity" 
+        style={{ background: glareBackground }} 
+      />
+
+      <div className={cn("relative flex justify-between items-start", isPoster ? "mb-6" : "mb-2")}>
         <div className="space-y-1">
           <span className={cn("font-mono font-bold tracking-[0.3em] text-text-tertiary", isPoster ? "text-sm" : "text-[10px]")}>ARCHETYPE</span>
           <div className={cn("font-mono font-bold text-text-main border border-border-subtle bg-bg-card/50 uppercase", isPoster ? "text-sm px-4 py-1" : "text-[10px] px-2 py-0.5")}>{side}</div>
@@ -172,19 +177,16 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
           <RadarVisual stats={archetype.stats} color={accentColor} />
         </div>
         <div className={cn("absolute top-2 left-2 font-mono text-text-tertiary", isPoster ? "text-[12px]" : "text-[8px]")}>Vector Analysis</div>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-          <div className="w-full h-[1px] bg-bg-main absolute top-0 left-0 animate-[cardSweep_4s_linear_infinite]" />
-        </div>
       </div>
 
       {/* Title */}
-      <div className={cn("flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
+      <div className={cn("relative flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
         <h2 className={cn("font-display font-bold leading-none tracking-tight text-text-main uppercase italic", isPoster ? "text-6xl" : "text-3xl")}>{archetype.title}</h2>
         <div className={cn("mt-4 shadow-sm", isPoster ? "w-20 h-[6px]" : "w-10 h-[3px]")} style={{ backgroundColor: accentColor }} />
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-3 gap-px bg-border-subtle border border-border-subtle overflow-hidden rounded-sm">
+      <div className="relative grid grid-cols-3 gap-px bg-border-subtle border border-border-subtle overflow-hidden rounded-sm">
         {archetype.stats.map((stat, i) => (
           <div key={i} className={cn("bg-bg-card/60 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
             <span className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary leading-tight uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>{stat.label}</span>
@@ -195,33 +197,13 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
         ))}
       </div>
 
-      <div className={cn("flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
+      <div className={cn("relative flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
         <div className="space-y-1">
           <span className={cn("font-mono font-bold tracking-[0.2em] text-text-tertiary uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>ERA ALIGNMENT</span>
           <div className={cn("font-mono font-bold text-text-secondary", isPoster ? "text-sm" : "text-[10px]")}>{archetype.era}</div>
         </div>
         <div className={cn("font-mono text-text-tertiary font-bold tracking-widest", isPoster ? "text-[12px]" : "text-[9px]")}>HT-X // VECTOR</div>
       </div>
-
-      {(archetype.rarity === "Holo Rare" || archetype.rarity === "Rare") && (
-        <>
-          <motion.div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-40 group-hover:opacity-100 transition-opacity duration-500"
-            style={{ background: glareBackground }}
-          />
-          <motion.div className="absolute inset-0 pointer-events-none z-30 mix-blend-color-dodge opacity-20 group-hover:opacity-100 transition-opacity duration-700"
-            style={{ background: dodgeBackground }}
-          />
-        </>
-      )}
-
-      <style jsx global>{`
-        @keyframes cardSweep {
-          0% { transform: translateY(-10px); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(200px); opacity: 0; }
-        }
-      `}</style>
     </div>
   );
 }
@@ -244,7 +226,7 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
+  const springConfig = { damping: 40, stiffness: 120, mass: 1.2 };
   const mouseXSpring = useSpring(x, springConfig);
   const mouseYSpring = useSpring(y, springConfig);
 
@@ -276,20 +258,24 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
     return () => cancelAnimationFrame(frameId);
   }, [shouldReduceMotion, x, y, mouseXSpring, mouseYSpring, isPoster]);
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [10, -10]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-10, 10]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [30, -30]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-30, 30]);
   
+  const transform = useTransform([rotateX, rotateY], ([rX, rY]) => `rotateX(${rX}deg) rotateY(${rY}deg)`);
+
   // Glare mapping: on the back side (olympic), the local X axis is inverted relative to the viewer.
-  const glareXBase = useTransform(mouseXSpring, [-0.5, 0.5], [20, 80]);
-  const glareXInverted = useTransform(mouseXSpring, [-0.5, 0.5], [80, 20]);
+  const glareXBase = useTransform(mouseXSpring, [-0.5, 0.5], [0, 100]);
+  const glareXInverted = useTransform(mouseXSpring, [-0.5, 0.5], [100, 0]);
   const glareX = useSpring(useTransform(() => lens === "paralympic" ? glareXBase.get() : glareXInverted.get()), springConfig);
-  const glareY = useSpring(useTransform(mouseYSpring, [-0.5, 0.5], [20, 80]), springConfig);
+  const glareY = useSpring(useTransform(mouseYSpring, [-0.5, 0.5], [0, 100]), springConfig);
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!cardRef.current || shouldReduceMotion) return;
+    if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
+    const newX = (e.clientX - rect.left) / rect.width - 0.5;
+    const newY = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(newX);
+    y.set(newY);
   };
 
   const handlePointerLeave = () => { 
@@ -301,7 +287,8 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
 
   return (
     <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className={cn("perspective-[2000px] preserve-3d w-full flex flex-col items-center gap-10 font-body relative z-20", isPoster ? "scale-[1.6]" : "")}
+      className={cn("w-full flex flex-col items-center gap-10 font-body relative z-20", isPoster ? "scale-[1.6]" : "")}
+      style={{ perspective: "1200px" }}
     >
       {!isPoster && (
         <div 
@@ -320,8 +307,8 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
         onPointerLeave={handlePointerLeave}
         style={{ 
           transformStyle: "preserve-3d", 
-          rotateX: shouldReduceMotion ? 0 : rotateX, 
-          rotateY: shouldReduceMotion ? 0 : rotateY,
+          transform,
+          touchAction: "none"
         }}
         className="relative w-[300px] sm:w-[320px] h-[420px] sm:h-[448px] cursor-pointer group"
       >
@@ -331,18 +318,22 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
           transition={{ rotateY: { type: "spring", stiffness: 45, damping: 14, mass: 1.5 } }}
           style={{ transformStyle: "preserve-3d", width: "100%", height: "100%" }}
         >
-          {/* PARALYMPIC FACE */}
-          <div className="absolute inset-0 backface-hidden flex flex-col preserve-3d" style={{ transform: "rotateY(0deg)" }}>
-            <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
-            <div className="absolute inset-0 bg-silver-holo" style={{ transform: "translateZ(1px)", clipPath: "url(#cardClip)" }}>
+          {/* PARALYMPIC FACE (Front) */}
+          <div className="absolute inset-0 backface-hidden" style={{ transform: "rotateY(0deg) translateZ(0.5px)" }}>
+            <div className="absolute inset-0">
+              <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
+            </div>
+            <div className="absolute inset-0" style={{ clipPath: "url(#cardClip)" }}>
               <CardContent archetype={archetype} side="paralympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
             </div>
           </div>
 
-          {/* OLYMPIC FACE */}
-          <div className="absolute inset-0 backface-hidden flex flex-col preserve-3d" style={{ transform: "rotateY(180deg)" }}>
-            <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
-            <div className="absolute inset-0 bg-silver-holo" style={{ transform: "translateZ(1px)", clipPath: "url(#cardClip)" }}>
+          {/* OLYMPIC FACE (Back) */}
+          <div className="absolute inset-0 backface-hidden" style={{ transform: "rotateY(180deg) translateZ(0.5px)" }}>
+            <div className="absolute inset-0">
+              <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
+            </div>
+            <div className="absolute inset-0" style={{ clipPath: "url(#cardClip)" }}>
               <CardContent archetype={archetype} side="olympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
             </div>
           </div>
