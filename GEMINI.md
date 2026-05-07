@@ -6,17 +6,18 @@ Holo-Type is a Next.js 16 and React 19 app that generates AI-powered athlete arc
 
 - **Framework:** Next.js 16.2.4 (App Router)
 - **Library:** React 19.2.4
-- **AI:** Google Gemini AI (`gemini-2.5-flash`)
+- **AI:** Google Gemini AI (`gemini-3-flash`)
 - **Styling:** Tailwind CSS 4
 - **Language:** TypeScript
 - **Architecture:** Next.js App Router with AI route handlers.
 
 ## Core Features
 
-### 1. Archetype Generation (`app/api/generate/route.ts`)
+### 1. Archetype Generator (`app/api/generate/route.ts`)
 
-- The backend uses `GoogleGenAI` to talk to `gemini-2.5-flash`.
-- **Prompt:** Uses a structured prompt to get a JSON response for an athlete archetype.
+- The backend uses `GoogleGenAI` (v2.0+) to talk to `gemini-3-flash-preview`.
+- **Thinking Levels:** Uses `ThinkingLevel.MEDIUM` for enhanced reasoning and narrative quality.
+- **Prompt:** Uses a structured `systemInstruction` to get a JSON response for an athlete archetype.
 - **Data Shape:** The AI returns a JSON object with:
   - `title`: Archetype name.
   - `narrative`: Olympic and Paralympic lenses.

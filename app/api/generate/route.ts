@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,10 +32,10 @@ export async function POST(req: NextRequest) {
     }
 
     const ai = new GoogleGenAI({ apiKey });
-    const modelId = "gemini-2.5-flash";
+    const modelId = "gemini-3-flash-preview";
 
-    const prompt = `
-      You are a Senior Team USA Analyst powered by Gemini. 
+    const systemInstruction = `
+      You are a Senior Team USA Analyst powered by Gemini 3.1. 
       Your task is to analyze a user's description of how they move and work through their day, and identify their "Historical Alignment" with Team USA's 120-year legacy of Olympic and Paralympic excellence.
 
       ### SYSTEM CONSTRAINTS
@@ -44,11 +44,6 @@ export async function POST(req: NextRequest) {
       - Use CONDITIONAL PHRASING (e.g., "This data suggests," "You could align with"). Never guarantee performance results.
       - Treat Olympic and Paralympic disciplines with equal depth and prominence.
       - Return ONLY a JSON object.
-
-      ### USER CONTEXT
-      """
-      ${sanitizedInput}
-      """
 
       ### OUTPUT REQUIREMENTS
       Return ONLY a JSON object in the following format:
@@ -71,9 +66,13 @@ export async function POST(req: NextRequest) {
 
     const response = await ai.models.generateContent({
       model: modelId,
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      contents: [{ role: "user", parts: [{ text: sanitizedInput }] }],
       config: {
+        systemInstruction,
         responseMimeType: "application/json",
+        thinkingConfig: {
+          thinkingLevel: ThinkingLevel.MEDIUM,
+        },
       },
     });
 
