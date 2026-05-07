@@ -457,7 +457,7 @@ function CardSkeleton() {
         </div>
       </div>
       <p className="text-text-tertiary font-bold uppercase tracking-[0.3em] text-[10px] animate-pulse">
-        Analyzing Historical Alignment...
+        SCANNING PARALYMPIC / OLYMPIC LINEAGE
       </p>
     </div>
   );
@@ -514,11 +514,11 @@ export default function ArchetypeGenerator() {
       <div className="w-full max-w-xl space-y-12">
         <div className="text-center space-y-4">
           <h1 className="text-5xl font-display tracking-tight sm:text-6xl uppercase italic text-text-main">
-            {archetype ? "Your Identity" : "Holo-Type"}
+            {archetype ? "CLASSIFICATION COMPLETE" : "Holo-Type"}
           </h1>
           <p className="text-text-secondary text-lg max-w-md mx-auto leading-relaxed">
-            {archetype 
-              ? "Your historical Team USA alignment has been identified." 
+            {archetype
+              ? "Historical alignment vector locked."
               : "Describe how you move through your day to discover your Team USA athlete archetype."}
           </p>
         </div>
@@ -572,7 +572,7 @@ export default function ArchetypeGenerator() {
                       required
                       rows={4}
                       className="w-full bg-bg-card-elevated/50 border border-border-subtle rounded-2xl px-6 py-5 focus:outline-none focus:ring-2 focus:ring-accent-red/50 transition-all text-text-main resize-none text-lg leading-relaxed placeholder:text-text-tertiary shadow-inner"
-                      placeholder="Describe your day..."
+                      placeholder="INPUT DAILY MOVEMENT PATTERN"
                       value={userInput}
                       onChange={(e) => setUserInput(e.target.value)}
                     />
@@ -584,7 +584,7 @@ export default function ArchetypeGenerator() {
                   disabled={loading || !userInput.trim()}
                   className="w-full h-16 bg-accent-red text-white font-body font-bold uppercase tracking-widest rounded-2xl hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_30px_-5px_rgba(179,25,66,0.3)] active:scale-[0.98] animate-in fade-in slide-in-from-bottom-2 duration-500"
                 >
-                  {loading ? "Discovering..." : "Discover Your Archetype"}
+                  {loading ? "SCANNING..." : "RUN HISTORICAL ALIGNMENT"}
                 </button>
               </>
             )}
