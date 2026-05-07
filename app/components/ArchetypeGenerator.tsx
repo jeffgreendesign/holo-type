@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence, type MotionValue } from "motion/react";
 import { 
   RotateCcw, 
   Zap, 
@@ -10,10 +10,8 @@ import {
   Wrench, 
   Mountain, 
   Shuffle,
-  Info,
   Clipboard,
-  Share2,
-  ChevronDown
+  Share2
 } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -135,8 +133,11 @@ function StatCounter({ value, delay }: { value: number, delay: number }) {
   return <span className="text-xl font-mono font-bold tabular-nums leading-none">{count}</span>;
 }
 
-function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY }: { archetype: Archetype, side: "olympic" | "paralympic", glareX: any, glareY: any, mouseX: any, mouseY: any }) {
+function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY }: { archetype: Archetype, side: "olympic" | "paralympic", glareX: MotionValue<number>, glareY: MotionValue<number>, mouseX: MotionValue<number>, mouseY: MotionValue<number> }) {
   const accentColor = side === "paralympic" ? "var(--accent-red)" : "var(--accent-navy)";
+  
+  const glareBackground = useTransform([glareX, glareY], (values: number[]) => `radial-gradient(circle at ${values[0]}% ${values[1]}%, rgba(125, 249, 255, 0.4), transparent 60%)`);
+  const dodgeBackground = useTransform([mouseX, mouseY], (values: number[]) => `conic-gradient(from ${values[0] * 90}deg at 50% 50%, rgba(255, 111, 177, 0.15), rgba(125, 249, 255, 0.15), rgba(215, 255, 79, 0.15), rgba(255, 111, 177, 0.15))`);
   
   return (
     <div className="relative h-full flex flex-col">
@@ -194,10 +195,10 @@ function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY }: { arch
       {(archetype.rarity === "Holo Rare" || archetype.rarity === "Rare") && (
         <>
           <motion.div className="absolute inset-0 pointer-events-none z-20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{ background: useTransform([glareX, glareY], (values: number[]) => `radial-gradient(circle at ${values[0]}% ${values[1]}%, rgba(125, 249, 255, 0.4), transparent 60%)`) }}
+            style={{ background: glareBackground }}
           />
           <motion.div className="absolute inset-0 pointer-events-none z-30 mix-blend-color-dodge opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-            style={{ background: useTransform([mouseX, mouseY], (values: number[]) => `conic-gradient(from ${values[0] * 90}deg at 50% 50%, rgba(255, 111, 177, 0.15), rgba(125, 249, 255, 0.15), rgba(215, 255, 79, 0.15), rgba(255, 111, 177, 0.15))`) }}
+            style={{ background: dodgeBackground }}
           />
         </>
       )}
@@ -287,7 +288,9 @@ export default function ArchetypeGenerator() {
       const res = await fetch("/api/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ userInput }) });
       if (!res.ok) throw new Error("Diagnostic failed");
       const data = await res.json(); setArchetype(data);
-    } catch (err: any) { setError(err.message); } finally { setLoading(false); }
+    } catch (err: unknown) { 
+      setError(err instanceof Error ? err.message : "An unexpected error occurred"); 
+    } finally { setLoading(false); }
   };
 
   return (

@@ -4,7 +4,14 @@ import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { Activity, Zap, Target, Shield, Timer, Compass } from "lucide-react";
 
-const ARCHETYPES = [
+interface Archetype {
+  id: string;
+  title: string;
+  icon: React.ElementType;
+  class: string;
+}
+
+const ARCHETYPES: Archetype[] = [
   { id: "HT-01", title: "THE SWIFT CATALYST", icon: Activity, class: "OLYMPIC" },
   { id: "HT-02", title: "THE CALM DISRUPTOR", icon: Zap, class: "PARALYMPIC" },
   { id: "HT-03", title: "THE ENDURING STRATEGIST", icon: Target, class: "UNIFIED" },
@@ -158,7 +165,7 @@ export default function SignalField() {
   );
 }
 
-function ArchetypeCard({ archetype, index }: { archetype: any; index: number }) {
+function ArchetypeCard({ archetype, index }: { archetype: Archetype; index: number }) {
   const Icon = archetype.icon;
 
   return (

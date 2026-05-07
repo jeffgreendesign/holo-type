@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 export function AmbientBackground() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
   // Motion values for tracking cursor
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);

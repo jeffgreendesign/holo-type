@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 const YEARS = ["1904", "1936", "1948", "1960", "1976", "1984", "1996", "2004", "2012", "2021", "2024", "LA28"];
@@ -53,8 +53,8 @@ export default function LoadingScanner() {
 
       {/* Year Markers */}
       <div className="absolute inset-0 pointer-events-none">
-        {YEARS.map((year, i) => (
-          <YearMarker key={year} year={year} index={i} />
+        {YEARS.map((year) => (
+          <YearMarker key={year} year={year} />
         ))}
       </div>
 
@@ -137,27 +137,32 @@ export default function LoadingScanner() {
   );
 }
 
-function YearMarker({ year, index }: { year: string; index: number }) {
+function YearMarker({ year }: { year: string }) {
   const [visible, setVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  
-  // Stable random values for each instance
-  const config = useMemo(() => {
-    if (!mounted) return null;
-    const isLarge = Math.random() > 0.6; // 40% chance of large
-    return {
-      top: `${Math.random() * 80 + 10}%`,
-      left: `${Math.random() * 80 + 10}%`,
-      fontSize: isLarge ? `${Math.random() * 6 + 4}rem` : `${Math.random() * 0.8 + 0.8}rem`,
-      opacity: isLarge ? Math.random() * 0.1 + 0.1 : Math.random() * 0.3 + 0.5,
-      rotate: "0deg",
-      delay: Math.random() * 4,
-      duration: 3 + Math.random() * 4,
-    };
-  }, [mounted]);
+  const [config, setConfig] = useState<{
+    top: string;
+    left: string;
+    fontSize: string;
+    opacity: number;
+    rotate: string;
+    delay: number;
+    duration: number;
+  } | null>(null);
   
   useEffect(() => {
-    setMounted(true);
+    const isLarge = Math.random() > 0.6; // 40% chance of large
+    const timeout = setTimeout(() => {
+      setConfig({
+        top: `${Math.random() * 80 + 10}%`,
+        left: `${Math.random() * 80 + 10}%`,
+        fontSize: isLarge ? `${Math.random() * 6 + 4}rem` : `${Math.random() * 0.8 + 0.8}rem`,
+        opacity: isLarge ? Math.random() * 0.1 + 0.1 : Math.random() * 0.3 + 0.5,
+        rotate: "0deg",
+        delay: Math.random() * 4,
+        duration: 3 + Math.random() * 4,
+      });
+    }, 0);
+    return () => clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
@@ -166,7 +171,7 @@ function YearMarker({ year, index }: { year: string; index: number }) {
     return () => clearTimeout(timeout);
   }, [config]);
 
-  if (!mounted || !config) return null;
+  if (!config) return null;
 
   return (
     <AnimatePresence>
