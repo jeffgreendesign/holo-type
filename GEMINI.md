@@ -28,11 +28,14 @@ This is a modern web application built with Next.js 16 and React 19, focused on 
 
 ### 2. Holographic UI Aesthetic (`app/page.tsx`)
 
-- **Animation:** Powered by `motion/react` (Framer Motion 12) for 3D card tilt and smooth transitions.
+- **Animation:** Powered by `motion/react` (Framer Motion 12) for 3D card tilt, staggered entrance animations, and a seamless 3D flip.
+- **Visuals:** 
+  - **Radar Chart:** Dynamic `RadarVisual` component generating unique shapes based on AI-generated stats.
+  - **Input Presets:** Visual selection cards for quick identity entry.
 - **Icons:** Uses `lucide-react` for symbolic representation.
 - **Holographic Effect:** Achieved using Tailwind CSS 4 features:
   - **Dynamic Glare:** Real-time mouse-tracking radial gradient overlay.
-  - **Iridescent Border:** `bg-gradient-to-r` with iridescent colors and `animate-gradient-x`.
+  - **Iridescent Border:** `bg-gradient-to-r` with iridescent colors, dynamic rarity-based gradients, and `animate-gradient-x`.
   - **Shimmer Overlay:** `animate-shimmer` with a white linear gradient.
   - **Glassmorphism:** `bg-zinc-950/90`, `backdrop-blur-xl`, and `border-white/10`.
 
