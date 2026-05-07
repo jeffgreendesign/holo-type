@@ -23,6 +23,35 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Encodes a string to Base64 with UTF-8 support.
+ */
+function toBase64(str: string) {
+  const bytes = new TextEncoder().encode(str);
+  let binString = "";
+  for (let i = 0; i < bytes.byteLength; i++) {
+    binString += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binString);
+}
+
+/**
+ * Decodes a Base64 string to a UTF-8 string.
+ */
+function fromBase64(base64: string) {
+  try {
+    const binString = atob(base64);
+    const bytes = new Uint8Array(binString.length);
+    for (let i = 0; i < binString.length; i++) {
+      bytes[i] = binString.charCodeAt(i);
+    }
+    return new TextDecoder().decode(bytes);
+  } catch (e) {
+    // Fallback to standard atob for legacy compatibility if possible
+    return atob(base64);
+  }
+}
+
 const PRESETS = [
   {
     icon: Zap,
@@ -357,7 +386,7 @@ export default function ArchetypeGenerator() {
     const vectorData = params.get("vector");
     if (vectorData) {
       try {
-        const decoded = JSON.parse(atob(decodeURIComponent(vectorData)));
+        const decoded = JSON.parse(fromBase64(decodeURIComponent(vectorData)));
         setArchetype(decoded);
       } catch (err) {
         console.error("Failed to decode vector alignment:", err);
@@ -398,7 +427,7 @@ export default function ArchetypeGenerator() {
   const handleCopyVector = async () => {
     if (!archetype) return;
     try {
-      const vectorData = encodeURIComponent(btoa(JSON.stringify(archetype)));
+      const vectorData = encodeURIComponent(toBase64(JSON.stringify(archetype)));
       const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?vector=${vectorData}`;
       
       if (navigator.clipboard && window.isSecureContext) {
