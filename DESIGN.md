@@ -108,6 +108,22 @@ I added perspective tilt to presets and translateZ stat boxes.
 
 ---
 
+## Design Log: v3 Polish Pass (May 6, 2026)
+
+### 1. Stat Label Readability
+The original stat boxes suffered from label truncation at smaller viewports. I restructured the layout to a vertical stack. This allows labels like DECISION MAKING or MENTAL FORTITUDE to wrap naturally over two lines. No more ellipsis. The labels now use 60% opacity to maintain hierarchy while remaining legible.
+
+### 2. Narrative Typography Upgrade
+The all-caps italic monospace narrative was hard to read at length. I introduced a two-tier type system. Readout text (labels, status, stats) stays clinical and monospace. The narrative paragraph now uses Source Sans 3 in sentence case. This provides a human, readable center to the archival instrument feel. Max-width is constrained to 60ch for optimal line length.
+
+### 3. Light Mode Definition
+Preset cards in light mode felt washed out. I pushed the definition harder by increasing border weight to 1.5px and adding a subtle inset shadow. This creates the feeling of a physical artifact sitting into the page. Icon and label opacity were boosted for better contrast against the cream background.
+
+### 4. Share Artifact (TRANSMIT)
+The TRANSMIT action now produces a high-fidelity shareable poster. Using html-to-image and portal rendering, the app generates 9:16 Story and 1:1 Square formats. These posters feature the archetype card against a signal-field grid with archival headers and unique vector hashes. Users can download or copy these images directly to their clipboard for social sharing.
+
+---
+
 ## Final Scores
 
 1. **Team USA identity:** 5/5
