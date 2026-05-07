@@ -4,6 +4,12 @@ All notable changes to this project go here.
 
 I'm following [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-05-07
+
+### Changed
+- **Holographic Opacity:** Reduced background opacity of stats grid items (10%) and container (20%) to reveal the underlying holographic foil effect.
+- **Prototype Synchronization:** Updated `card-reveal` prototype with consistent transparent stat background styles.
+
 ## [0.2.0] - 2026-05-07
 
 ### Added

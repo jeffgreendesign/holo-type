@@ -121,7 +121,7 @@ I completely rebuilt the holographic iridescence to match the fidelity of the `s
 - **Base Layer:** A silver-holo grain layer with `mix-blend-overlay`.
 - **Foil Layer:** A `conic-gradient` color foil using `mix-blend-color-dodge` that rotates with the mouse.
 - **Glare Layer:** A high-intensity `soft-light` glare that follows the light source.
-These layers are contained within the card face's clipped container, ensuring they react to tilt without breaking the 3D flip.
+These layers are contained within the card face's clipped container, ensuring they react to tilt without breaking the 3D flip. To ensure these effects are visible across the entire card, I reduced the opacity of the stats area to 10%, allowing the foil's motion and color shifts to permeate through the data grid.
 
 ---
 
