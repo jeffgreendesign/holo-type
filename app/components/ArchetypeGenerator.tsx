@@ -439,53 +439,53 @@ export default function ArchetypeGenerator() {
       <AnimatePresence>{loading && <LoadingScanner />}</AnimatePresence>
 
       <div className={cn("w-full max-w-5xl flex flex-col items-center transition-all duration-700", loading && "opacity-0 scale-95 pointer-events-none")}>
-        <div className="text-center space-y-2 mb-[6vh]">
-          <h1 className="text-5xl md:text-7xl font-display font-bold italic tracking-tighter uppercase leading-none text-text-main">
+        <div className="text-center space-y-1 mb-[3vh]">
+          <h1 className="text-4xl md:text-6xl font-display font-bold italic tracking-tighter uppercase leading-none text-text-main">
             {archetype ? "CLASSIFICATION COMPLETE" : "HOLO-TYPE"}
           </h1>
-          <p className="text-text-tertiary text-[10px] md:text-[12px] font-bold tracking-[0.4em] uppercase">
+          <p className="text-text-tertiary text-[9px] md:text-[10px] font-bold tracking-[0.4em] uppercase">
             {archetype ? "Historical alignment vector locked // transmission successful" : "HISTORICAL ALIGNMENT INSTRUMENT // VER 2.5.0"}
           </p>
         </div>
 
         {!archetype ? (
-          <form onSubmit={handleSubmit} className="w-full flex flex-col items-center space-y-[6vh]">
-            <div className="w-full space-y-8">
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+          <form onSubmit={handleSubmit} className="w-full flex flex-col items-center space-y-[3vh]">
+            <div className="w-full space-y-4">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
                 {PRESETS.map((preset, i) => (
                   <button key={i} type="button" onClick={() => setUserInput(preset.text)}
-                    className="group relative w-full aspect-[3/2.8] bg-bg-card border-[1.5px] border-[#0c19322e] dark:border-border-subtle shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-none transition-all duration-300 hover:shadow-xl hover:border-accent-red/40 hover:-translate-y-1 text-left overflow-hidden"
-                    style={{ clipPath: "polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px))" }}
+                    className="group relative w-full aspect-[3/1.4] md:aspect-[3/1.6] bg-bg-card border-[1.5px] border-[#0c19322e] dark:border-border-subtle shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-none transition-all duration-300 hover:shadow-xl hover:border-accent-red/40 hover:-translate-y-0.5 text-left overflow-hidden"
+                    style={{ clipPath: "polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px))" }}
                   >
-                    <preset.icon className="absolute bottom-2 right-2 w-24 h-24 md:w-28 md:h-28 opacity-10 dark:opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-14" />
-                                        <div className="relative h-full p-5 md:p-6 flex flex-col justify-between">
+                    <preset.icon className="absolute bottom-1 right-1 w-14 h-14 md:w-20 md:h-20 opacity-10 dark:opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-14" />
+                                        <div className="relative h-full p-3 md:p-5 flex flex-col justify-between">
                                           <div className="flex justify-between items-start">
-                                            <span className="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-[#0c193280] dark:text-text-tertiary uppercase">PRESET 0{i+1}</span>
-                                            <span className="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-[#0c193280] dark:text-text-tertiary uppercase italic">ANALYSIS</span>
+                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-[#0c193280] dark:text-text-tertiary uppercase">PRESET 0{i+1}</span>
+                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-[#0c193280] dark:text-text-tertiary uppercase italic">ANALYSIS</span>
                                           </div>
                                           <div className="flex flex-col">
-                                            <h3 className="text-xl md:text-2xl font-display font-bold leading-tight uppercase italic transition-all group-hover:text-accent-red text-text-main">
+                                            <h3 className="text-base md:text-xl font-display font-bold leading-tight uppercase italic transition-all group-hover:text-accent-red text-text-main">
                           <span className="relative inline-block">{preset.label}
                             <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ textShadow: '-1px 0 rgba(200, 16, 74, 0.4), 1px 0 rgba(28, 76, 255, 0.4)' }}>{preset.label}</span>
                           </span>
                         </h3>
-                        <div className="w-10 h-[2.5px] bg-accent-red mt-2 group-hover:w-14 transition-all" />
+                        <div className="w-6 md:w-8 h-[2px] bg-accent-red mt-1 group-hover:w-12 transition-all" />
                       </div>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="relative flex items-center py-2">
+              <div className="relative flex items-center py-0.5">
                 <div className="flex-grow border-t border-border-subtle"></div>
-                <span className="flex-shrink mx-6 text-[11px] font-bold uppercase tracking-[0.5em] text-text-tertiary opacity-40">OR DIRECT ENTRY</span>
+                <span className="flex-shrink mx-4 text-[9px] font-bold uppercase tracking-[0.5em] text-text-tertiary opacity-40">OR DIRECT ENTRY</span>
                 <div className="flex-grow border-t border-border-subtle"></div>
               </div>
 
-              <div className="w-full max-w-2xl mx-auto space-y-4">
-                <label htmlFor="userInput" className="block text-[11px] font-bold uppercase tracking-[0.4em] text-text-secondary text-center uppercase">INPUT DAILY MOVEMENT PATTERN</label>
+              <div className="w-full max-w-2xl mx-auto space-y-2">
+                <label htmlFor="userInput" className="block text-[9px] font-bold uppercase tracking-[0.4em] text-text-secondary text-center">INPUT DAILY MOVEMENT PATTERN</label>
                 <div className="relative group">
-                  <textarea id="userInput" required rows={2} className="w-full bg-bg-card-elevated/50 border border-border-subtle p-5 focus:outline-none focus:ring-1 focus:ring-accent-red/30 transition-all resize-none text-base leading-relaxed placeholder:opacity-20 text-text-main font-bold uppercase"
+                  <textarea id="userInput" required rows={2} className="w-full bg-bg-card-elevated/50 border border-border-subtle p-3.5 md:p-4 focus:outline-none focus:ring-1 focus:ring-accent-red/30 transition-all resize-none text-sm md:text-base leading-relaxed placeholder:opacity-20 text-text-main font-bold uppercase"
                     placeholder="DESCRIBE YOUR TRAJECTORY..." value={userInput} onChange={(e) => setUserInput(e.target.value)}
                   />
                   <div className="absolute bottom-4 right-5 opacity-20 group-focus-within:opacity-50 group-focus-within:text-accent-red transition-all">
