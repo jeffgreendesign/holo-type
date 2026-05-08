@@ -28,10 +28,7 @@ function cn(...inputs: ClassValue[]) {
  */
 function toBase64(str: string) {
   const bytes = new TextEncoder().encode(str);
-  let binString = "";
-  for (let i = 0; i < bytes.byteLength; i++) {
-    binString += String.fromCharCode(bytes[i]);
-  }
+  const binString = Array.from(bytes, (byte) => String.fromCharCode(byte)).join("");
   return btoa(binString);
 }
 
@@ -41,14 +38,16 @@ function toBase64(str: string) {
 function fromBase64(base64: string) {
   try {
     const binString = atob(base64);
-    const bytes = new Uint8Array(binString.length);
-    for (let i = 0; i < binString.length; i++) {
-      bytes[i] = binString.charCodeAt(i);
-    }
+    const bytes = Uint8Array.from(binString, (char) => char.charCodeAt(0));
     return new TextDecoder().decode(bytes);
   } catch (e) {
     // Fallback to standard atob for legacy compatibility if possible
-    return atob(base64);
+    try {
+      return atob(base64);
+    } catch (err) {
+      console.error("Base64 decoding failed:", err);
+      return "";
+    }
   }
 }
 
@@ -441,7 +440,11 @@ export default function ArchetypeGenerator() {
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-        document.execCommand('copy');
+        try {
+          document.execCommand('copy');
+        } catch (err) {
+          console.error('Fallback copy failed', err);
+        }
         document.body.removeChild(textArea);
       }
       setVectorCopied(true);
