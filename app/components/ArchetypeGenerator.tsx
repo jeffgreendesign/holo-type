@@ -511,14 +511,23 @@ export default function ArchetypeGenerator() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); setLoading(true); setError(""); setArchetype(null);
     try {
-      const res = await fetch("/api/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ userInput }) });
-      if (!res.ok) throw new Error("Diagnostic failed");
-      const data = await res.json(); setArchetype(data);
-    } catch (err: unknown) { 
-      setError(err instanceof Error ? err.message : "An unexpected error occurred"); 
+      const res = await fetch("/api/generate", { 
+        method: "POST", 
+        headers: { "Content-Type": "application/json" }, 
+        body: JSON.stringify({ userInput }) 
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Diagnostic failed");
+      }
+
+      setArchetype(data);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "An unexpected error occurred");
     } finally { setLoading(false); }
   };
-
   return (
     <div className="min-h-screen text-text-main bg-bg-main flex flex-col items-center justify-center px-6 py-[4vh] font-mono relative z-10 transition-colors duration-500">
       {/* Immersive Loading Overlay */}

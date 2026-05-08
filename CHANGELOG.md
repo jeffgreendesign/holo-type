@@ -10,6 +10,20 @@ I'm following [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Sema
 - **Holographic Opacity:** Reduced background opacity of stats grid items (10%) and container (20%) to reveal the underlying holographic foil effect.
 - **Prototype Synchronization:** Updated `card-reveal` prototype with consistent transparent stat background styles.
 
+## [0.2.1] - 2026-05-08
+
+### Fixed
+- **PostCSS Vulnerability:** Resolved CVE-2026-41305 by forcing `postcss@^8.5.10` via package overrides.
+
+### Added
+- **Security Hardening:**
+    - Implemented **Content-Security-Policy (CSP)** and standard security headers in `next.config.ts` (with `unsafe-eval` conditionally allowed in development for React/Turbopack compatibility).
+    - Added **API Rate Limiting** (5 req/min per IP) to the `/api/generate` endpoint.
+    - Enhanced **Prompt Protection** using triple-quote delimiters and untrusted data markers.
+    - Integrated **Response Schema Validation** to ensure AI output integrity.
+    - Enforced **Request Size Limits** (500 chars) and sanitization on user input.
+    - Improved **Client-side Error Reporting** to show specific API error messages (e.g., rate limits) instead of a generic "Diagnostic failed" warning.
+
 ## [0.2.0] - 2026-05-07
 
 ### Added
