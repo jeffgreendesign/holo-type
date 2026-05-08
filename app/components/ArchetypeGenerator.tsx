@@ -91,15 +91,16 @@ export interface Archetype {
     paralympic: string;
   };
   rarity: "Common" | "Uncommon" | "Rare" | "Holo Rare";
-  stats: { label: string; value: number }[];
+  stats: Record<string, number>;
   era: string;
   discipline: "Olympic" | "Paralympic" | "Unified";
 }
 
-export function RadarVisual({ stats, color }: { stats: { label: string; value: number }[], color: string }) {
-  const points = stats.map((stat, i) => {
+export function RadarVisual({ stats, color }: { stats: Record<string, number>, color: string }) {
+  const statEntries = Object.entries(stats);
+  const points = statEntries.map(([_, value], i) => {
     const angle = (i * 90) * (Math.PI / 180);
-    const r = (stat.value / 100) * 45;
+    const r = (value / 100) * 45;
     const x = 50 + r * Math.cos(angle);
     const y = 50 + r * Math.sin(angle);
     return `${x},${y}`;
@@ -126,9 +127,9 @@ export function RadarVisual({ stats, color }: { stats: { label: string; value: n
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         />
-        {stats.map((stat, i) => {
+        {statEntries.map(([_, value], i) => {
           const angle = (i * 90) * (Math.PI / 180);
-          const r = (stat.value / 100) * 45;
+          const r = (value / 100) * 45;
           const x = 50 + r * Math.cos(angle);
           const y = 50 + r * Math.sin(angle);
           return <circle key={i} cx={x} cy={y} r="1.5" fill={color} />;
@@ -256,14 +257,20 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
 
       {/* Stats Grid */}
       <div className="relative grid grid-cols-3 gap-px bg-border-subtle/20 border border-border-subtle/30 overflow-hidden rounded-sm">
-        {archetype.stats.map((stat, i) => (
-          <div key={i} className={cn("bg-bg-card/10 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
-            <span className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary leading-tight uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>{stat.label}</span>
-            <div className="mt-auto">
-              <StatCounter value={stat.value} delay={0.8 + (i * 0.1)} className={cn("text-text-main", isPoster ? "text-7xl" : "text-5xl")} />
+        {Object.entries(archetype.stats).map(([label, value], i) => {
+          const formattedLabel = label
+            .replace(/([A-Z])/g, " $1")
+            .replace(/^./, (str) => str.toUpperCase());
+          
+          return (
+            <div key={i} className={cn("bg-bg-card/10 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
+              <span className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary leading-tight uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>{formattedLabel}</span>
+              <div className="mt-auto">
+                <StatCounter value={value} delay={0.8 + (i * 0.1)} className={cn("text-text-main", isPoster ? "text-7xl" : "text-5xl")} />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className={cn("relative flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
