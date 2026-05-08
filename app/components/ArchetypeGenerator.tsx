@@ -420,6 +420,8 @@ export default function ArchetypeGenerator() {
   const [lens, setLens] = useState<"olympic" | "paralympic">("paralympic");
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [vectorCopied, setVectorCopied] = useState(false);
+  const [isFlashActive, setIsFlashActive] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -433,6 +435,17 @@ export default function ArchetypeGenerator() {
       }
     }
   }, []);
+
+  const handlePresetClick = (text: string) => {
+    setUserInput(text);
+    setIsFlashActive(true);
+    setTimeout(() => setIsFlashActive(false), 800);
+    
+    // Focus the textarea
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  };
 
   const handleReset = () => { 
     setUserInput(""); 
@@ -526,7 +539,7 @@ export default function ArchetypeGenerator() {
             <div className="w-full space-y-4">
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
                 {PRESETS.map((preset, i) => (
-                  <button key={i} type="button" onClick={() => setUserInput(preset.text)}
+                  <button key={i} type="button" onClick={() => handlePresetClick(preset.text)}
                     className="group relative w-full aspect-[3/1.4] md:aspect-[3/1.6] bg-bg-card border-[1.5px] border-[#0c19322e] dark:border-border-subtle shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-none transition-all duration-300 hover:shadow-xl hover:border-accent-red/40 hover:-translate-y-0.5 text-left overflow-hidden"
                     style={{ clipPath: "polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px))" }}
                   >
@@ -558,11 +571,48 @@ export default function ArchetypeGenerator() {
               <div className="w-full max-w-2xl mx-auto space-y-2">
                 <label htmlFor="userInput" className="block text-[9px] font-bold uppercase tracking-[0.4em] text-text-secondary text-center">INPUT DAILY MOVEMENT PATTERN</label>
                 <div className="relative group">
-                  <textarea id="userInput" required rows={2} className="w-full bg-bg-card-elevated/50 border border-border-subtle p-3.5 md:p-4 focus:outline-none focus:ring-1 focus:ring-accent-red/30 transition-all resize-none text-sm md:text-base leading-relaxed placeholder:opacity-20 text-text-main font-bold uppercase"
-                    placeholder="DESCRIBE YOUR TRAJECTORY..." value={userInput} onChange={(e) => setUserInput(e.target.value)}
-                  />
-                  <div className="absolute bottom-4 right-5 opacity-20 group-focus-within:opacity-50 group-focus-within:text-accent-red transition-all">
-                    <svg width="80" height="16" viewBox="0 0 80 16"><path d="M0 8 Q 10 0, 20 8 T 40 8 T 60 8 T 80 8" fill="none" stroke="currentColor" strokeWidth="2" className="animate-[wave_3s_linear_infinite] group-focus-within:animate-[pulse_1.5s_ease-in-out_infinite]" /></svg>
+                  <motion.div
+                    animate={isFlashActive ? { 
+                      boxShadow: ["0 0 0 0px rgba(196, 30, 58, 0)", "0 0 0 10px rgba(196, 30, 58, 0.2)", "0 0 0 0px rgba(196, 30, 58, 0)"],
+                      backgroundColor: ["rgba(196, 30, 58, 0)", "rgba(196, 30, 58, 0.05)", "rgba(196, 30, 58, 0)"]
+                    } : {}}
+                    transition={{ duration: 0.8 }}
+                    className="relative"
+                  >
+                    <textarea 
+                      ref={textareaRef}
+                      id="userInput" 
+                      required 
+                      rows={2} 
+                      className="w-full bg-bg-card-elevated/50 border border-border-subtle p-3.5 md:p-4 focus:outline-none focus:ring-1 focus:ring-accent-red/40 focus:border-accent-red/40 focus:bg-bg-card/80 transition-all resize-none text-sm md:text-base leading-relaxed placeholder:opacity-20 text-text-main font-bold uppercase shadow-sm group-focus-within:shadow-[0_0_20px_-5px_rgba(196,30,58,0.15)]"
+                      placeholder="DESCRIBE YOUR TRAJECTORY..." 
+                      value={userInput} 
+                      onChange={(e) => setUserInput(e.target.value)}
+                    />
+                    
+                    {/* Visual Flash Overlay */}
+                    <AnimatePresence>
+                      {isFlashActive && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="absolute inset-0 border-2 border-accent-red pointer-events-none z-10"
+                        />
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+
+                  <div className="absolute bottom-4 right-5 opacity-20 group-focus-within:opacity-80 group-focus-within:text-accent-red transition-all pointer-events-none">
+                    <svg width="80" height="16" viewBox="0 0 80 16">
+                      <path 
+                        d="M0 8 Q 10 0, 20 8 T 40 8 T 60 8 T 80 8" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2.5" 
+                        className="animate-wave group-focus-within:animate-[pulse_1s_ease-in-out_infinite]" 
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
