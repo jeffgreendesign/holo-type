@@ -163,6 +163,44 @@ export function StatCounter({ value, delay, className }: { value: number, delay:
   return <span className={cn("font-display font-bold tabular-nums leading-none", className)}>{count}</span>;
 }
 
+export function FittedTitle({ text, className }: { text: string, className?: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    if (!containerRef.current || !textRef.current) return;
+    
+    // Reset scale to measure natural width
+    setScale(1);
+    
+    // Defer measurement to ensure DOM is updated
+    const request = requestAnimationFrame(() => {
+      if (containerRef.current && textRef.current) {
+        const containerWidth = containerRef.current.clientWidth;
+        const textWidth = textRef.current.scrollWidth;
+        if (textWidth > containerWidth) {
+          setScale(containerWidth / textWidth);
+        }
+      }
+    });
+    
+    return () => cancelAnimationFrame(request);
+  }, [text]);
+
+  return (
+    <div ref={containerRef} className="w-full flex items-center overflow-hidden">
+      <h2 
+        ref={textRef} 
+        style={{ transform: `scale(${scale})`, transformOrigin: "left center" }} 
+        className={cn("whitespace-nowrap transition-transform duration-300 ease-out", className)}
+      >
+        {text}
+      </h2>
+    </div>
+  );
+}
+
 export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, variant = "standard" }: { archetype: Archetype, side: "olympic" | "paralympic", glareX: MotionValue<number>, glareY: MotionValue<number>, mouseX: MotionValue<number>, mouseY: MotionValue<number>, variant?: "standard" | "poster" }) {
   const accentColor = side === "paralympic" ? "var(--accent-red)" : "var(--accent-navy)";
   
@@ -209,7 +247,10 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
 
       {/* Title */}
       <div className={cn("relative flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
-        <h2 className={cn("font-display font-bold leading-none tracking-tight text-text-main uppercase italic", isPoster ? "text-6xl" : "text-3xl")}>{archetype.title}</h2>
+        <FittedTitle 
+          text={archetype.title} 
+          className={cn("font-display font-bold leading-none tracking-tight text-text-main uppercase italic", isPoster ? "text-6xl" : "text-3xl")} 
+        />
         <div className={cn("mt-4 shadow-sm", isPoster ? "w-20 h-[6px]" : "w-10 h-[3px]")} style={{ backgroundColor: accentColor }} />
       </div>
 
