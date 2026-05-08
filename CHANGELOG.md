@@ -16,13 +16,18 @@ I'm following [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Sema
 - **PostCSS Vulnerability:** Resolved CVE-2026-41305 by forcing `postcss@^8.5.10` via package overrides.
 
 ### Added
+- **Data Structure Alignment:**
+    - Refactored `Archetype` interface to use an object-based `stats` structure (`Record<string, number>`) for better predictability and radar mapping.
+    - Updated `systemInstruction` and `validateArchetype` to enforce strict keys: `resilience`, `purposefulFocus`, `workEthic`, `adaptability`.
 - **Security Hardening:**
-    - Implemented **Content-Security-Policy (CSP)** and standard security headers in `next.config.ts` (with `unsafe-eval` conditionally allowed in development for React/Turbopack compatibility).
+    - Implemented **Content-Security-Policy (CSP)** and standard security headers in `next.config.ts`.
     - Added **API Rate Limiting** (5 req/min per IP) to the `/api/generate` endpoint.
     - Enhanced **Prompt Protection** using triple-quote delimiters and untrusted data markers.
     - Integrated **Response Schema Validation** to ensure AI output integrity.
     - Enforced **Request Size Limits** (500 chars) and sanitization on user input.
-    - Improved **Client-side Error Reporting** to show specific API error messages (e.g., rate limits) instead of a generic "Diagnostic failed" warning.
+- **Frontend Refactor:**
+    - Updated `RadarVisual` and `CardContent` to dynamically map over the new object-based stats structure.
+    - Improved **Client-side Error Reporting** to show specific API error messages (including `details`) instead of a generic "Diagnostic failed" warning.
 
 ## [0.2.0] - 2026-05-07
 

@@ -527,7 +527,7 @@ export default function ArchetypeGenerator() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Diagnostic failed");
+        throw new Error(data.details || data.error || "Diagnostic failed");
       }
 
       setArchetype(data);
