@@ -32,7 +32,7 @@ export function LoadingScanner() {
   }, []);
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center font-mono z-50 pointer-events-none">
+    <div data-component="LoadingScanner" className="fixed inset-0 flex flex-col items-center justify-center font-mono z-50 pointer-events-none">
       {/* Year Markers (Global Scatter) */}
       <div className="absolute inset-0 overflow-hidden">
         {YEARS.map((year, i) => (
@@ -41,9 +41,9 @@ export function LoadingScanner() {
       </div>
 
       {/* Main Scanner UI */}
-      <div className="relative flex flex-col items-center space-y-12 z-10 pointer-events-auto">
+      <section data-part="scanner-ui" className="relative flex flex-col items-center space-y-12 z-10 pointer-events-auto">
         {/* Radar Ring */}
-        <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center bg-bg-main rounded-full shadow-[0_0_100px_50px_var(--color-bg-main)]">
+        <figure data-part="radar-ring" className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center bg-bg-main rounded-full shadow-[0_0_100px_50px_var(--color-bg-main)]">
           <div className="absolute inset-0 border border-[rgba(200,16,74,0.3)] rounded-full animate-[spin_10s_linear_infinite]">
             {/* Sweep Arc */}
             <div 
@@ -72,10 +72,10 @@ export function LoadingScanner() {
               </motion.p>
             </AnimatePresence>
           </div>
-        </div>
+        </figure>
 
         {/* Classification Meter */}
-        <div className="flex items-center space-x-4 md:space-x-8 bg-bg-main px-10 py-5 rounded-full shadow-[0_0_80px_30px_var(--color-bg-main)]">
+        <section data-part="meter-grid" className="flex items-center space-x-4 md:space-x-8 bg-bg-main px-10 py-5 rounded-full shadow-[0_0_80px_30px_var(--color-bg-main)]">
           {STATUS_STEPS.map((step, i) => (
             <div key={step} className="flex flex-col items-center space-y-2">
               <span 
@@ -98,8 +98,8 @@ export function LoadingScanner() {
               </div>
             </div>
           ))}
-        </div>
-      </div>
+        </section>
+      </section>
     </div>
   );
 }

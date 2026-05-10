@@ -108,6 +108,7 @@ export function RadarVisual({ stats, color }: { stats: Record<string, number>, c
 
   return (
     <motion.div 
+      data-component="RadarVisual"
       animate={{ rotate: 360 }}
       transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       className="relative w-28 h-28 flex items-center justify-center"
@@ -226,7 +227,7 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
   const statCount = Object.keys(archetype.stats).length;
 
   return (
-    <div className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
+    <div data-component="CardContent" className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
       {/* 1. FOIL BASE LAYER (The Metallic Look) */}
       <div className="absolute inset-0 bg-silver-holo mix-blend-overlay opacity-60 dark:opacity-30" />
       
@@ -242,7 +243,7 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
         style={{ background: glareBackground }} 
       />
 
-      <div className={cn("relative flex justify-between items-start", isPoster ? "mb-6" : "mb-2")}>
+      <header data-part="metadata" className={cn("relative flex justify-between items-start", isPoster ? "mb-6" : "mb-2")}>
         <div className="space-y-1">
           <span className={cn("font-mono font-bold tracking-[0.3em] text-text-tertiary", isPoster ? "text-sm" : "text-[10px]")}>ARCHETYPE</span>
           <div className={cn("font-mono font-bold text-text-main border border-border-subtle bg-bg-card/50 uppercase", isPoster ? "text-sm px-4 py-1" : "text-[10px] px-2 py-0.5")}>{side}</div>
@@ -250,18 +251,18 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
         <div className={cn("text-white font-mono font-bold tracking-widest shadow-sm", isPoster ? "text-sm px-6 py-2" : "text-[10px] px-3 py-1")} style={{ backgroundColor: archetype.rarity === "Holo Rare" ? "#B31942" : "#C5972C" }}>
           {archetype.rarity.toUpperCase()}
         </div>
-      </div>
+      </header>
 
       {/* Art Area */}
-      <div className={cn("relative w-full bg-bg-card-elevated/50 border border-border-subtle flex items-center justify-center overflow-hidden shadow-inner group-hover:bg-bg-card/40 transition-colors duration-500 backdrop-blur-[2px]", isPoster ? "flex-none h-[320px] mb-10" : "flex-1 min-h-[120px] mb-4")}>
+      <figure data-part="visual-container" className={cn("relative w-full bg-bg-card-elevated/50 border border-border-subtle flex items-center justify-center overflow-hidden shadow-inner group-hover:bg-bg-card/40 transition-colors duration-500 backdrop-blur-[2px]", isPoster ? "flex-none h-[320px] mb-10" : "flex-1 min-h-[120px] mb-4")}>
         <div className={isPoster ? "scale-150" : ""}>
           <RadarVisual stats={archetype.stats} color={accentColor} />
         </div>
         <div className={cn("absolute top-2 left-2 font-mono text-text-tertiary", isPoster ? "text-[12px]" : "text-[8px]")}>Vector Analysis</div>
-      </div>
+      </figure>
 
       {/* Title */}
-      <div className={cn("relative flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
+      <div data-part="title-area" className={cn("relative flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
         <FittedTitle 
           text={archetype.title} 
           className={cn("font-display font-bold leading-none tracking-tight text-text-main uppercase italic", isPoster ? "text-6xl" : "text-3xl")} 
@@ -270,7 +271,7 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
       </div>
 
       {/* Stats Grid */}
-      <div className={cn(
+      <section data-part="stats-grid" className={cn(
         "relative grid gap-px bg-border-subtle/20 border border-border-subtle/30 overflow-hidden rounded-sm",
         statCount > 3 ? "grid-cols-4" : "grid-cols-3"
       )}>
@@ -292,9 +293,9 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
             </div>
           );
         })}
-      </div>
+      </section>
 
-      <div className={cn("relative flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
+      <footer data-part="card-footer" className={cn("relative flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
         <div className="space-y-1">
           <span className={cn("font-mono font-bold tracking-[0.2em] text-text-tertiary uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>ERA ALIGNMENT</span>
           <FittedLabel 
@@ -303,7 +304,7 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
           />
         </div>
         <div className={cn("font-mono text-text-tertiary font-bold tracking-widest", isPoster ? "text-[12px]" : "text-[9px]")}>HT-X // VECTOR</div>
-      </div>
+      </footer>
     </div>
   );
 }
@@ -386,7 +387,9 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
   const rarityColor = { "Common": "rgba(148, 163, 184, 0.2)", "Uncommon": "#8B6914", "Rare": "#C5972C", "Holo Rare": "#B31942" }[archetype.rarity];
 
   return (
-    <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}
+    <motion.article 
+      data-component="HoloCard"
+      initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className={cn("w-full flex flex-col items-center gap-10 font-body relative z-20", isPoster ? "scale-[1.6]" : "")}
       style={{ perspective: "1200px" }}
     >
@@ -439,7 +442,7 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
           </div>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -560,145 +563,149 @@ export default function ArchetypeGenerator() {
     } finally { setLoading(false); }
   };
   return (
-    <div className="min-h-screen text-text-main bg-bg-main flex flex-col items-center justify-center px-6 py-[4vh] font-mono relative z-10 transition-colors duration-500">
+    <main data-component="ArchetypeGenerator" className="min-h-screen text-text-main bg-bg-main flex flex-col items-center justify-center px-6 py-[4vh] font-mono relative z-10 transition-colors duration-500">
       {/* Immersive Loading Overlay */}
       <AnimatePresence>{loading && <LoadingScanner />}</AnimatePresence>
 
       <div className={cn("w-full max-w-5xl flex flex-col items-center transition-all duration-700", loading && "opacity-0 scale-95 pointer-events-none")}>
-        <div className="text-center space-y-1 mb-[3vh]">
+        <header data-part="app-header" className="text-center space-y-1 mb-[3vh]">
           <h1 className="text-4xl md:text-6xl font-display font-bold italic tracking-tighter uppercase leading-none text-text-main">
             {archetype ? "CLASSIFICATION COMPLETE" : "HOLO-TYPE"}
           </h1>
           <p className="text-text-tertiary text-[9px] md:text-[10px] font-bold tracking-[0.4em] uppercase">
             {archetype ? "Historical alignment vector locked // transmission successful" : "HISTORICAL ALIGNMENT INSTRUMENT // VER 2.5.0"}
           </p>
-        </div>
+        </header>
 
         {!archetype ? (
-          <form onSubmit={handleSubmit} className="w-full flex flex-col items-center space-y-[3vh]">
-            <div className="w-full space-y-4">
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
-                {PRESETS.map((preset, i) => (
-                  <button key={i} type="button" onClick={() => handlePresetClick(preset.text)}
-                    className="group relative w-full aspect-[3/1.4] md:aspect-[3/1.6] bg-bg-card border-[1.5px] border-[#0c19322e] dark:border-border-subtle shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-none transition-all duration-300 hover:shadow-xl hover:border-accent-red/40 hover:-translate-y-0.5 text-left overflow-hidden"
-                    style={{ clipPath: "polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px))" }}
-                  >
-                    <preset.icon className="absolute bottom-1 right-1 w-14 h-14 md:w-20 md:h-20 opacity-10 dark:opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-14" />
-                                        <div className="relative h-full p-3 md:p-5 flex flex-col justify-between">
-                                          <div className="flex justify-between items-start">
-                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase">PRESET 0{i+1}</span>
-                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase italic">ANALYSIS</span>
-                                          </div>
-                                          <div className="flex flex-col">
-                                            <h3 className="text-base md:text-xl font-display font-bold leading-tight uppercase italic transition-all group-hover:text-accent-red text-text-main">
-                          <span className="relative inline-block">{preset.label}
-                            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ textShadow: '-1px 0 rgba(200, 16, 74, 0.4), 1px 0 rgba(28, 76, 255, 0.4)' }}>{preset.label}</span>
-                          </span>
-                        </h3>
-                        <div className="w-6 md:w-8 h-[2px] bg-accent-red mt-1 group-hover:w-12 transition-all" />
+          <section data-part="input-section" className="w-full">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col items-center space-y-[3vh]">
+              <div className="w-full space-y-4">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
+                  {PRESETS.map((preset, i) => (
+                    <button key={i} type="button" onClick={() => handlePresetClick(preset.text)}
+                      className="group relative w-full aspect-[3/1.4] md:aspect-[3/1.6] bg-bg-card border-[1.5px] border-[#0c19322e] dark:border-border-subtle shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-none transition-all duration-300 hover:shadow-xl hover:border-accent-red/40 hover:-translate-y-0.5 text-left overflow-hidden"
+                      style={{ clipPath: "polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px))" }}
+                    >
+                      <preset.icon className="absolute bottom-1 right-1 w-14 h-14 md:w-20 md:h-20 opacity-10 dark:opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-14" />
+                                          <div className="relative h-full p-3 md:p-5 flex flex-col justify-between">
+                                            <div className="flex justify-between items-start">
+                                              <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase">PRESET 0{i+1}</span>
+                                              <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase italic">ANALYSIS</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                              <h3 className="text-base md:text-xl font-display font-bold leading-tight uppercase italic transition-all group-hover:text-accent-red text-text-main">
+                            <span className="relative inline-block">{preset.label}
+                              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ textShadow: '-1px 0 rgba(200, 16, 74, 0.4), 1px 0 rgba(28, 76, 255, 0.4)' }}>{preset.label}</span>
+                            </span>
+                          </h3>
+                          <div className="w-6 md:w-8 h-[2px] bg-accent-red mt-1 group-hover:w-12 transition-all" />
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
+                    </button>
+                  ))}
+                </div>
 
-              <div className="relative flex items-center py-0.5">
-                <div className="flex-grow border-t border-border-subtle"></div>
-                <span className="flex-shrink mx-4 text-[9px] font-bold uppercase tracking-[0.5em] text-text-secondary">OR DIRECT ENTRY</span>
-                <div className="flex-grow border-t border-border-subtle"></div>
-              </div>
+                <div className="relative flex items-center py-0.5">
+                  <div className="flex-grow border-t border-border-subtle"></div>
+                  <span className="flex-shrink mx-4 text-[9px] font-bold uppercase tracking-[0.5em] text-text-secondary">OR DIRECT ENTRY</span>
+                  <div className="flex-grow border-t border-border-subtle"></div>
+                </div>
 
-              <div className="w-full max-w-2xl mx-auto space-y-2">
-                <label htmlFor="userInput" className="block text-[9px] font-bold uppercase tracking-[0.4em] text-text-secondary text-center">INPUT DAILY MOVEMENT PATTERN</label>
-                <div className="relative group">
-                  <motion.div
-                    animate={isFlashActive ? { 
-                      boxShadow: ["0 0 0 0px rgba(196, 30, 58, 0)", "0 0 0 10px rgba(196, 30, 58, 0.2)", "0 0 0 0px rgba(196, 30, 58, 0)"],
-                      backgroundColor: ["rgba(196, 30, 58, 0)", "rgba(196, 30, 58, 0.05)", "rgba(196, 30, 58, 0)"]
-                    } : {}}
-                    transition={{ duration: 0.8 }}
-                    className="relative"
-                  >
-                    <textarea 
-                      ref={textareaRef}
-                      id="userInput" 
-                      required 
-                      rows={2} 
-                      className="w-full bg-bg-card-elevated/50 border border-border-subtle p-3.5 md:p-4 focus:outline-none focus:ring-1 focus:ring-accent-red/40 focus:border-accent-red/40 focus:bg-bg-card/80 transition-all resize-none text-sm md:text-base leading-relaxed placeholder:opacity-50 text-text-main font-bold uppercase shadow-sm group-focus-within:shadow-[0_0_20px_-5px_rgba(196,30,58,0.15)]"
-                      placeholder="DESCRIBE YOUR TRAJECTORY..." 
-                      value={userInput} 
-                      onChange={(e) => setUserInput(e.target.value)}
-                    />
-                    
-                    {/* Visual Flash Overlay */}
-                    <AnimatePresence>
-                      {isFlashActive && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="absolute inset-0 border-2 border-accent-red pointer-events-none z-10"
-                        />
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-
-                  <div className="absolute bottom-4 right-5 opacity-20 group-focus-within:opacity-80 group-focus-within:text-accent-red transition-all pointer-events-none">
-                    <svg width="80" height="16" viewBox="0 0 80 16">
-                      <path 
-                        d="M0 8 Q 10 0, 20 8 T 40 8 T 60 8 T 80 8" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="2.5" 
-                        className="animate-wave group-focus-within:animate-[pulse_1s_ease-in-out_infinite]" 
+                <div className="w-full max-w-2xl mx-auto space-y-2">
+                  <label htmlFor="userInput" className="block text-[9px] font-bold uppercase tracking-[0.4em] text-text-secondary text-center">INPUT DAILY MOVEMENT PATTERN</label>
+                  <div className="relative group">
+                    <motion.div
+                      animate={isFlashActive ? { 
+                        boxShadow: ["0 0 0 0px rgba(196, 30, 58, 0)", "0 0 0 10px rgba(196, 30, 58, 0.2)", "0 0 0 0px rgba(196, 30, 58, 0)"],
+                        backgroundColor: ["rgba(196, 30, 58, 0)", "rgba(196, 30, 58, 0.05)", "rgba(196, 30, 58, 0)"]
+                      } : {}}
+                      transition={{ duration: 0.8 }}
+                      className="relative"
+                    >
+                      <textarea 
+                        ref={textareaRef}
+                        id="userInput" 
+                        required 
+                        rows={2} 
+                        className="w-full bg-bg-card-elevated/50 border border-border-subtle p-3.5 md:p-4 focus:outline-none focus:ring-1 focus:ring-accent-red/40 focus:border-accent-red/40 focus:bg-bg-card/80 transition-all resize-none text-sm md:text-base leading-relaxed placeholder:opacity-50 text-text-main font-bold uppercase shadow-sm group-focus-within:shadow-[0_0_20px_-5px_rgba(196,30,58,0.15)]"
+                        placeholder="DESCRIBE YOUR TRAJECTORY..." 
+                        value={userInput} 
+                        onChange={(e) => setUserInput(e.target.value)}
                       />
-                    </svg>
+                      
+                      {/* Visual Flash Overlay */}
+                      <AnimatePresence>
+                        {isFlashActive && (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 border-2 border-accent-red pointer-events-none z-10"
+                          />
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+
+                    <div className="absolute bottom-4 right-5 opacity-20 group-focus-within:opacity-80 group-focus-within:text-accent-red transition-all pointer-events-none">
+                      <svg width="80" height="16" viewBox="0 0 80 16">
+                        <path 
+                          d="M0 8 Q 10 0, 20 8 T 40 8 T 60 8 T 80 8" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2.5" 
+                          className="animate-wave group-focus-within:animate-[pulse_1s_ease-in-out_infinite]" 
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <button type="submit" disabled={loading || !userInput.trim()} className="w-full max-w-md h-16 bg-text-main text-bg-main font-bold uppercase tracking-[0.4em] transition-all hover:bg-accent-red hover:text-white active:scale-[0.98] group relative overflow-hidden text-sm">
-              <span className="relative z-10">RUN HISTORICAL ALIGNMENT</span>
-              <div className="absolute inset-0 bg-accent-red translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </button>
-          </form>
+              <button type="submit" disabled={loading || !userInput.trim()} className="w-full max-w-md h-16 bg-text-main text-bg-main font-bold uppercase tracking-[0.4em] transition-all hover:bg-accent-red hover:text-white active:scale-[0.98] group relative overflow-hidden text-sm">
+                <span className="relative z-10">RUN HISTORICAL ALIGNMENT</span>
+                <div className="absolute inset-0 bg-accent-red translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              </button>
+            </form>
+          </section>
         ) : (
-          <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center space-y-12 pb-12 w-full">
-            <HoloCard archetype={archetype} lens={lens} setLens={setLens} />
-            <div className="w-full max-w-xl space-y-10">
-              <div className="text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-                <p className="text-text-main font-narrative text-lg md:text-[17px] leading-[1.6] font-normal opacity-90 max-w-[60ch] mx-auto">{lens === "paralympic" ? archetype.narrative.paralympic : archetype.narrative.olympic}</p>
-                <div className="inline-flex items-center gap-4 px-5 py-2.5 bg-bg-card border border-border-subtle rounded-full">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-text-tertiary">Archival Context Locked</span>
-                  <span className="text-sm font-display font-bold uppercase italic text-accent-red">{archetype.era}</span>
+          <section data-part="results-section" className="w-full">
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center space-y-12 pb-12 w-full">
+              <HoloCard archetype={archetype} lens={lens} setLens={setLens} />
+              <div className="w-full max-w-xl space-y-10">
+                <div className="text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+                  <p className="text-text-main font-narrative text-lg md:text-[17px] leading-[1.6] font-normal opacity-90 max-w-[60ch] mx-auto">{lens === "paralympic" ? archetype.narrative.paralympic : archetype.narrative.olympic}</p>
+                  <div className="inline-flex items-center gap-4 px-5 py-2.5 bg-bg-card border border-border-subtle rounded-full">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-text-tertiary">Archival Context Locked</span>
+                    <span className="text-sm font-display font-bold uppercase italic text-accent-red">{archetype.era}</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <button onClick={handleDownloadLog} className="w-full h-14 bg-text-main text-bg-main font-bold uppercase tracking-[0.4em] transition-all hover:bg-accent-red hover:text-white active:scale-[0.98] text-xs shadow-2xl">DOWNLOAD ARCHIVAL LOG</button>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button onClick={handleCopyVector} className={cn("h-12 flex items-center justify-center gap-3 bg-bg-card border text-[10px] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.95]", vectorCopied ? "border-green-500/50 text-green-500" : "border-border-subtle text-text-secondary hover:text-text-main")}>
+                      {vectorCopied ? <Check className="w-4 h-4" /> : <Clipboard className="w-4 h-4" />}
+                      {vectorCopied ? "COPIED" : "COPY VECTOR"}</button>
+                    <button onClick={() => setIsShareModalOpen(true)} className="h-12 flex items-center justify-center gap-3 bg-bg-card border border-border-subtle text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary hover:text-text-main transition-all active:scale-[0.95]">
+                      <Share2 className="w-4 h-4" />TRANSMIT</button>
+                  </div>
+                  <button onClick={handleReset} className="mt-8 self-center text-text-tertiary font-bold uppercase tracking-[0.3em] text-[10px] hover:text-accent-red transition-colors flex items-center gap-3 group">
+                    <RotateCcw className="w-4 h-4 group-hover:rotate-[-45deg] transition-transform" />RESET DIAGNOSTIC INSTRUMENT</button>
                 </div>
               </div>
-              <div className="flex flex-col gap-4">
-                <button onClick={handleDownloadLog} className="w-full h-14 bg-text-main text-bg-main font-bold uppercase tracking-[0.4em] transition-all hover:bg-accent-red hover:text-white active:scale-[0.98] text-xs shadow-2xl">DOWNLOAD ARCHIVAL LOG</button>
-                <div className="grid grid-cols-2 gap-4">
-                  <button onClick={handleCopyVector} className={cn("h-12 flex items-center justify-center gap-3 bg-bg-card border text-[10px] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.95]", vectorCopied ? "border-green-500/50 text-green-500" : "border-border-subtle text-text-secondary hover:text-text-main")}>
-                    {vectorCopied ? <Check className="w-4 h-4" /> : <Clipboard className="w-4 h-4" />}
-                    {vectorCopied ? "COPIED" : "COPY VECTOR"}</button>
-                  <button onClick={() => setIsShareModalOpen(true)} className="h-12 flex items-center justify-center gap-3 bg-bg-card border border-border-subtle text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary hover:text-text-main transition-all active:scale-[0.95]">
-                    <Share2 className="w-4 h-4" />TRANSMIT</button>
-                </div>
-                <button onClick={handleReset} className="mt-8 self-center text-text-tertiary font-bold uppercase tracking-[0.3em] text-[10px] hover:text-accent-red transition-colors flex items-center gap-3 group">
-                  <RotateCcw className="w-4 h-4 group-hover:rotate-[-45deg] transition-transform" />RESET DIAGNOSTIC INSTRUMENT</button>
-              </div>
-            </div>
 
-            <PosterGenerator 
-              archetype={archetype} 
-              lens={lens} 
-              isOpen={isShareModalOpen} 
-              onClose={() => setIsShareModalOpen(false)} 
-            />
-          </motion.div>
+              <PosterGenerator 
+                archetype={archetype} 
+                lens={lens} 
+                isOpen={isShareModalOpen} 
+                onClose={() => setIsShareModalOpen(false)} 
+              />
+            </motion.div>
+          </section>
         )}
 
         {error && <div className="p-5 bg-accent-red/10 border border-accent-red/20 rounded-xl text-accent-red text-center font-bold text-sm mt-12">{error}</div>}
       </div>
-    </div>
+    </main>
   );
 }

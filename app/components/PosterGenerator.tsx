@@ -92,20 +92,21 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
       {createPortal(
         <div className="fixed -left-[9999px] top-0 pointer-events-none overflow-hidden">
           {/* 9:16 Story Poster */}
-          <div 
+          <article 
             ref={storyRef}
+            data-part="story-poster"
             className="w-[1080px] h-[1920px] bg-[#fbfaf6] relative flex flex-col items-center py-[100px] px-[80px]"
           >
             <div className="absolute inset-0 opacity-[0.06] pointer-events-none" 
               style={{ backgroundImage: 'radial-gradient(#0c1932 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
             />
             
-            <div className="w-full flex flex-col items-start mb-[80px]">
+            <header className="w-full flex flex-col items-start mb-[80px]">
               <h1 className="text-[48px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter">HOLO-TYPE</h1>
               <p className="text-[18px] font-mono font-bold text-[#0c1932]/40 tracking-[0.4em] uppercase mt-2">ARCHIVAL ALIGNMENT VECTOR // VER 2.5.0</p>
-            </div>
+            </header>
 
-            <div className="w-[640px] h-[896px] relative shadow-2xl overflow-hidden" 
+            <figure className="w-[640px] h-[896px] relative shadow-2xl overflow-hidden" 
               style={{ clipPath: "polygon(0 32px, 32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px))" }}
             >
               <div className="absolute inset-0 bg-silver-holo" />
@@ -121,9 +122,9 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
                 mouseY={zero} 
                 variant="poster" 
               />
-            </div>
+            </figure>
 
-            <div className="mt-auto flex flex-col items-center text-center w-full">
+            <section className="mt-auto flex flex-col items-center text-center w-full">
               <FittedTitle 
                 text={archetype.title} 
                 center 
@@ -135,26 +136,27 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
                 <p className="text-[24px] font-mono font-bold text-[#0c1932]/60 uppercase tracking-[0.3em]">{lens} Lens</p>
                 <p className="text-[20px] font-mono font-bold text-[#0c1932]/40 uppercase tracking-[0.2em]">{archetype.era}</p>
               </div>
-            </div>
+            </section>
 
-            <div className="w-full mt-[100px] flex justify-between items-end border-t border-[#0c1932]/10 pt-8">
+            <footer className="w-full mt-[100px] flex justify-between items-end border-t border-[#0c1932]/10 pt-8">
               <div className="text-[18px] font-mono font-bold text-[#0c1932]/40 tracking-widest uppercase">
                 {vectorId} {"// ARCHETYPE VECTOR"}
               </div>
               <div className="text-[18px] font-mono font-bold text-[#0c1932]/40 uppercase">HOLO-TYPE.APP</div>
-            </div>
-          </div>
+            </footer>
+          </article>
 
           {/* 1:1 Square Poster */}
-          <div 
+          <article 
             ref={squareRef}
+            data-part="square-poster"
             className="w-[1080px] h-[1080px] bg-[#fbfaf6] relative flex items-center justify-between p-[80px]"
           >
             <div className="absolute inset-0 opacity-[0.06] pointer-events-none" 
               style={{ backgroundImage: 'radial-gradient(#0c1932 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
             />
             
-            <div className="relative z-10 w-[640px] h-[896px] shadow-2xl overflow-hidden scale-[0.8] origin-left"
+            <figure className="relative z-10 w-[640px] h-[896px] shadow-2xl overflow-hidden scale-[0.8] origin-left"
               style={{ clipPath: "polygon(0 32px, 32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px))" }}
             >
               <div className="absolute inset-0 bg-silver-holo" />
@@ -170,13 +172,13 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
                 mouseY={zero} 
                 variant="poster" 
               />
-            </div>
+            </figure>
 
-            <div className="relative z-10 w-[420px] flex flex-col items-end text-right h-full justify-center">
-              <div className="mb-12">
+            <section className="relative z-10 w-[420px] flex flex-col items-end text-right h-full justify-center">
+              <header className="mb-12">
                 <h1 className="text-[36px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter">HOLO-TYPE</h1>
                 <p className="text-[14px] font-mono font-bold text-[#0c1932]/40 tracking-[0.4em] uppercase mt-1">VECTOR LOCK</p>
-              </div>
+              </header>
 
               <div className="w-full">
                 <FittedTitle 
@@ -191,14 +193,14 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
                 <p className="text-[16px] font-mono font-bold text-[#0c1932]/40 uppercase tracking-[0.1em]">{archetype.era}</p>
               </div>
 
-              <div className="mt-24 pt-12 border-t border-[#0c1932]/10 w-full flex flex-col items-end">
+              <footer className="mt-24 pt-12 border-t border-[#0c1932]/10 w-full flex flex-col items-end">
                 <div className="text-[14px] font-mono font-bold text-[#0c1932]/40 tracking-widest uppercase">
                   {vectorId} {"// VECTOR"}
                 </div>
                 <div className="text-[14px] font-mono font-bold text-[#0c1932]/40 uppercase mt-1">HOLO-TYPE.APP</div>
-              </div>
-            </div>
-          </div>
+              </footer>
+            </section>
+          </article>
         </div>,
         document.body
       )}
@@ -216,6 +218,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
             />
             
             <motion.div 
+              data-component="PosterGenerator"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -226,7 +229,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
               </button>
 
               {/* Preview Area */}
-              <div className="flex-1 bg-bg-card-elevated p-8 flex items-center justify-center min-h-[400px]">
+              <div data-part="preview-area" className="flex-1 bg-bg-card-elevated p-8 flex items-center justify-center min-h-[400px]">
                 {generating ? (
                   <div className="flex flex-col items-center gap-4">
                     <Loader2 className="w-8 h-8 text-accent-red animate-spin" />
@@ -244,7 +247,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
               </div>
 
               {/* Controls Area */}
-              <div className="w-full md:w-[280px] p-8 flex flex-col gap-8 bg-bg-card border-l border-border-subtle">
+              <div data-part="controls-area" className="w-full md:w-[280px] p-8 flex flex-col gap-8 bg-bg-card border-l border-border-subtle">
                 <div className="space-y-4">
                   <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-text-tertiary">TRANSMIT ARCHIVAL POSTER</h3>
                   <div className="flex flex-col gap-3">
