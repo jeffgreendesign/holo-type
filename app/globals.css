@@ -15,17 +15,17 @@
 }
 
 .dark {
-  --bg-primary: #1A1816;
-  --bg-card: #242220;
-  --bg-card-elevated: #2E2C29;
-  --text-primary: #F0EDE8;
-  --text-secondary: #F0EDE8;
+  --bg-primary: #0A0A0A;
+  --bg-card: #121212;
+  --bg-card-elevated: #1C1C1C;
+  --text-primary: #FFFFFF;
+  --text-secondary: #FFFFFF;
   --text-tertiary: #FFFFFF;
-  --accent-red: #C41E3A;
-  --accent-navy: #3A6FA0;
-  --accent-gold: #D4A843;
-  --accent-gold-light: #E8D5A3;
-  --border-subtle: #3A3835;
+  --accent-red: #FF4D4D;
+  --accent-navy: #5D9CEC;
+  --accent-gold: #F6E05E;
+  --accent-gold-light: #FEF3C7;
+  --border-subtle: #262626;
 }
 
 @theme {

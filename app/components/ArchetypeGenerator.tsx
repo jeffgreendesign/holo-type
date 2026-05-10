@@ -228,17 +228,17 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
   return (
     <div className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
       {/* 1. FOIL BASE LAYER (The Metallic Look) */}
-      <div className="absolute inset-0 bg-silver-holo mix-blend-overlay opacity-60" />
+      <div className="absolute inset-0 bg-silver-holo mix-blend-overlay opacity-60 dark:opacity-30" />
       
       {/* 2. COLOR FOIL (The Rainbow/Shininess) */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none mix-blend-color-dodge opacity-25 group-hover:opacity-50 transition-opacity" 
+        className="absolute inset-0 pointer-events-none mix-blend-color-dodge opacity-25 dark:opacity-15 group-hover:opacity-50 dark:group-hover:opacity-30 transition-opacity" 
         style={{ background: foilBackground }} 
       />
 
       {/* 3. LIGHT GLARE (The Reflection) */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none mix-blend-soft-light opacity-40 group-hover:opacity-80 transition-opacity" 
+        className="absolute inset-0 pointer-events-none mix-blend-soft-light opacity-40 dark:opacity-20 group-hover:opacity-80 dark:group-hover:opacity-40 transition-opacity" 
         style={{ background: glareBackground }} 
       />
 
@@ -586,8 +586,8 @@ export default function ArchetypeGenerator() {
                     <preset.icon className="absolute bottom-1 right-1 w-14 h-14 md:w-20 md:h-20 opacity-10 dark:opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-14" />
                                         <div className="relative h-full p-3 md:p-5 flex flex-col justify-between">
                                           <div className="flex justify-between items-start">
-                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-[#0c193280] dark:text-text-tertiary uppercase">PRESET 0{i+1}</span>
-                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-[#0c193280] dark:text-text-tertiary uppercase italic">ANALYSIS</span>
+                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase">PRESET 0{i+1}</span>
+                                            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase italic">ANALYSIS</span>
                                           </div>
                                           <div className="flex flex-col">
                                             <h3 className="text-base md:text-xl font-display font-bold leading-tight uppercase italic transition-all group-hover:text-accent-red text-text-main">
@@ -604,7 +604,7 @@ export default function ArchetypeGenerator() {
 
               <div className="relative flex items-center py-0.5">
                 <div className="flex-grow border-t border-border-subtle"></div>
-                <span className="flex-shrink mx-4 text-[9px] font-bold uppercase tracking-[0.5em] text-text-tertiary opacity-40">OR DIRECT ENTRY</span>
+                <span className="flex-shrink mx-4 text-[9px] font-bold uppercase tracking-[0.5em] text-text-secondary">OR DIRECT ENTRY</span>
                 <div className="flex-grow border-t border-border-subtle"></div>
               </div>
 
@@ -624,7 +624,7 @@ export default function ArchetypeGenerator() {
                       id="userInput" 
                       required 
                       rows={2} 
-                      className="w-full bg-bg-card-elevated/50 border border-border-subtle p-3.5 md:p-4 focus:outline-none focus:ring-1 focus:ring-accent-red/40 focus:border-accent-red/40 focus:bg-bg-card/80 transition-all resize-none text-sm md:text-base leading-relaxed placeholder:opacity-20 text-text-main font-bold uppercase shadow-sm group-focus-within:shadow-[0_0_20px_-5px_rgba(196,30,58,0.15)]"
+                      className="w-full bg-bg-card-elevated/50 border border-border-subtle p-3.5 md:p-4 focus:outline-none focus:ring-1 focus:ring-accent-red/40 focus:border-accent-red/40 focus:bg-bg-card/80 transition-all resize-none text-sm md:text-base leading-relaxed placeholder:opacity-50 text-text-main font-bold uppercase shadow-sm group-focus-within:shadow-[0_0_20px_-5px_rgba(196,30,58,0.15)]"
                       placeholder="DESCRIBE YOUR TRAJECTORY..." 
                       value={userInput} 
                       onChange={(e) => setUserInput(e.target.value)}

@@ -66,7 +66,7 @@ export function LoadingScanner() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.5 }}
-                className="text-[10px] md:text-xs font-bold leading-tight tracking-[0.2em] text-text-main/60 uppercase"
+                className="text-[10px] md:text-xs font-bold leading-tight tracking-[0.2em] text-text-main uppercase"
               >
                 {STATUS_STRINGS[statusIdx]}
               </motion.p>
@@ -80,7 +80,7 @@ export function LoadingScanner() {
             <div key={step} className="flex flex-col items-center space-y-2">
               <span 
                 className={`text-[9px] md:text-[10px] font-bold tracking-[0.3em] transition-colors duration-500 ${
-                  activeStep === i ? "text-text-main" : "text-text-main/20"
+                  activeStep === i ? "text-text-main" : "text-text-secondary"
                 }`}
               >
                 {step}
