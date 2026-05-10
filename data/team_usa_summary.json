@@ -1,0 +1,3991 @@
+[
+  {
+    "sport": "Softball (Baseball/Softball)",
+    "era": "1990s",
+    "total_medals": 15,
+    "avg_height_cm": 170.8,
+    "avg_weight_kg": 73.1,
+    "top_regions": [
+      "California",
+      "Delaware",
+      "Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh"
+    ]
+  },
+  {
+    "sport": "Softball (Baseball/Softball)",
+    "era": "2000s",
+    "total_medals": 45,
+    "avg_height_cm": 174.1,
+    "avg_weight_kg": 76.4,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Archery",
+    "era": "1900s",
+    "total_medals": 29,
+    "avg_height_cm": 169.3,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ohio",
+      "Massachusetts",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Archery",
+    "era": "1980s",
+    "total_medals": 9,
+    "avg_height_cm": 172.7,
+    "avg_weight_kg": 62.1,
+    "top_regions": [
+      "Florida",
+      "Indiana",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Archery",
+    "era": "1970s",
+    "total_medals": 4,
+    "avg_height_cm": 177.8,
+    "avg_weight_kg": 67.2,
+    "top_regions": [
+      "California",
+      "Iowa",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Archery",
+    "era": "1990s",
+    "total_medals": 4,
+    "avg_height_cm": 182.0,
+    "avg_weight_kg": 83.5,
+    "top_regions": [
+      "California",
+      "Massachusetts",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Archery",
+    "era": "2000s",
+    "total_medals": 4,
+    "avg_height_cm": 186.0,
+    "avg_weight_kg": 81.0,
+    "top_regions": [
+      "Illinois",
+      "Massachusetts",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Tennis",
+    "era": "1990s",
+    "total_medals": 8,
+    "avg_height_cm": 176.5,
+    "avg_weight_kg": 67.6,
+    "top_regions": [
+      "Distrito Nacional",
+      "Puerto Rico",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Tennis",
+    "era": "1980s",
+    "total_medals": 7,
+    "avg_height_cm": 179.7,
+    "avg_weight_kg": 72.1,
+    "top_regions": [
+      "Texas",
+      "Maryland",
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Tennis",
+    "era": "1920s",
+    "total_medals": 10,
+    "avg_height_cm": 176.5,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "California",
+      "Fremont"
+    ]
+  },
+  {
+    "sport": "Tennis",
+    "era": "1900s",
+    "total_medals": 15,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Massachusetts",
+      "Missouri",
+      "Nevada"
+    ]
+  },
+  {
+    "sport": "Tennis",
+    "era": "2000s",
+    "total_medals": 9,
+    "avg_height_cm": 183.9,
+    "avg_weight_kg": 77.2,
+    "top_regions": [
+      "California",
+      "Michigan",
+      "Ju\u017ena Ba\u010dka"
+    ]
+  },
+  {
+    "sport": "Golf",
+    "era": "1900s",
+    "total_medals": 35,
+    "avg_height_cm": 176.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Illinois",
+      "Missouri",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Baseball (Baseball/Softball)",
+    "era": "1990s",
+    "total_medals": 20,
+    "avg_height_cm": 185.4,
+    "avg_weight_kg": 88.3,
+    "top_regions": [
+      "California",
+      "Texas",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "1990s",
+    "total_medals": 48,
+    "avg_height_cm": 192.2,
+    "avg_weight_kg": 85.4,
+    "top_regions": [
+      "Texas",
+      "Florida",
+      "Louisiana"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "2000s",
+    "total_medals": 71,
+    "avg_height_cm": 191.7,
+    "avg_weight_kg": 89.0,
+    "top_regions": [
+      "California",
+      "Illinois",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "1980s",
+    "total_medals": 48,
+    "avg_height_cm": 191.5,
+    "avg_weight_kg": 82.2,
+    "top_regions": [
+      "New York",
+      "Illinois",
+      "Georgia"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "1970s",
+    "total_medals": 36,
+    "avg_height_cm": 192.7,
+    "avg_weight_kg": 84.7,
+    "top_regions": [
+      "Illinois",
+      "New York",
+      "North Carolina"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "1960s",
+    "total_medals": 36,
+    "avg_height_cm": 196.2,
+    "avg_weight_kg": 90.9,
+    "top_regions": [
+      "Texas",
+      "Missouri",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "1930s",
+    "total_medals": 14,
+    "avg_height_cm": 188.4,
+    "avg_weight_kg": 80.7,
+    "top_regions": [
+      "Kansas",
+      "California",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "1940s",
+    "total_medals": 14,
+    "avg_height_cm": 191.6,
+    "avg_weight_kg": 88.8,
+    "top_regions": [
+      "Indiana",
+      "Kentucky",
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "1950s",
+    "total_medals": 26,
+    "avg_height_cm": 193.7,
+    "avg_weight_kg": 88.8,
+    "top_regions": [
+      "Kansas",
+      "Illinois",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1950s",
+    "total_medals": 8,
+    "avg_height_cm": 182.4,
+    "avg_weight_kg": 80.6,
+    "top_regions": [
+      "North Carolina",
+      "Indiana",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1990s",
+    "total_medals": 9,
+    "avg_height_cm": 177.2,
+    "avg_weight_kg": 69.0,
+    "top_regions": [
+      "Michigan",
+      "Ohio",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1960s",
+    "total_medals": 15,
+    "avg_height_cm": 174.9,
+    "avg_weight_kg": 67.8,
+    "top_regions": [
+      "Michigan",
+      "Ohio",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1930s",
+    "total_medals": 7,
+    "avg_height_cm": 172.0,
+    "avg_weight_kg": 64.3,
+    "top_regions": [
+      "Ohio",
+      "Massachusetts",
+      "California"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1900s",
+    "total_medals": 19,
+    "avg_height_cm": 174.0,
+    "avg_weight_kg": 65.5,
+    "top_regions": [
+      "California",
+      "Missouri",
+      "Nebraska"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1980s",
+    "total_medals": 19,
+    "avg_height_cm": 178.3,
+    "avg_weight_kg": 70.2,
+    "top_regions": [
+      "Pennsylvania",
+      "New York",
+      "California"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1920s",
+    "total_medals": 13,
+    "avg_height_cm": 166.4,
+    "avg_weight_kg": 53.0,
+    "top_regions": [
+      "New York",
+      "California",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1970s",
+    "total_medals": 11,
+    "avg_height_cm": 178.2,
+    "avg_weight_kg": 67.8,
+    "top_regions": [
+      "New York",
+      "Missouri",
+      "Indiana"
+    ]
+  },
+  {
+    "sport": "Bobsleigh (Bobsleigh)",
+    "era": "1930s",
+    "total_medals": 16,
+    "avg_height_cm": 176.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "Illinois",
+      "Colorado"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "1940s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Canoe Slalom (Canoeing)",
+    "era": "1990s",
+    "total_medals": 4,
+    "avg_height_cm": 175.0,
+    "avg_weight_kg": 68.0,
+    "top_regions": [
+      "\u00dasteck\u00fd kraj",
+      "District of Columbia",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Canoe Sprint (Canoeing)",
+    "era": "1960s",
+    "total_medals": 3,
+    "avg_height_cm": 172.0,
+    "avg_weight_kg": 64.3,
+    "top_regions": [
+      "District of Columbia",
+      "Oklahoma",
+      "Maine"
+    ]
+  },
+  {
+    "sport": "Canoe Sprint (Canoeing)",
+    "era": "1980s",
+    "total_medals": 4,
+    "avg_height_cm": 183.2,
+    "avg_weight_kg": 82.2,
+    "top_regions": [
+      "Michigan",
+      "Virginia"
+    ]
+  },
+  {
+    "sport": "Canoe Sprint (Canoeing)",
+    "era": "1990s",
+    "total_medals": 1,
+    "avg_height_cm": 180.0,
+    "avg_weight_kg": 79.0,
+    "top_regions": [
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Canoe Marathon (Canoeing)",
+    "era": "1940s",
+    "total_medals": 1,
+    "avg_height_cm": 188.0,
+    "avg_weight_kg": 89.0,
+    "top_regions": [
+      "Virginia"
+    ]
+  },
+  {
+    "sport": "Canoe Sprint (Canoeing)",
+    "era": "1950s",
+    "total_medals": 1,
+    "avg_height_cm": 188.0,
+    "avg_weight_kg": 89.0,
+    "top_regions": [
+      "Virginia"
+    ]
+  },
+  {
+    "sport": "Canoe Sprint (Canoeing)",
+    "era": "1940s",
+    "total_medals": 4,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New Jersey",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Canoe Slalom (Canoeing)",
+    "era": "1970s",
+    "total_medals": 1,
+    "avg_height_cm": 183.0,
+    "avg_weight_kg": 77.0,
+    "top_regions": [
+      "Maryland"
+    ]
+  },
+  {
+    "sport": "Canoe Sprint (Canoeing)",
+    "era": "1930s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York"
+    ]
+  },
+  {
+    "sport": "Rugby (Rugby)",
+    "era": "1920s",
+    "total_medals": 33,
+    "avg_height_cm": 179.2,
+    "avg_weight_kg": 84.9,
+    "top_regions": [
+      "California",
+      "Illinois",
+      "South Dakota"
+    ]
+  },
+  {
+    "sport": "Equestrian Dressage (Equestrian)",
+    "era": "1990s",
+    "total_medals": 8,
+    "avg_height_cm": 174.3,
+    "avg_weight_kg": 67.1,
+    "top_regions": [
+      "Rhode Island",
+      "Illinois",
+      "Nordrhein-Westfalen"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1980s",
+    "total_medals": 11,
+    "avg_height_cm": 180.2,
+    "avg_weight_kg": 66.8,
+    "top_regions": [
+      "New York",
+      "Virginia",
+      "North Carolina"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1990s",
+    "total_medals": 5,
+    "avg_height_cm": 171.8,
+    "avg_weight_kg": 63.5,
+    "top_regions": [
+      "California",
+      "New York",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1960s",
+    "total_medals": 9,
+    "avg_height_cm": 174.4,
+    "avg_weight_kg": 69.2,
+    "top_regions": [
+      "New York",
+      "Oregon",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Equestrian Dressage (Equestrian)",
+    "era": "1970s",
+    "total_medals": 3,
+    "avg_height_cm": 168.3,
+    "avg_weight_kg": 61.3,
+    "top_regions": [
+      "California",
+      "New York",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1990s",
+    "total_medals": 5,
+    "avg_height_cm": 176.0,
+    "avg_weight_kg": 66.0,
+    "top_regions": [
+      "Virginia",
+      "New York",
+      "District of Columbia"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1970s",
+    "total_medals": 5,
+    "avg_height_cm": 172.6,
+    "avg_weight_kg": 64.6,
+    "top_regions": [
+      "New York",
+      "Florida",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "2000s",
+    "total_medals": 12,
+    "avg_height_cm": 171.9,
+    "avg_weight_kg": 64.6,
+    "top_regions": [
+      "District of Columbia",
+      "Virginia",
+      "Arizona"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1980s",
+    "total_medals": 5,
+    "avg_height_cm": 169.6,
+    "avg_weight_kg": 59.6,
+    "top_regions": [
+      "Massachusetts",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1970s",
+    "total_medals": 10,
+    "avg_height_cm": 177.3,
+    "avg_weight_kg": 71.5,
+    "top_regions": [
+      "New York",
+      "Ohio",
+      "Oregon"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1940s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1930s",
+    "total_medals": 4,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ohio",
+      "Alabama"
+    ]
+  },
+  {
+    "sport": "Equestrian Dressage (Equestrian)",
+    "era": "1940s",
+    "total_medals": 6,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "Ohio",
+      "Manila"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1930s",
+    "total_medals": 2,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1960s",
+    "total_medals": 4,
+    "avg_height_cm": 180.5,
+    "avg_weight_kg": 69.0,
+    "top_regions": [
+      "Ohio",
+      "New Jersey",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1920s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Equestrian Dressage (Equestrian)",
+    "era": "2000s",
+    "total_medals": 8,
+    "avg_height_cm": 175.3,
+    "avg_weight_kg": 67.0,
+    "top_regions": [
+      "Illinois",
+      "Bayern",
+      "California"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 168.0,
+    "avg_weight_kg": 68.0,
+    "top_regions": [
+      "New South Wales"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1910s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Tennessee"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1910s",
+    "total_medals": 3,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Nebraska",
+      "Ontario",
+      "Kentucky"
+    ]
+  },
+  {
+    "sport": "Equestrian Eventing (Equestrian)",
+    "era": "1950s",
+    "total_medals": 3,
+    "avg_height_cm": 185.0,
+    "avg_weight_kg": 70.0,
+    "top_regions": [
+      "California",
+      "Missouri",
+      "District of Columbia"
+    ]
+  },
+  {
+    "sport": "Equestrian Dressage (Equestrian)",
+    "era": "1930s",
+    "total_medals": 4,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Maine",
+      "New York",
+      "Indiana"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "1950s",
+    "total_medals": 3,
+    "avg_height_cm": 183.0,
+    "avg_weight_kg": 68.0,
+    "top_regions": [
+      "Northern Ireland",
+      "Pennsylvania",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Polo",
+    "era": "1920s",
+    "total_medals": 8,
+    "avg_height_cm": 173.5,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Utah",
+      "Kentucky",
+      "California"
+    ]
+  },
+  {
+    "sport": "Equestrian Dressage (Equestrian)",
+    "era": "2010s",
+    "total_medals": 4,
+    "avg_height_cm": 169.2,
+    "avg_weight_kg": 60.2,
+    "top_regions": [
+      "Nordrhein-Westfalen",
+      "Hawai\u02bbi",
+      "California"
+    ]
+  },
+  {
+    "sport": "Equestrian Dressage (Equestrian)",
+    "era": "2020s",
+    "total_medals": 3,
+    "avg_height_cm": 176.5,
+    "avg_weight_kg": 71.5,
+    "top_regions": [
+      "Nordrhein-Westfalen",
+      "Washington"
+    ]
+  },
+  {
+    "sport": "Cycling Mountain Bike (Cycling)",
+    "era": "1990s",
+    "total_medals": 1,
+    "avg_height_cm": 165.0,
+    "avg_weight_kg": 57.0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Cycling Road (Cycling)",
+    "era": "1980s",
+    "total_medals": 7,
+    "avg_height_cm": 179.6,
+    "avg_weight_kg": 67.9,
+    "top_regions": [
+      "Colorado",
+      "Hawai\u02bbi",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Cycling Track (Cycling)",
+    "era": "1990s",
+    "total_medals": 4,
+    "avg_height_cm": 180.2,
+    "avg_weight_kg": 77.2,
+    "top_regions": [
+      "Pennsylvania",
+      "Hawai\u02bbi"
+    ]
+  },
+  {
+    "sport": "Cycling Track (Cycling)",
+    "era": "1900s",
+    "total_medals": 22,
+    "avg_height_cm": 175.4,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "California",
+      "England"
+    ]
+  },
+  {
+    "sport": "Cycling Road (Cycling)",
+    "era": "1910s",
+    "total_medals": 10,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "Missouri",
+      "Rhode Island"
+    ]
+  },
+  {
+    "sport": "Cycling Track (Cycling)",
+    "era": "1980s",
+    "total_medals": 10,
+    "avg_height_cm": 175.4,
+    "avg_weight_kg": 71.5,
+    "top_regions": [
+      "California",
+      "Michigan",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Cycling Track (Cycling)",
+    "era": "2000s",
+    "total_medals": 1,
+    "avg_height_cm": 187.0,
+    "avg_weight_kg": 96.0,
+    "top_regions": [
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Polo",
+    "era": "1900s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": []
+  },
+  {
+    "sport": "Jeu De Paume",
+    "era": "1900s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York"
+    ]
+  },
+  {
+    "sport": "Lacrosse",
+    "era": "1900s",
+    "total_medals": 12,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ontario",
+      "Missouri",
+      "Qu\u00e9bec"
+    ]
+  },
+  {
+    "sport": "Tug-Of-War",
+    "era": "1900s",
+    "total_medals": 18,
+    "avg_height_cm": 171.0,
+    "avg_weight_kg": 75.0,
+    "top_regions": [
+      "Cham",
+      "Missouri",
+      "Oslo"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1900s",
+    "total_medals": 182,
+    "avg_height_cm": 179.8,
+    "avg_weight_kg": 75.0,
+    "top_regions": [
+      "New York",
+      "Pennsylvania",
+      "Indiana"
+    ]
+  },
+  {
+    "sport": "Hockey",
+    "era": "1980s",
+    "total_medals": 16,
+    "avg_height_cm": 167.9,
+    "avg_weight_kg": 59.9,
+    "top_regions": [
+      "Pennsylvania",
+      "California",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Hockey",
+    "era": "1930s",
+    "total_medals": 14,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 79.0,
+    "top_regions": [
+      "Pennsylvania",
+      "New Jersey",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "1930s",
+    "total_medals": 13,
+    "avg_height_cm": 182.2,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Massachusetts",
+      "New York",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "1960s",
+    "total_medals": 2,
+    "avg_height_cm": 181.5,
+    "avg_weight_kg": 77.0,
+    "top_regions": [
+      "New York",
+      "Budapest"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "1920s",
+    "total_medals": 6,
+    "avg_height_cm": 179.8,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Illinois",
+      "Massachusetts",
+      "San Francisco"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "1940s",
+    "total_medals": 6,
+    "avg_height_cm": 180.3,
+    "avg_weight_kg": 77.7,
+    "top_regions": [
+      "New Jersey",
+      "Budapest",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "1900s",
+    "total_medals": 13,
+    "avg_height_cm": 181.9,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ohio",
+      "New York",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "1980s",
+    "total_medals": 1,
+    "avg_height_cm": 175.0,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Football (Football)",
+    "era": "1990s",
+    "total_medals": 15,
+    "avg_height_cm": 167.2,
+    "avg_weight_kg": 59.1,
+    "top_regions": [
+      "California",
+      "New Jersey",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Football (Football)",
+    "era": "2000s",
+    "total_medals": 47,
+    "avg_height_cm": 167.7,
+    "avg_weight_kg": 61.6,
+    "top_regions": [
+      "California",
+      "New Jersey",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Football (Football)",
+    "era": "1900s",
+    "total_medals": 22,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Missouri",
+      "Illinois",
+      "Tennessee"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "1940s",
+    "total_medals": 8,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "Pennsylvania",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "1980s",
+    "total_medals": 27,
+    "avg_height_cm": 158.2,
+    "avg_weight_kg": 52.4,
+    "top_regions": [
+      "California",
+      "West Virginia",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "1990s",
+    "total_medals": 22,
+    "avg_height_cm": 151.3,
+    "avg_weight_kg": 44.1,
+    "top_regions": [
+      "Missouri",
+      "Maryland",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "2000s",
+    "total_medals": 45,
+    "avg_height_cm": 156.8,
+    "avg_weight_kg": 51.1,
+    "top_regions": [
+      "Texas",
+      "Wisconsin",
+      "Iowa"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "1900s",
+    "total_medals": 44,
+    "avg_height_cm": 170.2,
+    "avg_weight_kg": 71.0,
+    "top_regions": [
+      "Illinois",
+      "Schwedeneck",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "1930s",
+    "total_medals": 20,
+    "avg_height_cm": 167.0,
+    "avg_weight_kg": 59.0,
+    "top_regions": [
+      "New Jersey",
+      "California",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "1970s",
+    "total_medals": 1,
+    "avg_height_cm": 170.0,
+    "avg_weight_kg": 58.0,
+    "top_regions": [
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "1920s",
+    "total_medals": 1,
+    "avg_height_cm": 172.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York"
+    ]
+  },
+  {
+    "sport": "Judo",
+    "era": "1980s",
+    "total_medals": 4,
+    "avg_height_cm": 174.2,
+    "avg_weight_kg": 71.5,
+    "top_regions": [
+      "Hawai\u02bbi",
+      "Illinois",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Judo",
+    "era": "1960s",
+    "total_medals": 1,
+    "avg_height_cm": 170.0,
+    "avg_weight_kg": 80.0,
+    "top_regions": [
+      "District of Columbia"
+    ]
+  },
+  {
+    "sport": "Judo",
+    "era": "1970s",
+    "total_medals": 1,
+    "avg_height_cm": 188.0,
+    "avg_weight_kg": 114.0,
+    "top_regions": [
+      "New York"
+    ]
+  },
+  {
+    "sport": "Judo",
+    "era": "1990s",
+    "total_medals": 2,
+    "avg_height_cm": 176.5,
+    "avg_weight_kg": 76.5,
+    "top_regions": [
+      "New York",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Judo",
+    "era": "2000s",
+    "total_medals": 2,
+    "avg_height_cm": 172.5,
+    "avg_weight_kg": 71.5,
+    "top_regions": [
+      "Massachusetts",
+      "California"
+    ]
+  },
+  {
+    "sport": "Modern Pentathlon",
+    "era": "1950s",
+    "total_medals": 3,
+    "avg_height_cm": 182.0,
+    "avg_weight_kg": 76.0,
+    "top_regions": [
+      "New Jersey",
+      "Michigan",
+      "Iowa"
+    ]
+  },
+  {
+    "sport": "Modern Pentathlon",
+    "era": "1960s",
+    "total_medals": 6,
+    "avg_height_cm": 183.7,
+    "avg_weight_kg": 76.8,
+    "top_regions": [
+      "California",
+      "Michigan",
+      "Mississippi"
+    ]
+  },
+  {
+    "sport": "Modern Pentathlon",
+    "era": "1980s",
+    "total_medals": 3,
+    "avg_height_cm": 182.0,
+    "avg_weight_kg": 76.7,
+    "top_regions": [
+      "California",
+      "Virginia"
+    ]
+  },
+  {
+    "sport": "Modern Pentathlon",
+    "era": "1930s",
+    "total_medals": 2,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Minnesota",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Modern Pentathlon",
+    "era": "1940s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1980s",
+    "total_medals": 52,
+    "avg_height_cm": 184.7,
+    "avg_weight_kg": 80.7,
+    "top_regions": [
+      "California",
+      "New York",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1990s",
+    "total_medals": 22,
+    "avg_height_cm": 184.2,
+    "avg_weight_kg": 78.6,
+    "top_regions": [
+      "New Jersey",
+      "California",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1970s",
+    "total_medals": 21,
+    "avg_height_cm": 182.3,
+    "avg_weight_kg": 76.1,
+    "top_regions": [
+      "Massachusetts",
+      "Wisconsin",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "2000s",
+    "total_medals": 43,
+    "avg_height_cm": 185.3,
+    "avg_weight_kg": 81.6,
+    "top_regions": [
+      "California",
+      "New York",
+      "Connecticut"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1900s",
+    "total_medals": 45,
+    "avg_height_cm": 178.7,
+    "avg_weight_kg": 69.8,
+    "top_regions": [
+      "Pennsylvania",
+      "Missouri",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1930s",
+    "total_medals": 25,
+    "avg_height_cm": 183.8,
+    "avg_weight_kg": 75.3,
+    "top_regions": [
+      "Washington",
+      "Pennsylvania",
+      "California"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1940s",
+    "total_medals": 18,
+    "avg_height_cm": 196.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Washington",
+      "California",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1960s",
+    "total_medals": 30,
+    "avg_height_cm": 190.2,
+    "avg_weight_kg": 84.2,
+    "top_regions": [
+      "California",
+      "Washington",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1950s",
+    "total_medals": 37,
+    "avg_height_cm": 187.2,
+    "avg_weight_kg": 81.1,
+    "top_regions": [
+      "Michigan",
+      "Washington",
+      "California"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "1920s",
+    "total_medals": 55,
+    "avg_height_cm": 183.3,
+    "avg_weight_kg": 77.3,
+    "top_regions": [
+      "Pennsylvania",
+      "California",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1970s",
+    "total_medals": 15,
+    "avg_height_cm": 183.3,
+    "avg_weight_kg": 84.7,
+    "top_regions": [
+      "Texas",
+      "California",
+      "Hawai\u02bbi"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1980s",
+    "total_medals": 7,
+    "avg_height_cm": 178.1,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "Montana",
+      "California",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1990s",
+    "total_medals": 5,
+    "avg_height_cm": 172.2,
+    "avg_weight_kg": 77.0,
+    "top_regions": [
+      "Washington",
+      "California",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "2000s",
+    "total_medals": 12,
+    "avg_height_cm": 172.2,
+    "avg_weight_kg": 79.8,
+    "top_regions": [
+      "California",
+      "New Jersey",
+      "Alabama"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "2010s",
+    "total_medals": 7,
+    "avg_height_cm": 165.6,
+    "avg_weight_kg": 72.6,
+    "top_regions": [
+      "California",
+      "New Jersey",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1970s",
+    "total_medals": 7,
+    "avg_height_cm": 174.3,
+    "avg_weight_kg": 76.4,
+    "top_regions": [
+      "Texas",
+      "Kansas",
+      "California"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1910s",
+    "total_medals": 37,
+    "avg_height_cm": 181.6,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ohio",
+      "New York",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1960s",
+    "total_medals": 12,
+    "avg_height_cm": 179.0,
+    "avg_weight_kg": 82.0,
+    "top_regions": [
+      "Illinois",
+      "Nebraska",
+      "Montana"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1920s",
+    "total_medals": 85,
+    "avg_height_cm": 179.3,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ohio",
+      "New York",
+      "Kentucky"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1900s",
+    "total_medals": 14,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ohio",
+      "Massachusetts",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1950s",
+    "total_medals": 3,
+    "avg_height_cm": 177.7,
+    "avg_weight_kg": 84.7,
+    "top_regions": [
+      "Arkansas",
+      "New York",
+      "Kentucky"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1940s",
+    "total_medals": 2,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "District of Columbia",
+      "Kyiv"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "1890s",
+    "total_medals": 3,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1900s",
+    "total_medals": 46,
+    "avg_height_cm": 180.7,
+    "avg_weight_kg": 69.6,
+    "top_regions": [
+      "New York",
+      "Ohio",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Artistic Swimming (Aquatics)",
+    "era": "2000s",
+    "total_medals": 11,
+    "avg_height_cm": 168.7,
+    "avg_weight_kg": 58.1,
+    "top_regions": [
+      "California",
+      "St. Petersburg",
+      "Arizona"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1990s",
+    "total_medals": 116,
+    "avg_height_cm": 181.1,
+    "avg_weight_kg": 72.7,
+    "top_regions": [
+      "California",
+      "Florida",
+      "Virginia"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1950s",
+    "total_medals": 32,
+    "avg_height_cm": 174.7,
+    "avg_weight_kg": 69.6,
+    "top_regions": [
+      "Hawai\u02bbi",
+      "New York",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1980s",
+    "total_medals": 108,
+    "avg_height_cm": 181.9,
+    "avg_weight_kg": 73.2,
+    "top_regions": [
+      "California",
+      "Florida",
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1970s",
+    "total_medals": 104,
+    "avg_height_cm": 181.7,
+    "avg_weight_kg": 73.2,
+    "top_regions": [
+      "California",
+      "Illinois",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Artistic Swimming (Aquatics)",
+    "era": "1990s",
+    "total_medals": 13,
+    "avg_height_cm": 167.9,
+    "avg_weight_kg": 55.3,
+    "top_regions": [
+      "California",
+      "Florida",
+      "Connecticut"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1960s",
+    "total_medals": 138,
+    "avg_height_cm": 178.2,
+    "avg_weight_kg": 70.2,
+    "top_regions": [
+      "California",
+      "New York",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1920s",
+    "total_medals": 65,
+    "avg_height_cm": 171.5,
+    "avg_weight_kg": 66.2,
+    "top_regions": [
+      "Hawai\u02bbi",
+      "New York",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "2000s",
+    "total_medals": 199,
+    "avg_height_cm": 184.6,
+    "avg_weight_kg": 78.5,
+    "top_regions": [
+      "California",
+      "Maryland",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1920s",
+    "total_medals": 29,
+    "avg_height_cm": 156.4,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California",
+      "Kansas",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1930s",
+    "total_medals": 29,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California",
+      "New York",
+      "Washington"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1960s",
+    "total_medals": 20,
+    "avg_height_cm": 170.7,
+    "avg_weight_kg": 62.0,
+    "top_regions": [
+      "New York",
+      "Arizona",
+      "California"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1970s",
+    "total_medals": 8,
+    "avg_height_cm": 169.2,
+    "avg_weight_kg": 62.4,
+    "top_regions": [
+      "Ohio",
+      "Alabama",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1990s",
+    "total_medals": 5,
+    "avg_height_cm": 163.0,
+    "avg_weight_kg": 63.4,
+    "top_regions": [
+      "Pennsylvania",
+      "Alabama",
+      "Vicenza"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1930s",
+    "total_medals": 23,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California",
+      "Utah",
+      "Tennessee"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1940s",
+    "total_medals": 21,
+    "avg_height_cm": 180.2,
+    "avg_weight_kg": 81.8,
+    "top_regions": [
+      "Pennsylvania",
+      "California",
+      "Hawai\u02bbi"
+    ]
+  },
+  {
+    "sport": "Artistic Swimming (Aquatics)",
+    "era": "1980s",
+    "total_medals": 6,
+    "avg_height_cm": 162.0,
+    "avg_weight_kg": 54.2,
+    "top_regions": [
+      "Hawai\u02bbi",
+      "Connecticut",
+      "Washington"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1940s",
+    "total_medals": 10,
+    "avg_height_cm": 186.0,
+    "avg_weight_kg": 60.0,
+    "top_regions": [
+      "California",
+      "Pennsylvania",
+      "Iowa"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1980s",
+    "total_medals": 13,
+    "avg_height_cm": 168.8,
+    "avg_weight_kg": 61.8,
+    "top_regions": [
+      "California",
+      "Arizona",
+      "Mississippi"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1950s",
+    "total_medals": 18,
+    "avg_height_cm": 164.6,
+    "avg_weight_kg": 57.9,
+    "top_regions": [
+      "California",
+      "New York",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "1930s",
+    "total_medals": 7,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California",
+      "New Hampshire",
+      "South Dakota"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "1900s",
+    "total_medals": 4,
+    "avg_height_cm": 166.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "1910s",
+    "total_medals": 7,
+    "avg_height_cm": 176.7,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Illinois",
+      "Hawai\u02bbi"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "1980s",
+    "total_medals": 26,
+    "avg_height_cm": 189.8,
+    "avg_weight_kg": 89.2,
+    "top_regions": [
+      "California",
+      "Utah",
+      "Mississippi"
+    ]
+  },
+  {
+    "sport": "Beach Volleyball (Volleyball)",
+    "era": "2000s",
+    "total_medals": 10,
+    "avg_height_cm": 186.0,
+    "avg_weight_kg": 78.5,
+    "top_regions": [
+      "California",
+      "Aargau"
+    ]
+  },
+  {
+    "sport": "Beach Volleyball (Volleyball)",
+    "era": "1990s",
+    "total_medals": 4,
+    "avg_height_cm": 195.8,
+    "avg_weight_kg": 90.2,
+    "top_regions": [
+      "California",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Volleyball (Volleyball)",
+    "era": "1980s",
+    "total_medals": 36,
+    "avg_height_cm": 189.4,
+    "avg_weight_kg": 81.3,
+    "top_regions": [
+      "California",
+      "Michigan",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Volleyball (Volleyball)",
+    "era": "1990s",
+    "total_medals": 24,
+    "avg_height_cm": 186.6,
+    "avg_weight_kg": 78.7,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Volleyball (Volleyball)",
+    "era": "2000s",
+    "total_medals": 24,
+    "avg_height_cm": 191.5,
+    "avg_weight_kg": 86.4,
+    "top_regions": [
+      "California",
+      "Hawai\u02bbi",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Volleyball (Volleyball)",
+    "era": "2010s",
+    "total_medals": 36,
+    "avg_height_cm": 189.1,
+    "avg_weight_kg": 80.6,
+    "top_regions": [
+      "California",
+      "Hawai\u02bbi",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "1970s",
+    "total_medals": 11,
+    "avg_height_cm": 186.7,
+    "avg_weight_kg": 85.3,
+    "top_regions": [
+      "California",
+      "Delaware",
+      "Indiana"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "1920s",
+    "total_medals": 7,
+    "avg_height_cm": 185.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California",
+      "New York",
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "1900s",
+    "total_medals": 7,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Missouri",
+      "Michigan",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "1950s",
+    "total_medals": 13,
+    "avg_height_cm": 170.6,
+    "avg_weight_kg": 95.7,
+    "top_regions": [
+      "Ohio",
+      "New York",
+      "California"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "1960s",
+    "total_medals": 9,
+    "avg_height_cm": 171.0,
+    "avg_weight_kg": 101.0,
+    "top_regions": [
+      "Ohio",
+      "Michigan",
+      "District of Columbia"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "1980s",
+    "total_medals": 2,
+    "avg_height_cm": 185.5,
+    "avg_weight_kg": 110.0,
+    "top_regions": [
+      "Ohio",
+      "California"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "1940s",
+    "total_medals": 8,
+    "avg_height_cm": 166.5,
+    "avg_weight_kg": 68.5,
+    "top_regions": [
+      "New York",
+      "New Jersey",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "1930s",
+    "total_medals": 3,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Messina",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "1970s",
+    "total_medals": 1,
+    "avg_height_cm": 173.0,
+    "avg_weight_kg": 90.0,
+    "top_regions": [
+      "Mississippi"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "1900s",
+    "total_medals": 3,
+    "avg_height_cm": 176.0,
+    "avg_weight_kg": 105.0,
+    "top_regions": [
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1920s",
+    "total_medals": 14,
+    "avg_height_cm": 168.7,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Iowa",
+      "New York",
+      "Poltava"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1990s",
+    "total_medals": 16,
+    "avg_height_cm": 173.8,
+    "avg_weight_kg": 82.0,
+    "top_regions": [
+      "New Jersey",
+      "Oklahoma",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1980s",
+    "total_medals": 19,
+    "avg_height_cm": 175.9,
+    "avg_weight_kg": 85.4,
+    "top_regions": [
+      "New York",
+      "South Dakota",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1900s",
+    "total_medals": 22,
+    "avg_height_cm": 163.5,
+    "avg_weight_kg": 56.0,
+    "top_regions": [
+      "New Jersey",
+      "New York",
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1960s",
+    "total_medals": 6,
+    "avg_height_cm": 171.0,
+    "avg_weight_kg": 67.3,
+    "top_regions": [
+      "Oklahoma",
+      "Washington",
+      "Tennessee"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1950s",
+    "total_medals": 6,
+    "avg_height_cm": 180.0,
+    "avg_weight_kg": 97.3,
+    "top_regions": [
+      "Oklahoma",
+      "Ohio",
+      "Oregon"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1940s",
+    "total_medals": 4,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Iowa",
+      "Illinois",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1970s",
+    "total_medals": 12,
+    "avg_height_cm": 178.3,
+    "avg_weight_kg": 85.2,
+    "top_regions": [
+      "Wisconsin",
+      "Montana",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "1930s",
+    "total_medals": 9,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Oklahoma",
+      "Texas",
+      "Kansas"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1990s",
+    "total_medals": 20,
+    "avg_height_cm": 181.3,
+    "avg_weight_kg": 77.8,
+    "top_regions": [
+      "California",
+      "Florida",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "2000s",
+    "total_medals": 14,
+    "avg_height_cm": 179.1,
+    "avg_weight_kg": 76.1,
+    "top_regions": [
+      "California",
+      "New York",
+      "Colorado"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1980s",
+    "total_medals": 23,
+    "avg_height_cm": 180.7,
+    "avg_weight_kg": 79.7,
+    "top_regions": [
+      "California",
+      "Washington",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1950s",
+    "total_medals": 15,
+    "avg_height_cm": 185.3,
+    "avg_weight_kg": 95.3,
+    "top_regions": [
+      "New York",
+      "Pennsylvania",
+      "Noord-Holland"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1930s",
+    "total_medals": 19,
+    "avg_height_cm": 167.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California",
+      "District of Columbia",
+      "Louisiana"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1960s",
+    "total_medals": 21,
+    "avg_height_cm": 183.3,
+    "avg_weight_kg": 84.3,
+    "top_regions": [
+      "Massachusetts",
+      "Illinois",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1910s",
+    "total_medals": 49,
+    "avg_height_cm": 179.7,
+    "avg_weight_kg": 76.7,
+    "top_regions": [
+      "New York",
+      "New Jersey",
+      "California"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1940s",
+    "total_medals": 10,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 70.0,
+    "top_regions": [
+      "New York",
+      "Nova Scotia",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "1900s",
+    "total_medals": 2,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Paris"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1980s",
+    "total_medals": 96,
+    "avg_height_cm": 177.8,
+    "avg_weight_kg": 70.7,
+    "top_regions": [
+      "California",
+      "Alabama",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1990s",
+    "total_medals": 87,
+    "avg_height_cm": 178.7,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Georgia"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1960s",
+    "total_medals": 102,
+    "avg_height_cm": 182.5,
+    "avg_weight_kg": 79.1,
+    "top_regions": [
+      "California",
+      "Mississippi",
+      "Georgia"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1930s",
+    "total_medals": 78,
+    "avg_height_cm": 179.6,
+    "avg_weight_kg": 72.4,
+    "top_regions": [
+      "California",
+      "Missouri",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1970s",
+    "total_medals": 59,
+    "avg_height_cm": 181.6,
+    "avg_weight_kg": 75.4,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1940s",
+    "total_medals": 33,
+    "avg_height_cm": 181.9,
+    "avg_weight_kg": 76.8,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1920s",
+    "total_medals": 120,
+    "avg_height_cm": 179.4,
+    "avg_weight_kg": 74.1,
+    "top_regions": [
+      "New York",
+      "Illinois",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1950s",
+    "total_medals": 80,
+    "avg_height_cm": 182.3,
+    "avg_weight_kg": 77.9,
+    "top_regions": [
+      "Texas",
+      "New Jersey",
+      "California"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "2000s",
+    "total_medals": 99,
+    "avg_height_cm": 179.1,
+    "avg_weight_kg": 74.8,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Georgia"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "1890s",
+    "total_medals": 17,
+    "avg_height_cm": 180.1,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "Massachusetts",
+      "Maryland",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1950s",
+    "total_medals": 10,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Washington",
+      "Massachusetts",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "1980s",
+    "total_medals": 6,
+    "avg_height_cm": 172.7,
+    "avg_weight_kg": 71.2,
+    "top_regions": [
+      "Washington",
+      "California",
+      "Oregon"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1960s",
+    "total_medals": 8,
+    "avg_height_cm": 169.0,
+    "avg_weight_kg": 64.5,
+    "top_regions": [
+      "Illinois",
+      "Michigan",
+      "Vermont"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1980s",
+    "total_medals": 11,
+    "avg_height_cm": 175.0,
+    "avg_weight_kg": 70.6,
+    "top_regions": [
+      "Wisconsin",
+      "New York",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1990s",
+    "total_medals": 7,
+    "avg_height_cm": 168.1,
+    "avg_weight_kg": 65.1,
+    "top_regions": [
+      "New York",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1920s",
+    "total_medals": 3,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1980s",
+    "total_medals": 10,
+    "avg_height_cm": 164.4,
+    "avg_weight_kg": 55.7,
+    "top_regions": [
+      "California",
+      "Massachusetts",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Short Track Speed Skating (Skating)",
+    "era": "1990s",
+    "total_medals": 15,
+    "avg_height_cm": 166.9,
+    "avg_weight_kg": 63.3,
+    "top_regions": [
+      "Minnesota",
+      "New York",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "1970s",
+    "total_medals": 3,
+    "avg_height_cm": 161.7,
+    "avg_weight_kg": 56.3,
+    "top_regions": [
+      "New Hampshire",
+      "Washington",
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1960s",
+    "total_medals": 10,
+    "avg_height_cm": 164.4,
+    "avg_weight_kg": 63.4,
+    "top_regions": [
+      "California",
+      "Illinois",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "1940s",
+    "total_medals": 2,
+    "avg_height_cm": 163.0,
+    "avg_weight_kg": 53.0,
+    "top_regions": [
+      "Washington"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1970s",
+    "total_medals": 4,
+    "avg_height_cm": 159.3,
+    "avg_weight_kg": 51.7,
+    "top_regions": [
+      "Illinois",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1970s",
+    "total_medals": 10,
+    "avg_height_cm": 168.8,
+    "avg_weight_kg": 63.0,
+    "top_regions": [
+      "Illinois",
+      "Michigan",
+      "North Carolina"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1990s",
+    "total_medals": 6,
+    "avg_height_cm": 157.0,
+    "avg_weight_kg": 47.8,
+    "top_regions": [
+      "Massachusetts",
+      "California",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "1990s",
+    "total_medals": 7,
+    "avg_height_cm": 170.7,
+    "avg_weight_kg": 74.0,
+    "top_regions": [
+      "New York",
+      "Idaho",
+      "Montana"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1930s",
+    "total_medals": 3,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Massachusetts",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Freestyle Skiing (Skiing)",
+    "era": "1990s",
+    "total_medals": 6,
+    "avg_height_cm": 174.8,
+    "avg_weight_kg": 68.7,
+    "top_regions": [
+      "New Jersey",
+      "New Hampshire",
+      "Montana"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "1950s",
+    "total_medals": 2,
+    "avg_height_cm": 173.0,
+    "avg_weight_kg": 59.0,
+    "top_regions": [
+      "Vermont"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "1960s",
+    "total_medals": 7,
+    "avg_height_cm": 169.0,
+    "avg_weight_kg": 70.8,
+    "top_regions": [
+      "Queens",
+      "Oregon",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "2000s",
+    "total_medals": 15,
+    "avg_height_cm": 176.3,
+    "avg_weight_kg": 73.3,
+    "top_regions": [
+      "North Carolina",
+      "Texas",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "1920s",
+    "total_medals": 20,
+    "avg_height_cm": 173.5,
+    "avg_weight_kg": 75.3,
+    "top_regions": [
+      "Massachusetts",
+      "Minnesota",
+      "Ontario"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "1970s",
+    "total_medals": 16,
+    "avg_height_cm": 180.6,
+    "avg_weight_kg": 82.6,
+    "top_regions": [
+      "Minnesota",
+      "Massachusetts",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "1930s",
+    "total_medals": 24,
+    "avg_height_cm": 178.8,
+    "avg_weight_kg": 75.3,
+    "top_regions": [
+      "Massachusetts",
+      "New York",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "1950s",
+    "total_medals": 32,
+    "avg_height_cm": 177.9,
+    "avg_weight_kg": 77.8,
+    "top_regions": [
+      "Minnesota",
+      "Massachusetts",
+      "Ontario"
+    ]
+  },
+  {
+    "sport": "Bobsleigh (Bobsleigh)",
+    "era": "1950s",
+    "total_medals": 10,
+    "avg_height_cm": 183.0,
+    "avg_weight_kg": 114.0,
+    "top_regions": [
+      "New York",
+      "Florida",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "1980s",
+    "total_medals": 19,
+    "avg_height_cm": 180.4,
+    "avg_weight_kg": 82.1,
+    "top_regions": [
+      "Minnesota",
+      "Massachusetts",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1940s",
+    "total_medals": 2,
+    "avg_height_cm": 170.0,
+    "avg_weight_kg": 64.0,
+    "top_regions": [
+      "North Dakota",
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Bobsleigh (Bobsleigh)",
+    "era": "1940s",
+    "total_medals": 10,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "1940s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "2000s",
+    "total_medals": 63,
+    "avg_height_cm": 175.3,
+    "avg_weight_kg": 77.6,
+    "top_regions": [
+      "Massachusetts",
+      "New York",
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "1960s",
+    "total_medals": 17,
+    "avg_height_cm": 179.4,
+    "avg_weight_kg": 79.6,
+    "top_regions": [
+      "Minnesota",
+      "Massachusetts",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Bobsleigh (Bobsleigh)",
+    "era": "1920s",
+    "total_medals": 11,
+    "avg_height_cm": 173.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "Illinois",
+      "Connecticut"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1920s",
+    "total_medals": 2,
+    "avg_height_cm": 176.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Indiana",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1930s",
+    "total_medals": 6,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "New York",
+      "Illinois",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Luge",
+    "era": "1990s",
+    "total_medals": 4,
+    "avg_height_cm": 181.0,
+    "avg_weight_kg": 79.5,
+    "top_regions": [
+      "Michigan",
+      "New York",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Luge",
+    "era": "2000s",
+    "total_medals": 4,
+    "avg_height_cm": 180.2,
+    "avg_weight_kg": 83.0,
+    "top_regions": [
+      "Michigan",
+      "Ontario",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Cross Country Skiing (Skiing)",
+    "era": "1920s",
+    "total_medals": 1,
+    "avg_height_cm": 179.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Vestfold og Telemark"
+    ]
+  },
+  {
+    "sport": "Skeleton (Bobsleigh)",
+    "era": "1920s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Connecticut"
+    ]
+  },
+  {
+    "sport": "Skeleton (Bobsleigh)",
+    "era": "1940s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Connecticut"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "1950s",
+    "total_medals": 2,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Illinois",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Bobsleigh (Bobsleigh)",
+    "era": "2000s",
+    "total_medals": 12,
+    "avg_height_cm": 178.9,
+    "avg_weight_kg": 87.9,
+    "top_regions": [
+      "Illinois",
+      "Utah",
+      "North Carolina"
+    ]
+  },
+  {
+    "sport": "Cross Country Skiing (Skiing)",
+    "era": "1970s",
+    "total_medals": 1,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 75.0,
+    "top_regions": [
+      "Vermont"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "2010s",
+    "total_medals": 88,
+    "avg_height_cm": 176.8,
+    "avg_weight_kg": 70.0,
+    "top_regions": [
+      "California",
+      "New York",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Modern Pentathlon",
+    "era": "2000s",
+    "total_medals": 1,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 63.0,
+    "top_regions": [
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Baseball (Baseball/Softball)",
+    "era": "2000s",
+    "total_medals": 48,
+    "avg_height_cm": 186.4,
+    "avg_weight_kg": 90.6,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Georgia"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "2000s",
+    "total_medals": 7,
+    "avg_height_cm": 179.6,
+    "avg_weight_kg": 70.0,
+    "top_regions": [
+      "Texas",
+      "Arkansas",
+      "District of Columbia"
+    ]
+  },
+  {
+    "sport": "Canoe Slalom (Canoeing)",
+    "era": "2000s",
+    "total_medals": 1,
+    "avg_height_cm": 165.0,
+    "avg_weight_kg": 63.0,
+    "top_regions": [
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Cycling Road (Cycling)",
+    "era": "2000s",
+    "total_medals": 5,
+    "avg_height_cm": 173.0,
+    "avg_weight_kg": 59.4,
+    "top_regions": [
+      "Wisconsin",
+      "Texas",
+      "Montana"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "2010s",
+    "total_medals": 13,
+    "avg_height_cm": 173.1,
+    "avg_weight_kg": 70.9,
+    "top_regions": [
+      "Texas",
+      "California",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "2000s",
+    "total_medals": 1,
+    "avg_height_cm": 168.0,
+    "avg_weight_kg": 57.0,
+    "top_regions": [
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "2000s",
+    "total_medals": 10,
+    "avg_height_cm": 175.9,
+    "avg_weight_kg": 68.2,
+    "top_regions": [
+      "Wisconsin",
+      "Illinois",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "2020s",
+    "total_medals": 3,
+    "avg_height_cm": 172.0,
+    "avg_weight_kg": 64.0,
+    "top_regions": [
+      "South Carolina",
+      "New York",
+      "California"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "2000s",
+    "total_medals": 15,
+    "avg_height_cm": 174.7,
+    "avg_weight_kg": 70.8,
+    "top_regions": [
+      "New York",
+      "Minnesota",
+      "Oregon"
+    ]
+  },
+  {
+    "sport": "Football (Football)",
+    "era": "2010s",
+    "total_medals": 17,
+    "avg_height_cm": 169.4,
+    "avg_weight_kg": 64.4,
+    "top_regions": [
+      "California",
+      "New Jersey",
+      "Washington"
+    ]
+  },
+  {
+    "sport": "Nordic Combined (Skiing)",
+    "era": "2010s",
+    "total_medals": 7,
+    "avg_height_cm": 178.9,
+    "avg_weight_kg": 65.6,
+    "top_regions": [
+      "Colorado",
+      "New York",
+      "Utah"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "2010s",
+    "total_medals": 138,
+    "avg_height_cm": 186.2,
+    "avg_weight_kg": 80.7,
+    "top_regions": [
+      "California",
+      "New York",
+      "Maryland"
+    ]
+  },
+  {
+    "sport": "Taekwondo",
+    "era": "2000s",
+    "total_medals": 6,
+    "avg_height_cm": 184.8,
+    "avg_weight_kg": 71.8,
+    "top_regions": [
+      "New York",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Beach Volleyball (Volleyball)",
+    "era": "2010s",
+    "total_medals": 6,
+    "avg_height_cm": 185.0,
+    "avg_weight_kg": 73.2,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Tennis",
+    "era": "2010s",
+    "total_medals": 13,
+    "avg_height_cm": 183.9,
+    "avg_weight_kg": 78.1,
+    "top_regions": [
+      "California",
+      "Michigan",
+      "Nebraska"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "2000s",
+    "total_medals": 51,
+    "avg_height_cm": 181.4,
+    "avg_weight_kg": 80.4,
+    "top_regions": [
+      "California",
+      "Oregon",
+      "Idaho"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "2010s",
+    "total_medals": 25,
+    "avg_height_cm": 179.6,
+    "avg_weight_kg": 77.5,
+    "top_regions": [
+      "California",
+      "Illinois",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "2000s",
+    "total_medals": 2,
+    "avg_height_cm": 164.5,
+    "avg_weight_kg": 92.0,
+    "top_regions": [
+      "Georgia",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "2000s",
+    "total_medals": 16,
+    "avg_height_cm": 172.5,
+    "avg_weight_kg": 74.9,
+    "top_regions": [
+      "California",
+      "Wyoming",
+      "Missouri"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "2000s",
+    "total_medals": 4,
+    "avg_height_cm": 181.0,
+    "avg_weight_kg": 83.0,
+    "top_regions": [
+      "New Hampshire",
+      "Nevada",
+      "Utah"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "2010s",
+    "total_medals": 16,
+    "avg_height_cm": 176.2,
+    "avg_weight_kg": 76.9,
+    "top_regions": [
+      "New Hampshire",
+      "Minnesota",
+      "Nevada"
+    ]
+  },
+  {
+    "sport": "Snowboarding (Skiing)",
+    "era": "2000s",
+    "total_medals": 12,
+    "avg_height_cm": 173.2,
+    "avg_weight_kg": 70.5,
+    "top_regions": [
+      "Vermont",
+      "Alaska",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Snowboarding (Skiing)",
+    "era": "1990s",
+    "total_medals": 2,
+    "avg_height_cm": 167.5,
+    "avg_weight_kg": 66.0,
+    "top_regions": [
+      "Vermont",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "2000s",
+    "total_medals": 6,
+    "avg_height_cm": 164.8,
+    "avg_weight_kg": 56.0,
+    "top_regions": [
+      "California",
+      "Illinois",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Short Track Speed Skating (Skating)",
+    "era": "2000s",
+    "total_medals": 9,
+    "avg_height_cm": 173.1,
+    "avg_weight_kg": 70.9,
+    "top_regions": [
+      "Washington",
+      "California",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "1990s",
+    "total_medals": 20,
+    "avg_height_cm": 168.4,
+    "avg_weight_kg": 65.8,
+    "top_regions": [
+      "Massachusetts",
+      "New Hampshire",
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "2010s",
+    "total_medals": 85,
+    "avg_height_cm": 173.4,
+    "avg_weight_kg": 75.2,
+    "top_regions": [
+      "Minnesota",
+      "Wisconsin",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Snowboarding (Skiing)",
+    "era": "2010s",
+    "total_medals": 25,
+    "avg_height_cm": 169.3,
+    "avg_weight_kg": 65.4,
+    "top_regions": [
+      "California",
+      "Colorado",
+      "Idaho"
+    ]
+  },
+  {
+    "sport": "Freestyle Skiing (Skiing)",
+    "era": "2000s",
+    "total_medals": 4,
+    "avg_height_cm": 171.2,
+    "avg_weight_kg": 68.8,
+    "top_regions": [
+      "New York",
+      "Oregon",
+      "Nevada"
+    ]
+  },
+  {
+    "sport": "Cross Country Skiing (Skiing)",
+    "era": "2010s",
+    "total_medals": 2,
+    "avg_height_cm": 164.0,
+    "avg_weight_kg": 59.0,
+    "top_regions": [
+      "Utah",
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Short Track Speed Skating (Skating)",
+    "era": "2010s",
+    "total_medals": 19,
+    "avg_height_cm": 172.7,
+    "avg_weight_kg": 64.8,
+    "top_regions": [
+      "Washington",
+      "California",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Freestyle Skiing (Skiing)",
+    "era": "2010s",
+    "total_medals": 17,
+    "avg_height_cm": 176.2,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "Nevada",
+      "New Hampshire",
+      "California"
+    ]
+  },
+  {
+    "sport": "Skeleton (Bobsleigh)",
+    "era": "2000s",
+    "total_medals": 3,
+    "avg_height_cm": 170.7,
+    "avg_weight_kg": 66.7,
+    "top_regions": [
+      "New Mexico",
+      "West Virginia",
+      "Connecticut"
+    ]
+  },
+  {
+    "sport": "Roque",
+    "era": "1900s",
+    "total_medals": 3,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Illinois",
+      "New York",
+      "Ontario"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "2010s",
+    "total_medals": 48,
+    "avg_height_cm": 193.6,
+    "avg_weight_kg": 90.0,
+    "top_regions": [
+      "California",
+      "New York",
+      "New Jersey"
+    ]
+  },
+  {
+    "sport": "Basketball (Basketball)",
+    "era": "2020s",
+    "total_medals": 23,
+    "avg_height_cm": 193.1,
+    "avg_weight_kg": 87.7,
+    "top_regions": [
+      "California",
+      "New York",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Cycling Road (Cycling)",
+    "era": "2010s",
+    "total_medals": 2,
+    "avg_height_cm": 173.0,
+    "avg_weight_kg": 58.0,
+    "top_regions": [
+      "Idaho"
+    ]
+  },
+  {
+    "sport": "Rowing",
+    "era": "2010s",
+    "total_medals": 27,
+    "avg_height_cm": 183.9,
+    "avg_weight_kg": 79.0,
+    "top_regions": [
+      "California",
+      "New York",
+      "Maine"
+    ]
+  },
+  {
+    "sport": "Bobsleigh (Bobsleigh)",
+    "era": "2010s",
+    "total_medals": 18,
+    "avg_height_cm": 178.3,
+    "avg_weight_kg": 93.2,
+    "top_regions": [
+      "California",
+      "Utah",
+      "Nebraska"
+    ]
+  },
+  {
+    "sport": "Athletics",
+    "era": "2020s",
+    "total_medals": 48,
+    "avg_height_cm": 176.1,
+    "avg_weight_kg": 70.2,
+    "top_regions": [
+      "California",
+      "New York",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "2010s",
+    "total_medals": 17,
+    "avg_height_cm": 179.6,
+    "avg_weight_kg": 75.6,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Oregon"
+    ]
+  },
+  {
+    "sport": "Triathlon",
+    "era": "2000s",
+    "total_medals": 1,
+    "avg_height_cm": 165.0,
+    "avg_weight_kg": 58.0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Cycling Track (Cycling)",
+    "era": "2010s",
+    "total_medals": 10,
+    "avg_height_cm": 172.4,
+    "avg_weight_kg": 66.4,
+    "top_regions": [
+      "California",
+      "Washington",
+      "Kentucky"
+    ]
+  },
+  {
+    "sport": "Equestrian Jumping (Equestrian)",
+    "era": "2010s",
+    "total_medals": 4,
+    "avg_height_cm": 170.5,
+    "avg_weight_kg": 63.5,
+    "top_regions": [
+      "Wisconsin",
+      "New York",
+      "California"
+    ]
+  },
+  {
+    "sport": "Softball (Baseball/Softball)",
+    "era": "2020s",
+    "total_medals": 15,
+    "avg_height_cm": 172.9,
+    "avg_weight_kg": 83.5,
+    "top_regions": [
+      "California",
+      "Texas",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "2010s",
+    "total_medals": 11,
+    "avg_height_cm": 178.8,
+    "avg_weight_kg": 75.4,
+    "top_regions": [
+      "Illinois",
+      "Texas",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Luge",
+    "era": "2010s",
+    "total_medals": 4,
+    "avg_height_cm": 180.0,
+    "avg_weight_kg": 86.0,
+    "top_regions": [
+      "New York",
+      "Massachusetts",
+      "Maryland"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "2010s",
+    "total_medals": 23,
+    "avg_height_cm": 169.9,
+    "avg_weight_kg": 62.0,
+    "top_regions": [
+      "Michigan",
+      "Illinois",
+      "Massachusetts"
+    ]
+  },
+  {
+    "sport": "Curling",
+    "era": "2000s",
+    "total_medals": 4,
+    "avg_height_cm": 180.8,
+    "avg_weight_kg": 82.0,
+    "top_regions": [
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Curling",
+    "era": "2010s",
+    "total_medals": 4,
+    "avg_height_cm": 183.5,
+    "avg_weight_kg": 88.5,
+    "top_regions": [
+      "Minnesota",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Snowboarding (Skiing)",
+    "era": "2020s",
+    "total_medals": 6,
+    "avg_height_cm": 168.8,
+    "avg_weight_kg": 65.6,
+    "top_regions": [
+      "Connecticut",
+      "California",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Football (Football)",
+    "era": "2020s",
+    "total_medals": 19,
+    "avg_height_cm": 169.7,
+    "avg_weight_kg": 62.4,
+    "top_regions": [
+      "California",
+      "New Jersey",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Archery",
+    "era": "2010s",
+    "total_medals": 7,
+    "avg_height_cm": 179.6,
+    "avg_weight_kg": 76.4,
+    "top_regions": [
+      "Arizona",
+      "New York",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Judo",
+    "era": "2010s",
+    "total_medals": 4,
+    "avg_height_cm": 172.0,
+    "avg_weight_kg": 71.5,
+    "top_regions": [
+      "Washington",
+      "Ohio"
+    ]
+  },
+  {
+    "sport": "Cycling BMX Racing (Cycling)",
+    "era": "2000s",
+    "total_medals": 3,
+    "avg_height_cm": 175.3,
+    "avg_weight_kg": 75.3,
+    "top_regions": [
+      "California",
+      "Washington"
+    ]
+  },
+  {
+    "sport": "Cycling Mountain Bike (Cycling)",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 175.0,
+    "avg_weight_kg": 61.0,
+    "top_regions": [
+      "Maryland"
+    ]
+  },
+  {
+    "sport": "Swimming (Aquatics)",
+    "era": "2020s",
+    "total_medals": 57,
+    "avg_height_cm": 184.2,
+    "avg_weight_kg": 77.3,
+    "top_regions": [
+      "Florida",
+      "Indiana",
+      "Pennsylvania"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "2010s",
+    "total_medals": 8,
+    "avg_height_cm": 173.8,
+    "avg_weight_kg": 81.2,
+    "top_regions": [
+      "Maryland",
+      "Hawai\u02bbi",
+      "California"
+    ]
+  },
+  {
+    "sport": "Shooting",
+    "era": "2020s",
+    "total_medals": 8,
+    "avg_height_cm": 172.1,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "Florida",
+      "Louisiana",
+      "Arkansas"
+    ]
+  },
+  {
+    "sport": "Fencing",
+    "era": "2020s",
+    "total_medals": 5,
+    "avg_height_cm": 179.8,
+    "avg_weight_kg": 71.2,
+    "top_regions": [
+      "California",
+      "Ohio",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Bobsleigh (Bobsleigh)",
+    "era": "2020s",
+    "total_medals": 3,
+    "avg_height_cm": 170.0,
+    "avg_weight_kg": 77.0,
+    "top_regions": [
+      "California",
+      "Alberta"
+    ]
+  },
+  {
+    "sport": "Freestyle Skiing (Skiing)",
+    "era": "2020s",
+    "total_medals": 11,
+    "avg_height_cm": 177.8,
+    "avg_weight_kg": 71.7,
+    "top_regions": [
+      "Colorado",
+      "Massachusetts",
+      "Virginia"
+    ]
+  },
+  {
+    "sport": "Figure Skating (Skating)",
+    "era": "2020s",
+    "total_medals": 16,
+    "avg_height_cm": 171.1,
+    "avg_weight_kg": 65.3,
+    "top_regions": [
+      "Michigan",
+      "California",
+      "Utah"
+    ]
+  },
+  {
+    "sport": "Ice Hockey (Ice Hockey)",
+    "era": "2020s",
+    "total_medals": 31,
+    "avg_height_cm": 169.1,
+    "avg_weight_kg": 69.7,
+    "top_regions": [
+      "Minnesota",
+      "Michigan",
+      "California"
+    ]
+  },
+  {
+    "sport": "Skeleton (Bobsleigh)",
+    "era": "2010s",
+    "total_medals": 2,
+    "avg_height_cm": 184.0,
+    "avg_weight_kg": 78.5,
+    "top_regions": [
+      "Utah",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 143.0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Weightlifting",
+    "era": "2020s",
+    "total_medals": 2,
+    "avg_height_cm": 170.5,
+    "avg_weight_kg": 109.0,
+    "top_regions": [
+      "California",
+      "Oklahoma"
+    ]
+  },
+  {
+    "sport": "Triathlon",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 59.0,
+    "top_regions": [
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "2010s",
+    "total_medals": 26,
+    "avg_height_cm": 156.2,
+    "avg_weight_kg": 51.9,
+    "top_regions": [
+      "Massachusetts",
+      "Ohio",
+      "Matanzas"
+    ]
+  },
+  {
+    "sport": "Taekwondo",
+    "era": "2010s",
+    "total_medals": 3,
+    "avg_height_cm": 175.3,
+    "avg_weight_kg": 70.7,
+    "top_regions": [
+      "Texas",
+      "Virginia",
+      "Indiana"
+    ]
+  },
+  {
+    "sport": "Beach Volleyball (Volleyball)",
+    "era": "2020s",
+    "total_medals": 2,
+    "avg_height_cm": 190.0,
+    "avg_weight_kg": 77.0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Cycling BMX Racing (Cycling)",
+    "era": "2010s",
+    "total_medals": 2,
+    "avg_height_cm": 170.5,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "Texas",
+      "Minnesota"
+    ]
+  },
+  {
+    "sport": "Boxing",
+    "era": "2010s",
+    "total_medals": 6,
+    "avg_height_cm": 170.2,
+    "avg_weight_kg": 60.3,
+    "top_regions": [
+      "Michigan",
+      "New Jersey",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Volleyball (Volleyball)",
+    "era": "2020s",
+    "total_medals": 11,
+    "avg_height_cm": 188.0,
+    "avg_weight_kg": 75.6,
+    "top_regions": [
+      "Nebraska",
+      "Ontario",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Table Tennis",
+    "era": "2010s",
+    "total_medals": 2,
+    "avg_height_cm": 166.0,
+    "avg_weight_kg": 58.0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Marathon Swimming (Aquatics)",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 68.0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Water Polo (Aquatics)",
+    "era": "2020s",
+    "total_medals": 13,
+    "avg_height_cm": 178.8,
+    "avg_weight_kg": 75.3,
+    "top_regions": [
+      "California",
+      "Illinois",
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Biathlon",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 180.0,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "New Hampshire"
+    ]
+  },
+  {
+    "sport": "Cross Country Skiing (Skiing)",
+    "era": "2020s",
+    "total_medals": 4,
+    "avg_height_cm": 163.0,
+    "avg_weight_kg": 58.0,
+    "top_regions": [
+      "Minnesota",
+      "Alaska",
+      "Oregon"
+    ]
+  },
+  {
+    "sport": "Speed Skating (Skating)",
+    "era": "2020s",
+    "total_medals": 6,
+    "avg_height_cm": 172.2,
+    "avg_weight_kg": 71.0,
+    "top_regions": [
+      "Florida",
+      "Wisconsin",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Baseball (Baseball/Softball)",
+    "era": "2020s",
+    "total_medals": 24,
+    "avg_height_cm": 185.4,
+    "avg_weight_kg": 72.5,
+    "top_regions": [
+      "Florida",
+      "California",
+      "Texas"
+    ]
+  },
+  {
+    "sport": "Cycling Track (Cycling)",
+    "era": "2020s",
+    "total_medals": 6,
+    "avg_height_cm": 174.5,
+    "avg_weight_kg": 70.0,
+    "top_regions": [
+      "California",
+      "Indiana",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Diving (Aquatics)",
+    "era": "2020s",
+    "total_medals": 5,
+    "avg_height_cm": 166.2,
+    "avg_weight_kg": 64.7,
+    "top_regions": [
+      "New Hampshire",
+      "Massachusetts",
+      "Michigan"
+    ]
+  },
+  {
+    "sport": "Rhythmic Gymnastics (Gymnastics)",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 160.0,
+    "avg_weight_kg": 43.0,
+    "top_regions": [
+      "Connecticut"
+    ]
+  },
+  {
+    "sport": "Artistic Gymnastics (Gymnastics)",
+    "era": "2020s",
+    "total_medals": 9,
+    "avg_height_cm": 150.9,
+    "avg_weight_kg": 47.0,
+    "top_regions": [
+      "Minnesota",
+      "Ohio",
+      "Arizona"
+    ]
+  },
+  {
+    "sport": "Triathlon",
+    "era": "2020s",
+    "total_medals": 4,
+    "avg_height_cm": 175.7,
+    "avg_weight_kg": 59.0,
+    "top_regions": [
+      "Maryland",
+      "District of Columbia"
+    ]
+  },
+  {
+    "sport": "Wrestling",
+    "era": "2020s",
+    "total_medals": 9,
+    "avg_height_cm": 174.8,
+    "avg_weight_kg": 80.5,
+    "top_regions": [
+      "Maryland",
+      "Colorado",
+      "Illinois"
+    ]
+  },
+  {
+    "sport": "Golf",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 193.0,
+    "avg_weight_kg": 86.0,
+    "top_regions": [
+      "Florida"
+    ]
+  },
+  {
+    "sport": "Sailing",
+    "era": "2010s",
+    "total_medals": 1,
+    "avg_height_cm": 191.0,
+    "avg_weight_kg": 98.0,
+    "top_regions": [
+      "California"
+    ]
+  },
+  {
+    "sport": "Alpine Skiing (Skiing)",
+    "era": "2020s",
+    "total_medals": 1,
+    "avg_height_cm": 185.0,
+    "avg_weight_kg": 91.0,
+    "top_regions": [
+      "Vermont"
+    ]
+  },
+  {
+    "sport": "Mixed Sports",
+    "era": "2010s",
+    "total_medals": 2,
+    "avg_height_cm": 184.0,
+    "avg_weight_kg": 75.0,
+    "top_regions": [
+      "New Hampshire",
+      "Wisconsin"
+    ]
+  },
+  {
+    "sport": "Short Track Speed Skating (Skating)",
+    "era": "2020s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Virginia"
+    ]
+  },
+  {
+    "sport": "3x3 Basketball (Basketball)",
+    "era": "2020s",
+    "total_medals": 4,
+    "avg_height_cm": 189.5,
+    "avg_weight_kg": 90.5,
+    "top_regions": [
+      "South Carolina",
+      "California",
+      "New York"
+    ]
+  },
+  {
+    "sport": "Cycling BMX Freestyle (Cycling)",
+    "era": "2020s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": []
+  },
+  {
+    "sport": "Boxing",
+    "era": "2020s",
+    "total_medals": 4,
+    "avg_height_cm": 170.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Ohio",
+      "Virginia",
+      "California"
+    ]
+  },
+  {
+    "sport": "Canoe Sprint (Canoeing)",
+    "era": "2020s",
+    "total_medals": 1,
+    "avg_height_cm": 175.0,
+    "avg_weight_kg": 73.0,
+    "top_regions": [
+      "Washington"
+    ]
+  },
+  {
+    "sport": "Golf",
+    "era": "2020s",
+    "total_medals": 2,
+    "avg_height_cm": 178.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "Florida",
+      "California"
+    ]
+  },
+  {
+    "sport": "Surfing",
+    "era": "2020s",
+    "total_medals": 1,
+    "avg_height_cm": 170.0,
+    "avg_weight_kg": 64.0,
+    "top_regions": [
+      "Hawai\u02bbi"
+    ]
+  },
+  {
+    "sport": "Sport Climbing",
+    "era": "2020s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": []
+  },
+  {
+    "sport": "Karate",
+    "era": "2020s",
+    "total_medals": 1,
+    "avg_height_cm": 0,
+    "avg_weight_kg": 0,
+    "top_regions": []
+  },
+  {
+    "sport": "Skateboarding (Roller Sports)",
+    "era": "2020s",
+    "total_medals": 2,
+    "avg_height_cm": 175.0,
+    "avg_weight_kg": 0,
+    "top_regions": [
+      "California",
+      "Arizona"
+    ]
+  }
+]
