@@ -78,7 +78,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
   const handleDownload = () => {
     if (!posterDataUrl) return;
     const link = document.createElement("a");
-    link.download = `holo-type-${archetype.title.toLowerCase().replace(/\s+/g, "-")}-${lens}.png`;
+    link.download = `holotype-${archetype.title.toLowerCase().replace(/\s+/g, "-")}-${lens}.png`;
     link.href = posterDataUrl;
     link.click();
   };
@@ -118,7 +118,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
             />
             
             <header className="w-full flex flex-col items-start mb-[80px]">
-              <h1 className="text-[48px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter">HOLO-TYPE</h1>
+              <h1 className="text-[48px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter">HOLO<span className="text-[#C5972C]">TYPE</span></h1>
               <p className="text-[18px] font-mono font-bold text-[#0c1932]/40 tracking-[0.4em] uppercase mt-2">ARCHIVAL ALIGNMENT VECTOR // VER 2.5.0</p>
             </header>
 
@@ -158,7 +158,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
               <div className="text-[18px] font-mono font-bold text-[#0c1932]/40 tracking-widest uppercase">
                 {vectorId} {"// ARCHETYPE VECTOR"}
               </div>
-              <div className="text-[18px] font-mono font-bold text-[#0c1932]/40 uppercase">HOLO-TYPE.APP</div>
+              <div className="text-[18px] font-mono font-bold text-[#0c1932]/40 uppercase">HOLOTYPE.APP</div>
             </footer>
           </article>
 
@@ -192,7 +192,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
 
             <section className="relative z-10 w-[420px] flex flex-col items-end text-right h-full justify-center">
               <header className="mb-12">
-                <h1 className="text-[36px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter">HOLO-TYPE</h1>
+                <h1 className="text-[36px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter">HOLO<span className="text-[#C5972C]">TYPE</span></h1>
                 <p className="text-[14px] font-mono font-bold text-[#0c1932]/40 tracking-[0.4em] uppercase mt-1">VECTOR LOCK</p>
               </header>
 
@@ -213,7 +213,7 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
                 <div className="text-[14px] font-mono font-bold text-[#0c1932]/40 tracking-widest uppercase">
                   {vectorId} {"// VECTOR"}
                 </div>
-                <div className="text-[14px] font-mono font-bold text-[#0c1932]/40 uppercase mt-1">HOLO-TYPE.APP</div>
+                <div className="text-[14px] font-mono font-bold text-[#0c1932]/40 uppercase mt-1">HOLOTYPE.APP</div>
               </footer>
             </section>
           </article>

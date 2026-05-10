@@ -116,7 +116,7 @@ export default function SignalField() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-display font-bold italic tracking-tighter uppercase"
           >
-            HOLO-TYPE
+            HOLO<span className="text-accent-gold">TYPE</span>
           </motion.h1>
           <p className="text-[11px] font-bold tracking-[0.4em] opacity-40 uppercase">
             HISTORICAL ALIGNMENT INSTRUMENT // VER 2.5.0

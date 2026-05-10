@@ -512,7 +512,7 @@ export default function ArchetypeGenerator() {
     if (!archetype) return;
     const logData = {
       timestamp: new Date().toISOString(),
-      instrument: "HOLO-TYPE // VER 2.5.0",
+      instrument: "HOLOTYPE // VER 2.5.0",
       archetype: archetype,
       analysis_lens: lens
     };
@@ -520,7 +520,7 @@ export default function ArchetypeGenerator() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `holo-type-log-${archetype.title.toLowerCase().replace(/\s+/g, "-")}.json`;
+    a.download = `holotype-log-${archetype.title.toLowerCase().replace(/\s+/g, "-")}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -586,7 +586,9 @@ export default function ArchetypeGenerator() {
       <div className={cn("w-full max-w-5xl flex flex-col items-center transition-all duration-700", loading && "opacity-0 scale-95 pointer-events-none")}>
         <header data-part="app-header" className="text-center space-y-1 mb-[3vh]">
           <h1 className="text-4xl md:text-6xl font-display font-bold italic tracking-tighter uppercase leading-none text-text-main">
-            {archetype ? "CLASSIFICATION COMPLETE" : "HOLO-TYPE"}
+            {archetype ? "CLASSIFICATION COMPLETE" : (
+              <>HOLO<span className="text-accent-gold">TYPE</span></>
+            )}
           </h1>
           <p className="text-text-tertiary text-[9px] md:text-[10px] font-bold tracking-[0.4em] uppercase">
             {archetype ? "Historical alignment vector locked // transmission successful" : "HISTORICAL ALIGNMENT INSTRUMENT // VER 2.5.0"}
