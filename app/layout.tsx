@@ -18,6 +18,7 @@ import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed, JetBrains_Mono, Source_Sans_3 } from "next/font/google";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { AmbientBackground } from "./components/AmbientBackground";
+import { Footer } from "./components/Footer";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -46,7 +47,7 @@ const sourceSans3 = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Holo-Type | AI Athlete Archetypes",
+  title: "HOLOTYPE | AI Athlete Archetypes",
   description: "Generate AI-powered athlete archetypes with a holographic aesthetic.",
 };
 
@@ -77,6 +78,7 @@ export default function RootLayout({
         <AmbientBackground />
         <ThemeToggle />
         {children}
+        <Footer />
       </body>
     </html>
   );
