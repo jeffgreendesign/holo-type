@@ -93,13 +93,23 @@
     perspective: 2000px;
   }
   
+  .pixelate-filter {
+    filter: url(#pixelate-filter);
+  }
+  
   .bg-silver-holo {
     background: linear-gradient(135deg, #cbd5e1 0%, #f8fafc 45%, #e2e8f0 55%, #94a3b8 100%);
     position: relative;
     overflow: hidden;
   }
 
-  .bg-silver-holo::before {
+  .bg-gold-holo {
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 55%, #fbf5b7 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-silver-holo::before, .bg-gold-holo::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -121,7 +131,7 @@
     z-index: 1;
   }
 
-  .bg-silver-holo::after {
+  .bg-silver-holo::after, .bg-gold-holo::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -131,6 +141,7 @@
     pointer-events: none;
     z-index: 2;
   }
+
 
   @keyframes holo-sweep {
     0% { background-position: 100% 0; }
