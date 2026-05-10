@@ -32,6 +32,8 @@ import {
 } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { toCanvas } from "html-to-image";
+import { GIFEncoder, quantize, applyPalette } from "gifenc";
 import { LoadingScanner } from "./LoadingScanner";
 import PosterGenerator from "./PosterGenerator";
 
@@ -112,7 +114,7 @@ export interface Archetype {
   discipline: "Olympic" | "Paralympic" | "Unified";
 }
 
-export function RadarVisual({ stats, color }: { stats: Record<string, number>, color: string }) {
+export function RadarVisual({ stats, color, isSmall = false }: { stats: Record<string, number>, color: string, isSmall?: boolean }) {
   const statEntries = Object.entries(stats);
   const points = statEntries.map(([_, value], i) => {
     const angle = (i * 90) * (Math.PI / 180);
@@ -127,19 +129,23 @@ export function RadarVisual({ stats, color }: { stats: Record<string, number>, c
       data-component="RadarVisual"
       animate={{ rotate: 360 }}
       transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      className="relative w-28 h-28 flex items-center justify-center"
+      className={cn("relative flex items-center justify-center", isSmall ? "w-16 h-16" : "w-28 h-28")}
     >
       <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
-        <circle cx="50" cy="50" r="22.5" fill="none" stroke="currentColor" strokeWidth="0.5" className="opacity-5" />
-        <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
-        <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
+        {!isSmall && (
+          <>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
+            <circle cx="50" cy="50" r="22.5" fill="none" stroke="currentColor" strokeWidth="0.5" className="opacity-5" />
+            <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
+            <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
+          </>
+        )}
         <motion.polygon
           points={points}
           fill={color}
-          fillOpacity="0.2"
+          fillOpacity={isSmall ? "0.6" : "0.2"}
           stroke={color}
-          strokeWidth="1.5"
+          strokeWidth={isSmall ? "4" : "1.5"}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -149,10 +155,10 @@ export function RadarVisual({ stats, color }: { stats: Record<string, number>, c
           const r = (value / 100) * 45;
           const x = 50 + r * Math.cos(angle);
           const y = 50 + r * Math.sin(angle);
-          return <circle key={i} cx={x} cy={y} r="1.5" fill={color} />;
+          return <circle key={i} cx={x} cy={y} r={isSmall ? "3" : "1.5"} fill={color} />;
         })}
       </svg>
-      <div className="absolute inset-0 blur-2xl opacity-20 rounded-full animate-pulse" style={{ backgroundColor: color }} />
+      <div className={cn("absolute inset-0 blur-2xl opacity-20 rounded-full animate-pulse", isSmall ? "hidden" : "")} style={{ backgroundColor: color }} />
     </motion.div>
   );
 }
@@ -245,7 +251,10 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
   return (
     <div data-component="CardContent" className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
       {/* 1. FOIL BASE LAYER (The Metallic Look) */}
-      <div className="absolute inset-0 bg-silver-holo mix-blend-overlay opacity-60 dark:opacity-30" />
+      <div className={cn(
+        "absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-30",
+        archetype.rarity === "Holo Rare" ? "bg-gold-holo" : "bg-silver-holo"
+      )} />
       
       {/* 2. COLOR FOIL (The Rainbow/Shininess) */}
       <motion.div 
@@ -337,19 +346,38 @@ function CardBackground({ rarity, rarityColor }: { rarity: string, rarityColor: 
   );
 }
 
-export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { archetype: Archetype, lens: "olympic" | "paralympic", setLens: (l: "olympic" | "paralympic") => void, variant?: "standard" | "poster" }) {
+export function HoloCard({ 
+  archetype, 
+  lens, 
+  setLens, 
+  variant = "standard",
+  isSpinning = false,
+  isPixelated = false,
+  manualTime,
+  isSprite = false
+}: { 
+  archetype: Archetype, 
+  lens: "olympic" | "paralympic", 
+  setLens: (l: "olympic" | "paralympic") => void, 
+  variant?: "standard" | "poster",
+  isSpinning?: boolean,
+  isPixelated?: boolean,
+  manualTime?: number,
+  isSprite?: boolean
+}) {
   const cardRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
   const springConfig = { damping: 40, stiffness: 120, mass: 1.2 };
-  const mouseXSpring = useSpring(x, springConfig);
-  const mouseYSpring = useSpring(y, springConfig);
+  const mouseXSpring = useSpring(pointerX, springConfig);
+  const mouseYSpring = useSpring(pointerY, springConfig);
+  const spinX = useMotionValue(0);
 
   const isPoster = variant === "poster";
 
-  // Idle "breathing" animation
+  // Idle "breathing" animation or steady spin
   useEffect(() => {
     if (shouldReduceMotion || isPoster) return;
     
@@ -357,15 +385,24 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
     const startTime = Date.now();
     
     const animate = () => {
-      const elapsed = Date.now() - startTime;
-      // Very slow, subtle oscillation
-      const idleX = Math.sin(elapsed / 2000) * 0.05;
-      const idleY = Math.cos(elapsed / 2500) * 0.05;
+      const elapsed = manualTime !== undefined ? manualTime : (Date.now() - startTime);
       
-      // Only apply if mouse is at center (not interacting)
-      if (x.get() === 0 && y.get() === 0) {
-        mouseXSpring.set(idleX);
-        mouseYSpring.set(idleY);
+      if (isSpinning || manualTime !== undefined) {
+        // Continuous 360 rotation for capture
+        const progress = (elapsed / 4000) % 1;
+        spinX.set(progress);
+        pointerY.set(Math.cos(elapsed / 2000) * 0.05);
+      } else {
+        // Reset spin if not active
+        if (spinX.get() !== 0) spinX.set(0);
+        
+        // Idle animation: Only apply if mouse is at center
+        if (pointerX.get() === 0 && pointerY.get() === 0) {
+          const idleX = Math.sin(elapsed / 2000) * 0.05;
+          const idleY = Math.cos(elapsed / 2500) * 0.05;
+          mouseXSpring.set(idleX);
+          mouseYSpring.set(idleY);
+        }
       }
       
       frameId = requestAnimationFrame(animate);
@@ -373,10 +410,15 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
     
     animate();
     return () => cancelAnimationFrame(frameId);
-  }, [shouldReduceMotion, x, y, mouseXSpring, mouseYSpring, isPoster]);
+  }, [shouldReduceMotion, pointerX, pointerY, mouseXSpring, mouseYSpring, spinX, isPoster, isSpinning, manualTime]);
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [30, -30]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-30, 30]);
+  // When spinning or exporting, use spinX progress. Otherwise use mouseXSpring.
+  const rotateY = useTransform(
+    isSpinning || manualTime !== undefined ? spinX : mouseXSpring, 
+    isSpinning || manualTime !== undefined ? [0, 1] : [-0.5, 0.5], 
+    isSpinning || manualTime !== undefined ? [0, 360] : [-30, 30]
+  );
   
   const transform = useTransform([rotateX, rotateY], ([rX, rY]) => `rotateX(${rX}deg) rotateY(${rY}deg)`);
 
@@ -387,37 +429,47 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
   const glareY = useSpring(useTransform(mouseYSpring, [-0.5, 0.5], [0, 100]), springConfig);
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isSpinning) return;
     const rect = cardRef.current.getBoundingClientRect();
     const newX = (e.clientX - rect.left) / rect.width - 0.5;
     const newY = (e.clientY - rect.top) / rect.height - 0.5;
-    x.set(newX);
-    y.set(newY);
+    pointerX.set(newX);
+    pointerY.set(newY);
   };
 
   const handlePointerLeave = () => { 
-    x.set(0); 
-    y.set(0); 
+    if (isSpinning) return;
+    pointerX.set(0); 
+    pointerY.set(0); 
   };
 
   const rarityColor = { "Common": "rgba(148, 163, 184, 0.2)", "Uncommon": "#8B6914", "Rare": "#C5972C", "Holo Rare": "#B31942" }[archetype.rarity];
+
+  const accentColor = lens === "paralympic" ? "var(--accent-red)" : "var(--accent-navy)";
 
   return (
     <motion.article 
       data-component="HoloCard"
       initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className={cn("w-full flex flex-col items-center gap-10 font-body relative z-20", isPoster ? "scale-[1.6]" : "")}
+      className={cn(
+        "w-full flex flex-col items-center gap-10 font-body relative z-20 transition-all duration-300", 
+        isPoster ? "scale-[1.6]" : "",
+        isPixelated ? "pixelate-filter scale-125" : ""
+      )}
       style={{ perspective: "1200px" }}
     >
-      {!isPoster && (
-        <div 
-          className="flex bg-bg-card-elevated/80 p-1 rounded-full border border-border-subtle backdrop-blur-md shadow-xl scale-90 sm:scale-100 relative z-50"
-          style={{ transformStyle: "preserve-3d", transform: "translateZ(100px)" }}
-        >
-          <button onClick={() => setLens("paralympic")} className={cn("px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all", lens === "paralympic" ? "bg-accent-red text-white shadow-lg" : "text-text-tertiary hover:text-text-main")}>Paralympic Lens</button>
-          <button onClick={() => setLens("olympic")} className={cn("px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all", lens === "olympic" ? "bg-accent-navy text-white shadow-lg" : "text-text-tertiary hover:text-text-main")}>Olympic Lens</button>
-        </div>
-      )}
+      {/* SVG Filter for Pixelation: Using a visible but hidden container to ensure it's available for the filter call */}
+      <div className="absolute inset-0 pointer-events-none opacity-0 overflow-hidden w-0 h-0">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <filter id="pixelate-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feFlood x="4" y="4" height="2" width="2" />
+            <feComposite width="8" height="8" />
+            <feTile result="a" />
+            <feComposite in="SourceGraphic" in2="a" operator="in" />
+          </filter>
+        </svg>
+      </div>
+      {/* Removed Lens Toggle from here to move it to a safer layout position in ArchetypeGenerator */}
 
       {/* TILT CONTAINER: Always stable relative to viewer */}
       <motion.div 
@@ -427,35 +479,48 @@ export function HoloCard({ archetype, lens, setLens, variant = "standard" }: { a
         style={{ 
           transformStyle: "preserve-3d", 
           transform,
-          touchAction: "none"
+          touchAction: "none",
+          width: isSprite ? "128px" : undefined,
+          height: isSprite ? "180px" : undefined
         }}
-        className="relative w-[300px] sm:w-[320px] h-[420px] sm:h-[448px] cursor-pointer group"
+        className={cn(
+          "relative cursor-pointer group",
+          isSprite ? "" : "w-[300px] sm:w-[320px] h-[420px] sm:h-[448px]"
+        )}
       >
-        {/* FLIP CONTAINER: Rotates inside the tilted space */}
+        {/* FLIP CONTAINER */}
         <motion.div 
-          animate={{ rotateY: lens === "olympic" ? 180 : 0 }} 
+          animate={{ rotateY: (isSprite || lens === "paralympic") ? 0 : 180 }} 
           transition={{ rotateY: { type: "spring", stiffness: 45, damping: 14, mass: 1.5 } }}
           style={{ transformStyle: "preserve-3d", width: "100%", height: "100%" }}
         >
-          {/* PARALYMPIC FACE (Front) */}
-          <div className="absolute inset-0 backface-hidden" style={{ transform: "rotateY(0deg) translateZ(0.5px)" }}>
-            <div className="absolute inset-0">
-              <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
-            </div>
-            <div className="absolute inset-0" style={{ clipPath: "url(#cardClip)" }}>
-              <CardContent archetype={archetype} side="paralympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
-            </div>
-          </div>
+          {isSprite ? (
+             <div className="absolute inset-0 bg-bg-card-elevated border-2 border-accent-red rounded-lg flex items-center justify-center overflow-hidden">
+                <RadarVisual stats={archetype.stats} color={accentColor} isSmall />
+             </div>
+          ) : (
+            <>
+              {/* PARALYMPIC FACE (Front) */}
+              <div className="absolute inset-0 backface-hidden" style={{ transform: "rotateY(0deg) translateZ(0.5px)" }}>
+                <div className="absolute inset-0">
+                  <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
+                </div>
+                <div className="absolute inset-0" style={{ clipPath: "url(#cardClip)" }}>
+                  <CardContent archetype={archetype} side="paralympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
+                </div>
+              </div>
 
-          {/* OLYMPIC FACE (Back) */}
-          <div className="absolute inset-0 backface-hidden" style={{ transform: "rotateY(180deg) translateZ(0.5px)" }}>
-            <div className="absolute inset-0">
-              <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
-            </div>
-            <div className="absolute inset-0" style={{ clipPath: "url(#cardClip)" }}>
-              <CardContent archetype={archetype} side="olympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
-            </div>
-          </div>
+              {/* OLYMPIC FACE (Back) */}
+              <div className="absolute inset-0 backface-hidden" style={{ transform: "rotateY(180deg) translateZ(0.5px)" }}>
+                <div className="absolute inset-0">
+                  <CardBackground rarity={archetype.rarity} rarityColor={rarityColor} />
+                </div>
+                <div className="absolute inset-0" style={{ clipPath: "url(#cardClip)" }}>
+                  <CardContent archetype={archetype} side="olympic" glareX={glareX} glareY={glareY} mouseX={mouseXSpring} mouseY={mouseYSpring} variant={variant} />
+                </div>
+              </div>
+            </>
+          )}
         </motion.div>
       </motion.div>
     </motion.article>
@@ -471,7 +536,85 @@ export default function ArchetypeGenerator() {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [vectorCopied, setVectorCopied] = useState(false);
   const [isFlashActive, setIsFlashActive] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [isPixelated, setIsPixelated] = useState(false);
+  const [isSprite, setIsSprite] = useState(false);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const [captureProgress, setCaptureProgress] = useState(0);
+  const [manualTime, setManualTime] = useState<number | undefined>(undefined);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const captureGif = async () => {
+    if (!cardContainerRef.current || !archetype) return;
+    
+    setIsCapturing(true);
+    setCaptureProgress(0);
+    
+    const frames = 30; // 10fps for 3 seconds
+    const interval = 3000 / frames;
+    const gif = new GIFEncoder();
+    
+    // Target dimensions for the GIF file
+    const gifWidth = isSprite ? 320 : 512;
+    const gifHeight = isSprite ? 320 : 640;
+    
+    try {
+      for (let i = 0; i < frames; i++) {
+        setManualTime(i * interval);
+        setCaptureProgress(Math.round(((i + 1) / frames) * 100));
+        
+        // Wait for render stabilization (Crucial for complex filters and 3D transforms)
+        await new Promise(r => setTimeout(r, 250));
+        
+        // Use toCanvas with explicit pixel dimensions to prevent high-DPI scaling issues
+        const canvas = await toCanvas(cardContainerRef.current, {
+          width: gifWidth,
+          height: gifHeight,
+          backgroundColor: "transparent",
+          style: {
+            margin: "0",
+            padding: "0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: `${gifWidth}px`,
+            height: `${gifHeight}px`
+          }
+        });
+        
+        const ctx = canvas.getContext("2d");
+        if (!ctx) continue;
+        
+        const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const palette = quantize(data, 256);
+        const index = applyPalette(data, palette);
+        
+        // repeat: 0 on the first frame enables infinite looping
+        gif.writeFrame(index, canvas.width, canvas.height, { 
+          palette, 
+          delay: 100, 
+          repeat: i === 0 ? 0 : undefined 
+        });
+      }
+      
+      gif.finish();
+      const bytes = gif.bytes();
+      const blob = new Blob([bytes as any], { type: "image/gif" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `holotype-${archetype.title.toLowerCase().replace(/\s+/g, "-")}-${isSprite ? "sprite" : "card"}.gif`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("GIF Capture failed:", err);
+      setError("GIF Capture failed. Please try a manual recording.");
+    } finally {
+      setIsCapturing(false);
+      setManualTime(undefined);
+    }
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -688,8 +831,68 @@ export default function ArchetypeGenerator() {
           </section>
         ) : (
           <section data-part="results-section" className="w-full">
-            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center space-y-12 pb-12 w-full">
-              <HoloCard archetype={archetype} lens={lens} setLens={setLens} />
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center space-y-[4vh] pb-12 w-full">
+              
+              {/* Lens Toggle: Moved out of HoloCard for stable positioning */}
+              {!isSprite && (
+                <div className="flex bg-bg-card-elevated/80 p-1 rounded-full border border-border-subtle backdrop-blur-md shadow-xl scale-90 sm:scale-100 z-50">
+                  <button onClick={() => setLens("paralympic")} className={cn("px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all", lens === "paralympic" ? "bg-accent-red text-white shadow-lg" : "text-text-tertiary hover:text-text-main")}>Paralympic Lens</button>
+                  <button onClick={() => setLens("olympic")} className={cn("px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all", lens === "olympic" ? "bg-accent-navy text-white shadow-lg" : "text-text-tertiary hover:text-text-main")}>Olympic Lens</button>
+                </div>
+              )}
+
+              <div ref={cardContainerRef} className="flex flex-col items-center">
+                <HoloCard 
+                  archetype={archetype} 
+                  lens={lens} 
+                  setLens={setLens} 
+                  isSpinning={isSpinning} 
+                  isPixelated={false} 
+                  isSprite={isSprite}
+                  manualTime={manualTime}
+                />
+              </div>
+
+              {/* Dev Tools Overlay: Improved visibility and consistency */}
+              <div className="flex flex-wrap justify-center gap-4 p-3 bg-zinc-900/90 border border-zinc-700 rounded-xl backdrop-blur-xl shadow-2xl">
+                <button 
+                  onClick={() => setIsSpinning(!isSpinning)} 
+                  disabled={isCapturing}
+                  className={cn(
+                    "px-4 py-2 text-[10px] font-bold uppercase tracking-widest rounded-lg border transition-all", 
+                    isSpinning ? "bg-accent-red border-accent-red text-white shadow-[0_0_15px_rgba(179,25,66,0.4)]" : "bg-zinc-800 border-zinc-600 text-zinc-300 hover:border-zinc-400"
+                  )}
+                >
+                  {isSpinning ? "Stop Spin" : "Steady Spin"}
+                </button>
+                <button 
+                  onClick={() => setIsSprite(!isSprite)} 
+                  disabled={isCapturing}
+                  className={cn(
+                    "px-4 py-2 text-[10px] font-bold uppercase tracking-widest rounded-lg border transition-all", 
+                    isSprite ? "bg-white border-white text-black" : "bg-zinc-800 border-zinc-600 text-zinc-300 hover:border-zinc-400"
+                  )}
+                >
+                  {isSprite ? "Card Mode" : "Sprite Mode (Small)"}
+                </button>
+                <button 
+                  onClick={captureGif}
+                  disabled={isCapturing}
+                  className={cn(
+                    "px-4 py-2 text-[10px] font-bold uppercase tracking-widest rounded-lg border transition-all relative overflow-hidden",
+                    isCapturing ? "bg-zinc-800 border-zinc-700 text-zinc-500" : "bg-accent-gold border-accent-gold text-black hover:bg-white hover:border-white shadow-[0_0_15px_rgba(197,151,44,0.3)]"
+                  )}
+                >
+                  {isCapturing ? `Capturing ${captureProgress}%` : "Export 360 GIF"}
+                  {isCapturing && (
+                    <div 
+                      className="absolute bottom-0 left-0 h-1 bg-accent-red transition-all duration-300" 
+                      style={{ width: `${captureProgress}%` }}
+                    />
+                  )}
+                </button>
+              </div>
+
               <div className="w-full max-w-xl space-y-10">
                 <div className="text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                   <p className="text-text-main font-narrative text-lg md:text-[17px] leading-[1.6] font-normal opacity-90 max-w-[60ch] mx-auto">{lens === "paralympic" ? archetype.narrative.paralympic : archetype.narrative.olympic}</p>
