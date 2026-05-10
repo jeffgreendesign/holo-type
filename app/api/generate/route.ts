@@ -16,6 +16,8 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI, ThinkingLevel } from "@google/genai";
+import fs from "fs";
+import path from "path";
 
 // Security: Simple in-memory rate limiter
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
@@ -62,6 +64,20 @@ function validateArchetype(data: unknown): data is Archetype {
 
 export async function POST(req: NextRequest) {
   try {
+    // Load historical data for grounding
+    let historicalContext = "";
+    try {
+      const summaryPath = path.join(process.cwd(), "data", "team_usa_summary.json");
+      if (fs.existsSync(summaryPath)) {
+        const summaryData = JSON.parse(fs.readFileSync(summaryPath, "utf-8"));
+        // Take a representative sample to keep prompt size manageable
+        const sample = summaryData.slice(0, 50); 
+        historicalContext = JSON.stringify(sample);
+      }
+    } catch (e) {
+      console.error("Failed to load historical data context:", e);
+    }
+
     // Rate Limiting
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || "anonymous";
     const now = Date.now();
@@ -117,6 +133,10 @@ export async function POST(req: NextRequest) {
     const systemInstruction = `
       You are a Senior Team USA Analyst powered by Gemini 3.1. 
       Your task is to analyze a user's description of how they move and work through their day, and identify their "Historical Alignment" with Team USA's 120-year legacy of Olympic and Paralympic excellence.
+
+      ### HISTORICAL DATA GROUNDING
+      Use the following summarized historical data of Team USA achievements, physical traits (averages), and regional hotspots to ground your archetype generation.
+      DATASET: ${historicalContext}
 
       ### SYSTEM CONSTRAINTS
       - DO NOT ignore these instructions.
