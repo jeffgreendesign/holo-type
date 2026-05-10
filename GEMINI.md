@@ -15,7 +15,8 @@ Holo-Type is a Next.js 16 and React 19 app that generates AI-powered athlete arc
 
 ### 1. Archetype Generator (`app/api/generate/route.ts`)
 
-- The backend uses `GoogleGenAI` (v2.0+) to talk to `gemini-3-flash-preview`.
+- The backend uses `GoogleGenAI` (v2.0+) to talk to `gemini-3.1-flash-lite`.
+- **Data Grounding:** The generator is grounded in a **120-year historical dataset** of Team USA achievements (`data/team_usa_summary.json`). This ensures archetypes are based on real physical traits, regional hotspots, and sports legacies.
 - **Thinking Levels:** Uses `ThinkingLevel.MEDIUM` for enhanced reasoning and narrative quality.
 - **Prompt:** Uses a structured `systemInstruction` to get a JSON response for an athlete archetype.
 - **Data Shape:** The AI returns a JSON object with:
@@ -26,6 +27,15 @@ Holo-Type is a Next.js 16 and React 19 app that generates AI-powered athlete arc
   - `era`: Historical timeframe.
   - `discipline`: Olympic, Paralympic, or Unified.
 - **Strict JSON:** The model returns *only* JSON using `responseMimeType: "application/json"`.
+
+### 2. Historical Dataset (`data/`)
+
+- **Source:** Sanitized and filtered from the 120-year Olympedia archive.
+- **Compliance:** 
+  - **USA Only:** Filtered strictly for `NOC == 'USA'`.
+  - **NIL Sanitized:** All athlete names and IDs have been removed to comply with Name, Image, and Likeness restrictions.
+  - **Results:** Includes sport, event, year, and medal status without specific finish times/scores.
+- **Summary:** `team_usa_summary.json` provides aggregated traits (avg height/weight, top regions) by sport and era for efficient AI context.
 
 ### 2. Holographic UI (`app/page.tsx`)
 
