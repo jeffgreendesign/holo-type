@@ -12,6 +12,7 @@
   "dependencies": {
     "@google/genai": "^2.0.0",
     "clsx": "^2.1.1",
+    "gifenc": "^1.0.3",
     "html-to-image": "^1.11.13",
     "lucide-react": "^1.14.0",
     "motion": "^12.38.0",
