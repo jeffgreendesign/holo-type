@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { toPng } from "html-to-image";
-import { Archetype, CardContent } from "./ArchetypeGenerator";
+import { Archetype, CardContent, FittedTitle } from "./ArchetypeGenerator";
 import { Download, Copy, Check, X, Loader2 } from "lucide-react";
 import { motion, AnimatePresence, useMotionValue } from "motion/react";
 
@@ -123,8 +123,12 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
               />
             </div>
 
-            <div className="mt-auto flex flex-col items-center text-center">
-              <h2 className="text-[84px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter">{archetype.title}</h2>
+            <div className="mt-auto flex flex-col items-center text-center w-full">
+              <FittedTitle 
+                text={archetype.title} 
+                center 
+                className="text-[84px] font-display font-bold italic text-[#0c1932] leading-none uppercase tracking-tighter" 
+              />
               <div className="w-[100px] h-[6px] bg-[#B31942] mt-8" />
               
               <div className="mt-12 space-y-2">
@@ -174,7 +178,12 @@ export default function PosterGenerator({ archetype, lens, isOpen, onClose }: Po
                 <p className="text-[14px] font-mono font-bold text-[#0c1932]/40 tracking-[0.4em] uppercase mt-1">VECTOR LOCK</p>
               </div>
 
-              <h2 className="text-[56px] font-display font-bold italic text-[#0c1932] leading-tight uppercase tracking-tighter">{archetype.title}</h2>
+              <div className="w-full">
+                <FittedTitle 
+                  text={archetype.title} 
+                  className="text-[56px] font-display font-bold italic text-[#0c1932] leading-tight uppercase tracking-tighter" 
+                />
+              </div>
               <div className="w-[60px] h-[4px] bg-[#B31942] mt-6" />
               
               <div className="mt-8 space-y-1">

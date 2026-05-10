@@ -146,7 +146,7 @@ export function StatCounter({ value, delay, className }: { value: number, delay:
     const timer = setTimeout(() => {
       let start = 0;
       const end = value;
-      const duration = 600;
+      const duration = 1000;
       const increment = end / (duration / 16);
       const counter = setInterval(() => {
         start += increment;
@@ -161,21 +161,27 @@ export function StatCounter({ value, delay, className }: { value: number, delay:
     }, delay * 1000);
     return () => clearTimeout(timer);
   }, [value, delay]);
-  return <span className={cn("font-display font-bold tabular-nums leading-none", className)}>{count}</span>;
+  return <span className={cn("font-display font-bold leading-none", className)}>{count}</span>;
 }
 
-export function FittedTitle({ text, className }: { text: string, className?: string }) {
+export function FittedText({ 
+  text, 
+  className, 
+  tag: Tag = "span",
+  center = false
+}: { 
+  text: string, 
+  className?: string, 
+  tag?: "h2" | "span" | "div",
+  center?: boolean
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLElement>(null);
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
     if (!containerRef.current || !textRef.current) return;
-    
-    // Reset scale to measure natural width
     setScale(1);
-    
-    // Defer measurement to ensure DOM is updated
     const request = requestAnimationFrame(() => {
       if (containerRef.current && textRef.current) {
         const containerWidth = containerRef.current.clientWidth;
@@ -185,21 +191,28 @@ export function FittedTitle({ text, className }: { text: string, className?: str
         }
       }
     });
-    
     return () => cancelAnimationFrame(request);
   }, [text]);
 
   return (
-    <div ref={containerRef} className="w-full flex items-center overflow-hidden">
-      <h2 
-        ref={textRef} 
-        style={{ transform: `scale(${scale})`, transformOrigin: "left center" }} 
+    <div ref={containerRef} className={cn("w-full overflow-hidden flex items-center", center && "justify-center")}>
+      <Tag
+        ref={textRef as any}
+        style={{ transform: `scale(${scale})`, transformOrigin: center ? "center center" : "left center" }}
         className={cn("whitespace-nowrap transition-transform duration-300 ease-out", className)}
       >
         {text}
-      </h2>
+      </Tag>
     </div>
   );
+}
+
+export function FittedTitle(props: { text: string, className?: string, center?: boolean }) {
+  return <FittedText {...props} tag="h2" />;
+}
+
+export function FittedLabel(props: { text: string, className?: string, center?: boolean }) {
+  return <FittedText {...props} tag="span" />;
 }
 
 export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, variant = "standard" }: { archetype: Archetype, side: "olympic" | "paralympic", glareX: MotionValue<number>, glareY: MotionValue<number>, mouseX: MotionValue<number>, mouseY: MotionValue<number>, variant?: "standard" | "poster" }) {
@@ -210,6 +223,7 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
   const foilBackground = useTransform([mouseX, mouseY], (values: number[]) => `conic-gradient(from ${values[0] * 360}deg at 50% 50%, rgba(255, 0, 128, 0.4), rgba(0, 255, 255, 0.4), rgba(255, 255, 0, 0.4), rgba(255, 0, 128, 0.4))`);
   
   const isPoster = variant === "poster";
+  const statCount = Object.keys(archetype.stats).length;
 
   return (
     <div className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
@@ -256,15 +270,22 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
       </div>
 
       {/* Stats Grid */}
-      <div className="relative grid grid-cols-3 gap-px bg-border-subtle/20 border border-border-subtle/30 overflow-hidden rounded-sm">
+      <div className={cn(
+        "relative grid gap-px bg-border-subtle/20 border border-border-subtle/30 overflow-hidden rounded-sm",
+        statCount > 3 ? "grid-cols-4" : "grid-cols-3"
+      )}>
         {Object.entries(archetype.stats).map(([label, value], i) => {
           const formattedLabel = label
             .replace(/([A-Z])/g, " $1")
             .replace(/^./, (str) => str.toUpperCase());
           
           return (
-            <div key={i} className={cn("bg-bg-card/10 backdrop-blur-[1px] flex flex-col", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
-              <span className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary leading-tight uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>{formattedLabel}</span>
+            <div key={i} className={cn("bg-bg-card/10 backdrop-blur-[1px] flex flex-col items-center", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
+              <FittedLabel 
+                text={formattedLabel} 
+                center
+                className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary uppercase", isPoster ? "text-[12px]" : "text-[9px]")} 
+              />
               <div className="mt-auto">
                 <StatCounter value={value} delay={0.8 + (i * 0.1)} className={cn("text-text-main", isPoster ? "text-7xl" : "text-5xl")} />
               </div>
@@ -276,7 +297,10 @@ export function CardContent({ archetype, side, glareX, glareY, mouseX, mouseY, v
       <div className={cn("relative flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
         <div className="space-y-1">
           <span className={cn("font-mono font-bold tracking-[0.2em] text-text-tertiary uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>ERA ALIGNMENT</span>
-          <div className={cn("font-mono font-bold text-text-secondary", isPoster ? "text-sm" : "text-[10px]")}>{archetype.era}</div>
+          <FittedLabel 
+            text={archetype.era} 
+            className={cn("font-mono font-bold text-text-secondary", isPoster ? "text-sm" : "text-[10px]")} 
+          />
         </div>
         <div className={cn("font-mono text-text-tertiary font-bold tracking-widest", isPoster ? "text-[12px]" : "text-[9px]")}>HT-X // VECTOR</div>
       </div>
