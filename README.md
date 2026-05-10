@@ -55,3 +55,11 @@ Open [http://localhost:3000](http://localhost:3000) to see it.
 ## Development Mandates
 
 This version of Next.js (16.2.4) has breaking changes. Read the internal docs at `node_modules/next/dist/docs/` before you build anything. Check `GEMINI.md` for the full architecture.
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+---
+
+*Part of the "Vibe Code for Gold with Google" hackathon.*
