@@ -512,7 +512,7 @@ export default function ArchetypeGenerator() {
     if (!archetype) return;
     const logData = {
       timestamp: new Date().toISOString(),
-      instrument: "HOLOTYPE // VER 2.5.0",
+      instrument: "HOLOTYPE // VER 3.1.0",
       archetype: archetype,
       analysis_lens: lens
     };
@@ -591,7 +591,7 @@ export default function ArchetypeGenerator() {
             )}
           </h1>
           <p className="text-text-tertiary text-[9px] md:text-[10px] font-bold tracking-[0.4em] uppercase">
-            {archetype ? "Historical alignment vector locked // transmission successful" : "HISTORICAL ALIGNMENT INSTRUMENT // VER 2.5.0"}
+            {archetype ? "Historical alignment vector locked // transmission successful" : "HISTORICAL ALIGNMENT INSTRUMENT // VER 3.1.0"}
           </p>
         </header>
 

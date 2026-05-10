@@ -4,7 +4,7 @@ Holo-Type uses Google Gemini AI to turn athlete bios into archetypes shown on ho
 
 ## Features
 
-- **AI Archetypes:** Uses `gemini-2.5-flash` to turn bios into titles with Olympic and Paralympic narratives.
+- **AI Archetypes:** Uses `gemini-3.1-flash` to turn bios into titles with Olympic and Paralympic narratives.
 - **Holographic UI:** 3D card aesthetic built with Tailwind CSS 4 and Framer Motion. It has real-time glare and iridescent effects.
 - **Radar Visuals:** Dynamic charts generated from the AI-generated stats.
 - **3D Interactions:** Scale-in reveal, staggered counters, and a 3D flip to switch between Olympic and Paralympic views.
