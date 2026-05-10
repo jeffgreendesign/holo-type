@@ -52,6 +52,17 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see it.
 
+## Reproducible Testing
+
+To reliably test the AI archetype generation features:
+
+1. Ensure your `.env.local` file is configured with a valid `GEMINI_API_KEY`.
+2. Start the development server using `npm run dev`.
+3. Navigate to [http://localhost:3000](http://localhost:3000).
+4. Click on any of the **6 Input Presets** provided on the main page (e.g., "The Sprinter", "The Gymnast").
+5. The application will trigger the AI generation and display the resulting holographic card with dynamic stats, a unique narrative, and a calculated rarity tier.
+6. Verify that the 3D card interactions (tilt, flip) and the radar chart visualize the AI-generated data correctly.
+
 ## Development Mandates
 
 This version of Next.js (16.2.4) has breaking changes. Read the internal docs at `node_modules/next/dist/docs/` before you build anything. Check `GEMINI.md` for the full architecture.
