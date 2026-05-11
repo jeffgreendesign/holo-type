@@ -19,7 +19,8 @@ import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 import fs from "fs";
 import path from "path";
 
-// Security: Simple in-memory rate limiter
+// Security: Best-effort in-memory rate limiter (per-instance; resets on deploy).
+// For production scale this would move to Firestore or another shared store.
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5;
@@ -36,46 +37,65 @@ interface Archetype {
   discipline: string;
 }
 
+const ALLOWED_RARITIES = ["Common", "Uncommon", "Rare", "Holo Rare"] as const;
+const ALLOWED_DISCIPLINES = ["Olympic", "Paralympic", "Unified"] as const;
+
 function validateArchetype(data: unknown): data is Archetype {
   if (!data || typeof data !== "object" || Array.isArray(data)) return false;
-  
+
   const d = data as Record<string, unknown>;
   const requiredFields = ["title", "narrative", "rarity", "stats", "era", "discipline"];
-  
+
   for (const field of requiredFields) {
     if (d[field] === undefined || d[field] === null) return false;
   }
-  
+
+  if (typeof d.title !== "string" || typeof d.era !== "string") return false;
+  if (!ALLOWED_RARITIES.includes(d.rarity as typeof ALLOWED_RARITIES[number])) return false;
+  if (!ALLOWED_DISCIPLINES.includes(d.discipline as typeof ALLOWED_DISCIPLINES[number])) return false;
+
   const narrative = d.narrative;
   if (!narrative || typeof narrative !== "object" || Array.isArray(narrative)) return false;
-  
+
   const n = narrative as Record<string, unknown>;
   if (typeof n.olympic !== "string" || typeof n.paralympic !== "string") return false;
-  
+
   if (!d.stats || typeof d.stats !== "object" || Array.isArray(d.stats)) return false;
   const stats = d.stats as Record<string, unknown>;
   const requiredStats = ["resilience", "purposefulFocus", "workEthic", "adaptability"];
   for (const stat of requiredStats) {
-    if (typeof stats[stat] !== "number") return false;
+    const v = stats[stat];
+    if (typeof v !== "number" || !Number.isFinite(v) || v < 0 || v > 100) return false;
   }
-  
+
   return true;
 }
 
 export async function POST(req: NextRequest) {
   try {
-    // Load historical data for grounding
-    let historicalContext = "";
+    // Load historical data for grounding. The dataset is load-bearing for the
+    // "120 years of Team USA legacy" grounding promise — fail loudly rather
+    // than degrading silently to generic Gemini output.
+    let historicalContext: string;
     try {
       const summaryPath = path.join(process.cwd(), "data", "team_usa_summary.json");
-      if (fs.existsSync(summaryPath)) {
-        const summaryData = JSON.parse(fs.readFileSync(summaryPath, "utf-8"));
-        // Take a representative sample to keep prompt size manageable
-        const sample = summaryData.slice(0, 50); 
-        historicalContext = JSON.stringify(sample);
+      if (!fs.existsSync(summaryPath)) {
+        console.error("Historical dataset not found at", summaryPath);
+        return NextResponse.json(
+          { error: "Historical dataset unavailable. Please try again later." },
+          { status: 503 }
+        );
       }
+      const summaryData = JSON.parse(fs.readFileSync(summaryPath, "utf-8"));
+      // Take a representative sample to keep prompt size manageable
+      const sample = summaryData.slice(0, 50);
+      historicalContext = JSON.stringify(sample);
     } catch (e) {
       console.error("Failed to load historical data context:", e);
+      return NextResponse.json(
+        { error: "Historical dataset unavailable. Please try again later." },
+        { status: 503 }
+      );
     }
 
     // Rate Limiting
@@ -100,7 +120,7 @@ export async function POST(req: NextRequest) {
 
     const { userInput } = await req.json();
 
-    if (!userInput || typeof userInput !== "string") {
+    if (typeof userInput !== "string" || userInput.trim().length === 0) {
       return NextResponse.json(
         { error: "Valid user input is required" },
         { status: 400 }
@@ -115,8 +135,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Security: Basic sanitization to prevent common prompt injection patterns
-    const sanitizedInput = userInput.replace(/[\n\r\t]/g, " ").trim();
+    // Security: Reject delimiter-escape attempts. User input is wrapped in
+    // triple-quotes in the system instruction (see USER_INPUT below); a user
+    // submitting """ could close the delimiter early and inject instructions.
+    if (userInput.includes('"""')) {
+      return NextResponse.json(
+        { error: "Input contains a disallowed delimiter sequence." },
+        { status: 400 }
+      );
+    }
+
+    // Security: Sanitize whitespace + zero-width characters that can hide
+    // injection payloads. Strip ZWSP/ZWNJ/ZWJ/LRM/RLM/BOM, then normalize
+    // all Unicode whitespace categories to a single ASCII space.
+    const sanitizedInput = userInput
+      .replace(/[​-‏﻿]/g, "")
+      .replace(/\p{Z}/gu, " ")
+      .replace(/[\n\r\t]/g, " ")
+      .trim();
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -146,10 +182,13 @@ export async function POST(req: NextRequest) {
       - Focus on the spirit, tactical style, and legacy of eras or teams rather than individuals.
       - Use CONDITIONAL PHRASING (e.g., "This data suggests," "You could align with"). Never guarantee performance results.
       - Treat Olympic and Paralympic disciplines with equal depth and prominence.
+      - The "olympic" and "paralympic" narrative strings MUST be of similar length (within ±20% of each other) and equally rich in specificity. Neither should read like a footnote of the other.
       - Return ONLY a JSON object.
 
       ### OUTPUT REQUIREMENTS
-      The "stats" field MUST be an object with keys: "resilience", "purposefulFocus", "workEthic", "adaptability".
+      The "stats" field MUST be an object with keys: "resilience", "purposefulFocus", "workEthic", "adaptability". Each stat value MUST be an integer between 0 and 100 inclusive.
+      The "rarity" field MUST be exactly one of: "Common", "Uncommon", "Rare", "Holo Rare".
+      The "discipline" field MUST be exactly one of: "Olympic", "Paralympic", "Unified".
 
       ### USER CONTEXT
       The user describes their movement and lifestyle within the triple-quote delimiters below.
@@ -174,19 +213,19 @@ export async function POST(req: NextRequest) {
               },
               required: ["olympic", "paralympic"]
             },
-            rarity: { type: "string" },
+            rarity: { type: "string", enum: ["Common", "Uncommon", "Rare", "Holo Rare"] },
             stats: {
               type: "object",
               properties: {
-                resilience: { type: "number" },
-                purposefulFocus: { type: "number" },
-                workEthic: { type: "number" },
-                adaptability: { type: "number" }
+                resilience: { type: "integer", minimum: 0, maximum: 100 },
+                purposefulFocus: { type: "integer", minimum: 0, maximum: 100 },
+                workEthic: { type: "integer", minimum: 0, maximum: 100 },
+                adaptability: { type: "integer", minimum: 0, maximum: 100 }
               },
               required: ["resilience", "purposefulFocus", "workEthic", "adaptability"]
             },
             era: { type: "string" },
-            discipline: { type: "string" }
+            discipline: { type: "string", enum: ["Olympic", "Paralympic", "Unified"] }
           },
           required: ["title", "narrative", "rarity", "stats", "era", "discipline"]
         },
@@ -218,10 +257,9 @@ export async function POST(req: NextRequest) {
       throw new Error("Failed to parse archetype data: " + (parseError instanceof Error ? parseError.message : "Invalid JSON"));
     }
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "Unknown error";
     console.error("Error generating archetype:", error);
     return NextResponse.json(
-      { error: "Failed to generate archetype", details: message },
+      { error: "Generation failed. Please try again." },
       { status: 500 }
     );
   }
