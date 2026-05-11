@@ -15,9 +15,14 @@
  */
 
 import ArchetypeGenerator from "./components/ArchetypeGenerator";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 export const unstable_instant = { prefetch: "static" };
 
 export default function Home() {
-  return <ArchetypeGenerator />;
+  return (
+    <ErrorBoundary>
+      <ArchetypeGenerator />
+    </ErrorBoundary>
+  );
 }
