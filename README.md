@@ -2,18 +2,12 @@
 
 <table width="100%" border="0">
   <tr>
-    <td width="20%" align="left">
-      <img src="public/holotype-card-spin.gif" width="160" alt="Holo-Type Spinning Card Left">
-    </td>
-    <td width="60%" align="center">
+    <td width="100%" align="center">
       <br />
       <code>[ THE ARCHIVE // HOLO-TYPE-V1 ]</code>
       <h1>HOLO-TYPE</h1>
       <p><strong>Where Team USA's legacy meets the future of generative AI.</strong></p>
       <code>⌜ REDEFINE YOUR POTENTIAL ⌟</code>
-    </td>
-    <td width="20%" align="right">
-      <img src="public/holotype-card-spin.gif" width="160" alt="Holo-Type Spinning Card Right">
     </td>
   </tr>
 </table>
@@ -49,7 +43,6 @@
 > 2. **CHOOSE:** Select the **Morning Sprinter** preset or enter your own daily routine.
 > 3. **GENERATE:** Click **Run Historical Alignment** to invoke Gemini 3.1.
 > 4. **DISCOVER:** Toggle between the **Olympic** and **Paralympic** card faces.
-> 5. **SHARE:** Download your personalized holographic archetype.
 
 ---
 
