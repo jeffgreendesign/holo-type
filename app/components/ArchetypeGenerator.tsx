@@ -24,10 +24,9 @@ import {
   Timer, 
   Users, 
   Wrench, 
-  Mountain, 
+  Mountain,
   Shuffle,
   Clipboard,
-  Share2,
   Check
 } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
@@ -35,7 +34,6 @@ import { twMerge } from "tailwind-merge";
 import { toCanvas } from "html-to-image";
 import { GIFEncoder, quantize, applyPalette } from "gifenc";
 import { LoadingScanner } from "./LoadingScanner";
-import PosterGenerator from "./PosterGenerator";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -905,28 +903,16 @@ export default function ArchetypeGenerator() {
                 </div>
                 <div className="flex flex-col gap-4">
                   <button onClick={handleDownloadLog} className="w-full h-14 bg-text-main text-bg-main font-bold uppercase tracking-[0.4em] transition-all hover:bg-accent-red hover:text-white active:scale-[0.98] text-xs shadow-2xl">DOWNLOAD ARCHIVAL LOG</button>
-                  <div className="grid grid-cols-2 gap-4">
-                    <button onClick={handleCopyVector} className={cn("h-12 flex items-center justify-center gap-3 bg-bg-card border text-[10px] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.95]", vectorCopied ? "border-green-500/50 text-green-500" : "border-border-subtle text-text-secondary hover:text-text-main")}>
-                      {vectorCopied ? <Check className="w-4 h-4" /> : <Clipboard className="w-4 h-4" />}
-                      {vectorCopied ? "COPIED" : "COPY VECTOR"}</button>
-                    <button onClick={() => setIsShareModalOpen(true)} className="h-12 flex items-center justify-center gap-3 bg-bg-card border border-border-subtle text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary hover:text-text-main transition-all active:scale-[0.95]">
-                      <span className="text-accent-gold text-lg">⬢</span>TRANSMIT</button>
-                  </div>
+                  <button onClick={handleCopyVector} className={cn("h-12 w-full flex items-center justify-center gap-3 bg-bg-card border text-[10px] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.95]", vectorCopied ? "border-green-500/50 text-green-500" : "border-border-subtle text-text-secondary hover:text-text-main")}>
+                    {vectorCopied ? <Check className="w-4 h-4" /> : <Clipboard className="w-4 h-4" />}
+                    {vectorCopied ? "COPIED" : "COPY VECTOR"}</button>
                   <button onClick={handleReset} className="mt-8 self-center text-text-tertiary font-bold uppercase tracking-[0.3em] text-[10px] hover:text-accent-red transition-colors flex items-center gap-3 group">
                     <RotateCcw className="w-4 h-4 group-hover:rotate-[-45deg] transition-transform" />RESET DIAGNOSTIC INSTRUMENT</button>
                 </div>
               </div>
-
-              <PosterGenerator 
-                archetype={archetype} 
-                lens={lens} 
-                isOpen={isShareModalOpen} 
-                onClose={() => setIsShareModalOpen(false)} 
-              />
-            </motion.div>
-          </section>
-        )}
-
+              </motion.div>
+              </section>
+              )}
         {error && <div className="p-5 bg-accent-red/10 border border-accent-red/20 rounded-xl text-accent-red text-center font-bold text-sm mt-12">{error}</div>}
       </div>
     </main>
