@@ -4,6 +4,20 @@ All notable changes to this project go here.
 
 I'm following [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-05-11
+
+### Added
+- **Error Boundaries:** Wrapped the application in an `ErrorBoundary` to ensure stability and prevent white-screens during demonstrations.
+- **Hardened API:** Enhanced `/api/generate` with stricter input validation and response schema enforcement.
+- **Archival Aesthetic:** Integrated a high-fidelity archival aesthetic into the UI, including custom shaders and a style guide.
+- **Visual Effects:** Added a "Gold Holo" shader and pixelate filter utilities for enhanced holographic depth.
+- **Internal Tools:** Added a hackathon documentation fetcher for streamlined resource access.
+
+### Changed
+- **UI Optimization:** Redesigned the stat display with a 2x2 grid and vertical compression to optimize visual balance.
+- **Modular Refactor:** Refactored the core `ArchetypeGenerator` into focused modules for better maintainability.
+- **Documentation:** Extensively updated the README and project documentation for judge-readiness.
+
 ## [0.3.0] - 2026-05-09
 
 ### Added
