@@ -2,7 +2,7 @@
 
 Generate Team USA athlete archetypes from your daily routine. Built on Gemini 3.1, grounded in 120 years of Olympedia data. A submission for the Team USA x Google Cloud "Vibe Code for Gold" hackathon.
 
-[Live demo](https://holo-type--holo-type.us-east4.hosted.app/) · [Devpost](https://devpost.com/software/holo-type)
+[Live demo](https://holo-type--holo-type.us-east4.hosted.app/) · [Devpost](https://devpost.com/software/holo-type) · [Demo Video](https://youtu.be/-FlPM1UwPA4)
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
