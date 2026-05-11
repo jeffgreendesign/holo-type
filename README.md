@@ -1,159 +1,108 @@
-<div align="center">
+# Holo-Type
 
-<table width="100%" border="0">
-  <tr>
-    <td width="100%" align="center">
-      <br />
-      <code>[ THE ARCHIVE // HOLO-TYPE-V1 ]</code>
-      <h1>HOLO-TYPE</h1>
-      <p><strong>Where Team USA's legacy meets the future of generative AI.</strong></p>
-      <code>⌜ REDEFINE YOUR POTENTIAL ⌟</code>
-    </td>
-  </tr>
-</table>
+Generate Team USA athlete archetypes from your daily routine. Built on Gemini 3.1, grounded in 120 years of Olympedia data. A submission for the Team USA x Google Cloud "Vibe Code for Gold" hackathon.
+
+[Live demo](https://holo-type--holo-type.us-east4.hosted.app/) · [Devpost](https://devpost.com/software/holo-type)
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Gemini 3.1 Flash Lite](https://img.shields.io/badge/Gemini-3.1_Flash_Lite-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
 [![Tailwind CSS 4.0](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-[**EXPERIENCE_HOLO_TYPE**](https://holo-type--holo-type.us-east4.hosted.app/) • [**PROJECT_JOURNEY**](https://devpost.com/software/holo-type) • [**TECHNICAL_ARCH**](#-system-architecture)
+## What it does
 
----
+Pick a movement preset or describe your daily work style. The backend sends that context to `gemini-3.1-flash-lite` with `ThinkingLevel.MEDIUM` and a strict JSON schema. The model returns an archetype with stats, rarity, and two narratives, Olympic and Paralympic. The frontend renders it as a 3D holographic card with iridescent shaders and pointer-tracked physics.
 
-> `⚡ "120 years of excellence. Two lenses of greatness. One archetype: Yours."`
-> 
-> `A submission for the Team USA x Google Cloud "Vibe Code for Gold" hackathon.`
+No athlete names, likenesses, or individual scores. NIL-compliant.
 
-</div>
+## Parity
 
----
+Every generation request returns both Olympic and Paralympic narratives. The schema requires it. Same UI, same depth, same shaders. Not a separate category.
 
-### ⎔ THE_LEGACY_PALETTE
-| ⬢ **OLD GLORY BLUE** | ⬢ **OLD GLORY RED** | ⬢ **WHITE** | ⬢ **MEDAL GOLD** | ⬢ **HOLO SILVER** |
-| :---: | :---: | :---: | :---: | :---: |
-| `#0A1F44` | `#E4002B` | `#FFFFFF` | `#C5A059` | `#C0C0C0` |
+## Quickstart for judges
 
----
+1. Open the [live experience](https://holo-type--holo-type.us-east4.hosted.app/).
+2. Pick the **Morning Sprinter** preset, or describe your own routine.
+3. Click **Run Historical Alignment**.
+4. Flip between the Olympic and Paralympic card faces.
 
-> [!IMPORTANT]
-> **JUDGE_&_FAN_QUICKSTART**
->
-> 1. **NAVIGATE:** Open the [Live Experience](https://holo-type--holo-type.us-east4.hosted.app/).
-> 2. **CHOOSE:** Select the **Morning Sprinter** preset or enter your own daily routine.
-> 3. **GENERATE:** Click **Run Historical Alignment** to invoke Gemini 3.1.
-> 4. **DISCOVER:** Toggle between the **Olympic** and **Paralympic** card faces.
+## Prompt presets
 
----
+- **Morning Sprinter**: Fast decisions, high energy, first one done.
+- **Steady Pacer**: Consistent momentum over long durations.
+- **Team Captain**: Organizing people and reading the room.
+- **Precision Craftsman**: Meticulous detail and manual craft.
+- **Endurance Runner**: Patience is the edge. Outlasting all.
+- **Adaptive Strategist**: Reading the situation and improvising.
 
-## ✦ THE_MISSION
-
-Holo-Type was built to help every fan see themselves in the DNA of Team USA. By analyzing the way you move, think, and lead, our AI maps your profile to an athlete archetype grounded in over a century of Olympic and Paralympic data.
-
-### ⌜ SYSTEM_INNOVATIONS ⌟
-
-- **⬡ ARCHIVAL GROUNDING**: We've distilled 1.2MB of historical Team USA results to ensure your archetype is rooted in reality.
-- **⬡ HOLOGRAPHIC PHYSICS**: Experience a "living" interface with 3D physics and iridescent shaders that react to your movement.
-- **⬡ PARITY BY DESIGN**: Paralympic athletes aren't a secondary mode—they are a mandatory part of every generation's DNA.
-- **⬡ GEOMETRIC STATS**: Your performance traits are visualized through dynamic radar shapes, unique to your alignment.
-- **⬡ GLOBAL TRANSMISSION**: Share your potential through high-fidelity, 9:16 and 1:1 posters designed for social impact.
-
----
-
-## ✦ PARITY: OUR_CORE_PRINCIPLE
-
-At Holo-Type, we believe parity is a foundation, not a feature. In traditional sports media, Paralympic coverage is often separate. We've changed the architecture: **every single generation request is required to produce both Olympic and Paralympic narratives.**
-
-> `GREATNESS HAS NO FOOTNOTES.`
-
-This ensures that every fan witnesses their potential through both lenses with equal depth, artistry, and technical precision.
-
----
-
-## ✦ TECHNICAL_FOUNDATION
-
-### INTELLIGENT_GENERATION
-Powered by **Gemini 3.1 Flash Lite**, we use advanced reasoning (`ThinkingLevel.MEDIUM`) to synthesize user input against 120 years of archival data. The result is a high-precision JSON payload delivered in a single inference call.
-
-### PHYSICAL_FIDELITY
-The interface feels like a physical artifact, not just a webpage.
-- **Physics**: Heavy "Liquid" momentum (`Mass: 1.2`, `Damping: 40`).
-- **Shaders**: Layered foil effects using `Color-Dodge` and `Soft-Light` blending.
-- **Stability**: Flat-stack rendering ensures 3D tilt without visual distortion.
-
----
-
-## ✦ THE_PROMPT_LIBRARY
-`START YOUR ALIGNMENT VOYAGE:`
-
-- ✦ **MORNING SPRINTER**: "Fast decisions, high energy, first one done."
-- ✦ **STEADY PACER**: "Consistent momentum over long durations."
-- ✦ **TEAM CAPTAIN**: "Organizing people and reading the room."
-- ✦ **PRECISION CRAFTSMAN**: "Meticulous detail and manual craft."
-- ✦ **ENDURANCE RUNNER**: "Patience is the edge. Outlasting all."
-- ✦ **ADAPTIVE STRATEGIST**: "Reading the situation and improvising."
-
----
-
-## ✦ SYSTEM_ARCHITECTURE
+## Architecture
 
 ```mermaid
 graph TD
-    A[USER_INPUT] --> B[API_ROUTE /api/generate]
-    B --> C[GEMINI_3.1_FLASH_LITE]
-    C --> D{JSON_ARCHETYPE}
-    D --> E[OLYMPIC_LENS]
-    D --> F[PARALYMPIC_LENS]
-    E & F --> G[HOLO_RENDER]
+    A[User input] --> B[API route /api/generate]
+    B --> C[Gemini 3.1 Flash Lite]
+    C --> D{JSON archetype}
+    D --> E[Olympic narrative]
+    D --> F[Paralympic narrative]
+    E & F --> G[Holographic card render]
 ```
 
----
+## Stack
 
-## ✦ JUDGING_CRITERIA_MATRIX
+| Layer     | Tech                                      |
+| --------- | ----------------------------------------- |
+| Framework | Next.js 16 (App Router), React 19         |
+| Styling   | Tailwind CSS 4                            |
+| Animation | Framer Motion 12                          |
+| AI        | Gemini 3.1 Flash Lite via `@google/genai` |
+| Hosting   | Firebase App Hosting (`us-east4`)         |
+| Secrets   | Google Cloud Secret Manager               |
+| Export    | `html-to-image` for 9:16 and 1:1 posters  |
 
-| CRITERION | MISSION_RESPONSE |
-| :--- | :--- |
-| **IMPACT** | Universal visibility through architectural parity. Fans find their place in the legacy. |
-| **TECH_DEPTH** | Gemini 3.1 integration, historical data grounding, and Next.js 16/React 19 stack. |
-| **PRESENTATION** | Premium holographic UI with high-performance 3D shaders and liquid physics. |
+## Card rendering
 
----
+The cards feel physical without breaking on steep tilt angles. Three things make that work:
 
-## ✦ DATA_INTEGRITY_REPORT
+- **Flat-stack architecture.** All card content renders flat on the surface. No Z-offsets to fight with the 3D tilt.
+- **Liquid physics.** Framer Motion with mass 1.2 and damping 40. Heavy momentum, no overshoot.
+- **Layered iridescent CSS.** `mix-blend-color-dodge`, `overlay`, and `soft-light` blending, with pointer-tracked gradients for depth.
 
-| COMPONENT | STATUS | NOTES |
-| :--- | :--- | :--- |
-| **HISTORICAL_DNA** | `AUTHENTIC` | Rooted in 120 years of Team USA achievement data. |
-| **AI_REASONING** | `REAL-TIME` | Dynamic generation via Gemini 3.1 Flash Lite. |
-| **PARITY_CHECK** | `MANDATORY` | Dual-lens narratives enforced at the schema level. |
-| **RARITY_ENGINE** | `DYNAMIC` | Calculated based on the uniqueness of the alignment. |
-| **IDENTITY_PROT** | `REDACTED` | NIL compliant—athlete names are never used. |
+## Data integrity
 
----
+| Component           | Status    | Notes                                                    |
+| ------------------- | --------- | -------------------------------------------------------- |
+| Historical data     | Authentic | Aggregated from 120 years of Team USA Olympedia results. |
+| AI reasoning        | Real-time | Single Gemini 3.1 Flash Lite inference per generation.   |
+| Parity check        | Mandatory | Both narratives enforced at the schema level.            |
+| Rarity engine       | Dynamic   | Calculated from the uniqueness of the alignment.         |
+| Identity protection | Redacted  | NIL-compliant. No athlete names or likenesses.           |
 
-<details>
-<summary>⌜ ARCHIVE_ACCESS_&_SETUP ⌟</summary>
+## Judging criteria
 
-### INSTALLATION
-1. Clone the repository.
-2. Configure `.env.local` with your `GEMINI_API_KEY`.
-3. Execute `npm install` && `npm run dev`.
+| Criterion    | Response                                                                                                             |
+| ------------ | -------------------------------------------------------------------------------------------------------------------- |
+| Impact       | Architectural parity puts Olympic and Paralympic narratives on equal footing by default, in every generation.        |
+| Tech depth   | Gemini 3.1 with structured JSON output, grounded on a sanitized 120-year Olympedia dataset. Next.js 16 and React 19. |
+| Presentation | 3D holographic cards with pointer-tracked iridescent shaders and tuned liquid physics.                               |
 
-### DEPLOYMENT_SPEC
-Hosted on **Firebase App Hosting** in `us-east4`. Secret management via **Google Cloud Secret Manager**.
+## Setup
 
-</details>
+1. Clone the repo.
+2. Add `GEMINI_API_KEY` to `.env.local`.
+3. Run `npm install && npm run dev`.
 
----
+## Color palette
 
-## ✦ ROADMAP
-- **[ ]** TRANSMIT_LIVE: Unique shareable alignment links.
-- **[ ]** REALTIME_TRIAL: Integration with current trial result streams.
-- **[ ]** HAPTIC_TOUCH: Physical tilt feedback for mobile artifacts.
+| Old Glory Blue | Old Glory Red | White     | Medal Gold | Holo Silver |
+| -------------- | ------------- | --------- | ---------- | ----------- |
+| `#0A1F44`      | `#E4002B`     | `#FFFFFF` | `#C5A059`  | `#C0C0C0`   |
 
----
+## Roadmap
 
-## 📄 LICENSE
+- [ ] Shareable alignment links.
+- [ ] Live trial result stream integration.
+- [ ] Haptic tilt feedback on mobile.
+
+## License
+
 Apache-2.0
-
-
