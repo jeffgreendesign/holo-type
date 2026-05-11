@@ -128,10 +128,9 @@ function CardContent({
   );
 
   const isPoster = variant === "poster";
-  const statCount = Object.keys(archetype.stats).length;
 
   return (
-    <div data-component="CardContent" className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-5")}>
+    <div data-component="CardContent" className={cn("relative h-full flex flex-col overflow-hidden", isPoster ? "w-[640px] h-[896px] p-10" : "p-4 pb-3")}>
       <div
         className={cn(
           "absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-30",
@@ -149,13 +148,13 @@ function CardContent({
         style={{ background: glareBackground }}
       />
 
-      <header data-part="metadata" className={cn("relative flex justify-between items-start", isPoster ? "mb-6" : "mb-2")}>
-        <div className="space-y-1">
-          <span className={cn("font-mono font-bold tracking-[0.3em] text-text-tertiary", isPoster ? "text-sm" : "text-[10px]")}>ARCHETYPE</span>
-          <div className={cn("font-mono font-bold text-text-main border border-border-subtle bg-bg-card/50 uppercase", isPoster ? "text-sm px-4 py-1" : "text-[10px] px-2 py-0.5")}>{side}</div>
+      <header data-part="metadata" className={cn("relative flex justify-between items-start", isPoster ? "mb-6" : "mb-1.5")}>
+        <div className="space-y-0.5">
+          <span className={cn("font-mono font-bold tracking-[0.3em] text-text-tertiary", isPoster ? "text-sm" : "text-[8px]")}>ARCHETYPE</span>
+          <div className={cn("font-mono font-bold text-text-main border border-border-subtle bg-bg-card/50 uppercase", isPoster ? "text-sm px-4 py-1" : "text-[9px] px-1.5 py-0")}>{side}</div>
         </div>
         <div
-          className={cn("text-white font-mono font-bold tracking-widest shadow-sm", isPoster ? "text-sm px-6 py-2" : "text-[10px] px-3 py-1")}
+          className={cn("text-white font-mono font-bold tracking-widest shadow-sm", isPoster ? "text-sm px-6 py-2" : "text-[9px] px-2 py-0.5")}
           style={{ backgroundColor: archetype.rarity === "Holo Rare" ? "#B31942" : "#C5972C" }}
         >
           {archetype.rarity.toUpperCase()}
@@ -166,49 +165,59 @@ function CardContent({
         data-part="visual-container"
         className={cn(
           "relative w-full bg-bg-card-elevated/50 border border-border-subtle flex items-center justify-center overflow-hidden shadow-inner group-hover:bg-bg-card/40 transition-colors duration-500 backdrop-blur-[2px]",
-          isPoster ? "flex-none h-[320px] mb-10" : "flex-1 min-h-[120px] mb-4"
+          isPoster ? "flex-none h-[320px] mb-10" : "flex-none h-[110px] mb-2"
         )}
       >
-        <div className={isPoster ? "scale-150" : ""}>
+        <div className={isPoster ? "scale-150" : "scale-75"}>
           <RadarVisual stats={archetype.stats} color={accentColor} />
         </div>
-        <div className={cn("absolute top-2 left-2 font-mono text-text-tertiary", isPoster ? "text-[12px]" : "text-[8px]")}>Vector Analysis</div>
+        <div className={cn("absolute top-1 left-1 font-mono text-text-tertiary", isPoster ? "text-[12px]" : "text-[7px]")}>Vector Analysis</div>
       </figure>
 
-      <div data-part="title-area" className={cn("relative flex flex-col justify-center", isPoster ? "mb-10" : "mb-4")}>
+      <div data-part="title-area" className={cn("relative flex flex-col justify-center", isPoster ? "mb-10" : "mb-2")}>
         <FittedTitle
           text={archetype.title}
-          className={cn("font-display font-bold leading-none tracking-tight text-text-main uppercase italic", isPoster ? "text-6xl" : "text-3xl")}
+          className={cn("font-display font-bold leading-none tracking-tight text-text-main uppercase italic", isPoster ? "text-6xl" : "text-2xl")}
         />
-        <div className={cn("mt-4 shadow-sm", isPoster ? "w-20 h-[6px]" : "w-10 h-[3px]")} style={{ backgroundColor: accentColor }} />
+        <div className={cn("mt-1.5 shadow-sm", isPoster ? "w-20 h-[6px]" : "w-8 h-[2px]")} style={{ backgroundColor: accentColor }} />
       </div>
 
       <section
         data-part="stats-grid"
-        className={cn(
-          "relative grid gap-px bg-border-subtle/20 border border-border-subtle/30 overflow-hidden rounded-sm",
-          statCount > 3 ? "grid-cols-4" : "grid-cols-3"
-        )}
+        className="relative grid grid-cols-2 gap-px bg-border-subtle/20 border border-border-subtle/30 overflow-hidden rounded-sm"
       >
         {Object.entries(archetype.stats).map(([label, value], i) => {
           const formattedLabel = label.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase());
 
           return (
-            <div key={i} className={cn("bg-bg-card/10 backdrop-blur-[1px] flex flex-col items-center", isPoster ? "p-8 min-h-[180px]" : "p-3.5 min-h-[105px]")}>
-              <FittedLabel
-                text={formattedLabel}
-                center
-                className={cn("font-mono font-bold tracking-[0.12em] text-text-tertiary uppercase", isPoster ? "text-[12px]" : "text-[9px]")}
-              />
-              <div className="mt-auto">
-                <StatCounter value={value} delay={0.8 + i * 0.1} className={cn("text-text-main", isPoster ? "text-7xl" : "text-5xl")} />
+            <div
+              key={i}
+              className={cn(
+                "bg-bg-card/10 backdrop-blur-[1px] flex flex-col items-center justify-center text-center",
+                isPoster ? "p-5 min-h-[110px]" : "px-1.5 py-2 min-h-[58px]"
+              )}
+            >
+              <div className="w-full flex justify-center mb-1">
+                <FittedLabel
+                  text={formattedLabel}
+                  center
+                  className={cn(
+                    "font-mono font-bold tracking-[0.12em] text-text-tertiary uppercase",
+                    isPoster ? "text-[12px]" : "text-[10px]"
+                  )}
+                />
               </div>
+              <StatCounter
+                value={value}
+                delay={0.8 + i * 0.1}
+                className={cn("text-text-main leading-none", isPoster ? "text-6xl" : "text-4xl")}
+              />
             </div>
           );
         })}
       </section>
 
-      <footer data-part="card-footer" className={cn("relative flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-4")}>
+      <footer data-part="card-footer" className={cn("relative flex justify-between items-end", isPoster ? "mt-10" : "mt-auto pt-2")}>
         <div className="space-y-1">
           <span className={cn("font-mono font-bold tracking-[0.2em] text-text-tertiary uppercase", isPoster ? "text-[12px]" : "text-[9px]")}>ERA ALIGNMENT</span>
           <FittedLabel
