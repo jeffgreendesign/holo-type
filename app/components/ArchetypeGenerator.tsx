@@ -751,7 +751,7 @@ export default function ArchetypeGenerator() {
                       <preset.icon className="absolute bottom-1 right-1 w-14 h-14 md:w-20 md:h-20 opacity-10 dark:opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-14" />
                                           <div className="relative h-full p-3 md:p-5 flex flex-col justify-between">
                                             <div className="flex justify-between items-start">
-                                              <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase">PRESET 0{i+1}</span>
+                                              <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase">⌜ PRESET 0{i+1} ⌟</span>
                                               <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-text-tertiary uppercase italic">ANALYSIS</span>
                                             </div>
                                             <div className="flex flex-col">
@@ -774,7 +774,7 @@ export default function ArchetypeGenerator() {
                 </div>
 
                 <div className="w-full max-w-2xl mx-auto space-y-2">
-                  <label htmlFor="userInput" className="block text-[9px] font-bold uppercase tracking-[0.4em] text-text-secondary text-center">INPUT DAILY MOVEMENT PATTERN</label>
+                  <label htmlFor="userInput" className="block text-[9px] font-bold uppercase tracking-[0.4em] text-text-secondary text-center">⌜ INPUT DAILY MOVEMENT PATTERN ⌟</label>
                   <div className="relative group">
                     <motion.div
                       animate={isFlashActive ? { 
@@ -897,7 +897,9 @@ export default function ArchetypeGenerator() {
                 <div className="text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                   <p className="text-text-main font-narrative text-lg md:text-[17px] leading-[1.6] font-normal opacity-90 max-w-[60ch] mx-auto">{lens === "paralympic" ? archetype.narrative.paralympic : archetype.narrative.olympic}</p>
                   <div className="inline-flex items-center gap-4 px-5 py-2.5 bg-bg-card border border-border-subtle rounded-full">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-text-tertiary">Archival Context Locked</span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-text-tertiary flex items-center gap-2">
+                      <span className="text-accent-gold">⎔</span> Archival Context Locked
+                    </span>
                     <span className="text-sm font-display font-bold uppercase italic text-accent-red">{archetype.era}</span>
                   </div>
                 </div>
@@ -908,7 +910,7 @@ export default function ArchetypeGenerator() {
                       {vectorCopied ? <Check className="w-4 h-4" /> : <Clipboard className="w-4 h-4" />}
                       {vectorCopied ? "COPIED" : "COPY VECTOR"}</button>
                     <button onClick={() => setIsShareModalOpen(true)} className="h-12 flex items-center justify-center gap-3 bg-bg-card border border-border-subtle text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary hover:text-text-main transition-all active:scale-[0.95]">
-                      <Share2 className="w-4 h-4" />TRANSMIT</button>
+                      <span className="text-accent-gold text-lg">⬢</span>TRANSMIT</button>
                   </div>
                   <button onClick={handleReset} className="mt-8 self-center text-text-tertiary font-bold uppercase tracking-[0.3em] text-[10px] hover:text-accent-red transition-colors flex items-center gap-3 group">
                     <RotateCcw className="w-4 h-4 group-hover:rotate-[-45deg] transition-transform" />RESET DIAGNOSTIC INSTRUMENT</button>

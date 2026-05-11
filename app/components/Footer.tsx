@@ -28,9 +28,14 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-sm font-body">
         
         {/* Left: Project & Hackathon */}
-        <div className="flex flex-col items-center md:items-start gap-2">
-          <div className="font-display font-bold italic text-2xl tracking-tighter text-text-main uppercase leading-none">
-            HOLO<span className="text-accent-gold">TYPE</span>
+        <div className="flex flex-col items-center md:items-start gap-3">
+          <div className="flex items-center gap-3">
+            <div className="font-display font-bold italic text-2xl tracking-tighter text-text-main uppercase leading-none">
+              HOLO<span className="text-accent-gold">TYPE</span>
+            </div>
+            <code className="text-[10px] text-text-tertiary opacity-70 px-2 py-0.5 border border-border-subtle/50 bg-bg-card/20 rounded-sm uppercase tracking-widest hidden sm:block">
+              [ ARCHIVE // V1.0 ]
+            </code>
           </div>
           <a 
             href="https://vibecodeforgoldwithgoogle.devpost.com/"
@@ -38,18 +43,19 @@ export const Footer = () => {
             rel="noopener noreferrer"
             className="text-text-secondary hover:text-accent-navy transition-colors flex items-center gap-1.5 group"
           >
-            Built for the <span className="font-semibold">TEAM USA X GOOGLE CLOUD HACKATHON</span>
+            Built for the <span className="font-semibold tracking-tight">TEAM USA X GOOGLE CLOUD HACKATHON</span>
             <ExternalLink className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100" />
           </a>
         </div>
 
         {/* Center: Author & License */}
-        <div className="flex flex-col items-center gap-1 text-center md:absolute md:left-1/2 md:-translate-x-1/2">
-          <p className="text-text-secondary">
+        <div className="flex flex-col items-center gap-1.5 text-center md:absolute md:left-1/2 md:-translate-x-1/2">
+          <p className="text-text-secondary flex items-center gap-2">
+            <span className="text-accent-gold text-xs">✦</span>
             © 2026 <a href="https://www.hirejeffgreen.com/" target="_blank" rel="noopener noreferrer" className="text-text-main hover:text-accent-gold underline underline-offset-4 decoration-accent-gold/30 transition-colors">Jeff Green</a>
           </p>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-text-tertiary opacity-70">
-            Apache 2.0 License
+          <p className="text-[10px] uppercase tracking-[0.3em] text-text-tertiary font-mono opacity-80">
+            ⌜ Apache 2.0 License ⌟
           </p>
         </div>
 

@@ -76,16 +76,20 @@ export function LoadingScanner() {
           {/* Status Text (Centered in Ring) */}
           <div className="w-48 text-center px-4">
             <AnimatePresence mode="wait">
-              <motion.p
+              <motion.div
                 key={statusIdx}
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.5 }}
-                className="text-[10px] md:text-xs font-bold leading-tight tracking-[0.2em] text-text-main uppercase"
+                className="flex flex-col items-center"
               >
-                {STATUS_STRINGS[statusIdx]}
-              </motion.p>
+                <span className="text-text-main/30 text-[8px] mb-1 leading-none font-bold tracking-widest">⌜ ACCESSING ⌟</span>
+                <p className="text-[10px] md:text-xs font-bold leading-tight tracking-[0.2em] text-text-main uppercase">
+                  {STATUS_STRINGS[statusIdx]}
+                </p>
+                <span className="text-text-main/30 text-[10px] mt-1 leading-none">⬢</span>
+              </motion.div>
             </AnimatePresence>
           </div>
         </figure>
