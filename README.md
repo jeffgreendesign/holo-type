@@ -14,7 +14,7 @@
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Gemini 3.1 Flash](https://img.shields.io/badge/Gemini-3.1_Flash-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
+[![Gemini 3.1 Flash Lite](https://img.shields.io/badge/Gemini-3.1_Flash_Lite-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
 [![Tailwind CSS 4.0](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 [**EXPERIENCE_HOLO_TYPE**](https://holo-type--holo-type.us-east4.hosted.app/) • [**PROJECT_JOURNEY**](https://devpost.com/software/holo-type) • [**TECHNICAL_ARCH**](#-system-architecture)
@@ -100,7 +100,7 @@ The interface feels like a physical artifact, not just a webpage.
 ```mermaid
 graph TD
     A[USER_INPUT] --> B[API_ROUTE /api/generate]
-    B --> C[GEMINI_3.1_FLASH]
+    B --> C[GEMINI_3.1_FLASH_LITE]
     C --> D{JSON_ARCHETYPE}
     D --> E[OLYMPIC_LENS]
     D --> F[PARALYMPIC_LENS]

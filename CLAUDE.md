@@ -13,7 +13,7 @@ Holo-Type uses Google Gemini AI to turn sports data into athlete archetypes with
 - **React 19.2.4**
 - **Tailwind CSS 4**
 - **motion/react** (Framer Motion 12)
-- **Google Gemini AI** (`gemini-2.5-flash`)
+- **Google Gemini AI** (`gemini-3.1-flash-lite`)
 
 ## Domain & Logic
 - **Target:** Sports analysts and athletes.
