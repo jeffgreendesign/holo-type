@@ -16,7 +16,7 @@
 
 "use client";
 
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { Target } from "lucide-react";
 
