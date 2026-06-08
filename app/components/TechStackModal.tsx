@@ -16,7 +16,7 @@
 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Cpu, Globe, Palette, Layers, Zap } from "lucide-react";
@@ -31,13 +31,9 @@ const TECH_STACK = [
 ];
 
 export const TechStackModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const [mounted, setMounted] = useState(false);
+  const portalRoot = typeof document === "undefined" ? null : document.body;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
+  if (!portalRoot) return null;
 
   return createPortal(
     <AnimatePresence>
@@ -109,6 +105,6 @@ export const TechStackModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: 
         </div>
       )}
     </AnimatePresence>,
-    document.body
+    portalRoot
   );
 };
